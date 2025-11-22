@@ -1,8 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
-import { TrustBadges } from "@/components/TrustBadges";
-import { PlatformSection } from "@/components/PlatformSection";
-import { HowItWorksSection } from "@/components/HowItWorksSection";
+import { PartnersSection } from "@/components/PartnersSection";
+import { FeaturesSection } from "@/components/FeaturesSection";
+import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
@@ -11,9 +11,9 @@ const Index = () => {
       <Navigation />
       <main>
         <HeroSection />
-        <TrustBadges />
-        <PlatformSection />
-        <HowItWorksSection />
+        <PartnersSection />
+        <FeaturesSection />
+        <CTASection />
       </main>
       <Footer />
     </div>
