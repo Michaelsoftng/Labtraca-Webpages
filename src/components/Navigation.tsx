@@ -3,7 +3,7 @@ import { MapPin } from "lucide-react";
 
 export const Navigation = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-yellow backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-hero-bg backdrop-blur-sm">
       <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

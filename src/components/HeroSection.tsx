@@ -5,7 +5,7 @@ import medicalIllustration from "@/assets/medical-illustration.png";
 
 export const HeroSection = () => {
   return (
-    <section className="relative pt-32 pb-24 px-6 bg-yellow overflow-hidden">
+    <section className="relative pt-32 pb-24 px-6 bg-hero-bg overflow-hidden">
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative z-10 animate-slide-in">
