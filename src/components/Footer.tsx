@@ -55,7 +55,7 @@ export const Footer = () => {
             <ul className="space-y-3 text-background/70">
               <li><a href="#register" className="hover:text-primary transition-colors font-medium">Become a Dispatcher</a></li>
               <li><a href="#register" className="hover:text-primary transition-colors font-medium">Become a Phlebotomist</a></li>
-              <li><a href="#partners" className="hover:text-primary transition-colors font-medium">Partner with Us</a></li>
+              <li><Link to="/partner-with-us" className="hover:text-primary transition-colors font-medium">Partner with Us</Link></li>
               <li><a href="mailto:support@labtraca.com" className="hover:text-primary transition-colors font-medium">Contact Support</a></li>
             </ul>
           </div>
