@@ -19,6 +19,9 @@ export const Navigation = () => {
             <Link to="/how-it-works" className="text-foreground font-semibold hover:text-primary transition-colors">
               How it works
             </Link>
+            <Link to="/partners" className="text-foreground font-semibold hover:text-primary transition-colors">
+              Partners
+            </Link>
             <Link to="/about" className="text-foreground font-semibold hover:text-primary transition-colors">
               About Us
             </Link>
