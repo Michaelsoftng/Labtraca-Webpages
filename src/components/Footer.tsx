@@ -1,4 +1,5 @@
 import { MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -32,30 +33,30 @@ export const Footer = () => {
           <div>
             <h4 className="font-black text-lg mb-4">Discover</h4>
             <ul className="space-y-3 text-background/70">
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Investors</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">About us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Products</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Careers</a></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors font-medium">About Us</Link></li>
+              <li><Link to="/how-it-works" className="hover:text-primary transition-colors font-medium">How it Works</Link></li>
+              <li><Link to="/our-services" className="hover:text-primary transition-colors font-medium">Our Services</Link></li>
+              <li><a href="#partners" className="hover:text-primary transition-colors font-medium">Partners</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-black text-lg mb-4">Services</h4>
             <ul className="space-y-3 text-background/70">
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Blood Tests</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Health Screens</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">DNA Testing</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">COVID-19</a></li>
+              <li><Link to="/our-services" className="hover:text-primary transition-colors font-medium">All Services</Link></li>
+              <li><a href="#features" className="hover:text-primary transition-colors font-medium">Features</a></li>
+              <li><a href="#download" className="hover:text-primary transition-colors font-medium">Download App</a></li>
+              <li><Link to="/how-it-works" className="hover:text-primary transition-colors font-medium">Get Started</Link></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="font-black text-lg mb-4">Partners</h4>
+            <h4 className="font-black text-lg mb-4">Join Us</h4>
             <ul className="space-y-3 text-background/70">
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Become a Partner</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Partner Portal</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Help Center</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors font-medium">Contact</a></li>
+              <li><a href="#register" className="hover:text-primary transition-colors font-medium">Become a Dispatcher</a></li>
+              <li><a href="#register" className="hover:text-primary transition-colors font-medium">Become a Phlebotomist</a></li>
+              <li><a href="#partners" className="hover:text-primary transition-colors font-medium">Partner with Us</a></li>
+              <li><a href="mailto:support@labtraca.com" className="hover:text-primary transition-colors font-medium">Contact Support</a></li>
             </ul>
           </div>
         </div>
