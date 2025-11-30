@@ -31,18 +31,22 @@ export const PartnerRegistrationSection = () => {
                 <span>Work in your area</span>
               </li>
             </ul>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="rounded-full font-bold text-lg px-10 py-6 h-auto"
             >
               Register as Dispatcher
               <ArrowRight className="ml-2" />
             </Button>
           </div>
-          
+
           <div className="relative animate-fade-in [animation-delay:200ms]">
-            <div className="w-full h-[400px] bg-gradient-to-br from-accent to-accent/60 rounded-3xl shadow-2xl flex items-center justify-center">
-              <Truck className="w-32 h-32 text-white" />
+            <div className="w-full h-[400px] bg-gradient-to-br from-accent to-accent/60 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
+              <img
+                src="/assets/dispatcher.png"
+                alt="Medical Dispatcher"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
@@ -50,8 +54,12 @@ export const PartnerRegistrationSection = () => {
         {/* Phlebotomist Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative order-2 md:order-1 animate-fade-in [animation-delay:200ms]">
-            <div className="w-full h-[400px] bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-2xl flex items-center justify-center">
-              <Droplet className="w-32 h-32 text-primary-foreground" />
+            <div className="w-full h-[400px] bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
+              <img
+                src="/assets/phlebotomist.png"
+                alt="Professional Phlebotomist"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
             </div>
           </div>
 
@@ -79,8 +87,8 @@ export const PartnerRegistrationSection = () => {
                 <span>Modern equipment provided</span>
               </li>
             </ul>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="rounded-full font-bold text-lg px-10 py-6 h-auto"
             >
               Register as Phlebotomist

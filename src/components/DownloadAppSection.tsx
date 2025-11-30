@@ -17,15 +17,15 @@ export const DownloadAppSection = () => {
               Book lab tests, track your samples, and get results faster with our mobile app. Available on iOS and Android.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-full font-bold text-lg px-8 h-14 bg-foreground text-background hover:bg-foreground/90"
               >
                 <Apple className="mr-2 h-6 w-6" />
                 App Store
               </Button>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="outline"
                 className="rounded-full font-bold text-lg px-8 h-14"
               >
@@ -34,10 +34,14 @@ export const DownloadAppSection = () => {
               </Button>
             </div>
           </div>
-          
+
           <div className="relative animate-fade-in [animation-delay:200ms]">
-            <div className="w-full h-[500px] bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-2xl flex items-center justify-center">
-              <Smartphone className="w-32 h-32 text-primary-foreground" />
+            <div className="w-full h-[500px] bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
+              <img
+                src="/assets/app-mockup.png"
+                alt="Labtraca App Mockup"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
