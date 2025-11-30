@@ -1,17 +1,17 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Shield, Building2, Syringe, Heart, Microscope, Clock, CheckCircle, ArrowRight } from "lucide-react";
+import { Shield, Heart, Microscope, Clock, CheckCircle, ArrowRight, FlaskConical, FileHeart, Stethoscope } from "lucide-react";
 
 const OurServices = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 bg-gradient-to-br from-hero-bg to-hero-bg-alt relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
-        
+
         <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground animate-fade-in">
             Our Services
@@ -25,37 +25,44 @@ const OurServices = () => {
       {/* Core Services */}
       <section className="py-20 px-6">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                <Shield className="w-8 h-8 text-primary" />
+                <FlaskConical className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-black mb-4">Trusted Diagnostics</h3>
+              <h3 className="text-2xl font-black mb-4">Medical Test</h3>
               <p className="text-muted-foreground">
-                Work with certified laboratories and licensed professionals for accurate, 
-                reliable test results you can trust.
+                Get your samples collected and tested by our facilities.
               </p>
             </div>
 
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in [animation-delay:200ms]">
               <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mb-6">
-                <Building2 className="w-8 h-8 text-secondary" />
+                <FileHeart className="w-8 h-8 text-secondary" />
               </div>
-              <h3 className="text-2xl font-black mb-4">Seamless Access</h3>
+              <h3 className="text-2xl font-black mb-4">Health Insurance</h3>
               <p className="text-muted-foreground">
-                Book tests through our app with just a few taps. Schedule at your 
-                convenience - home, office, or anywhere you prefer.
+                Get your samples collected and tested by our facilities.
               </p>
             </div>
 
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in [animation-delay:400ms]">
               <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mb-6">
-                <Syringe className="w-8 h-8 text-accent" />
+                <Stethoscope className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="text-2xl font-black mb-4">Reliable Sample Transport</h3>
+              <h3 className="text-2xl font-black mb-4">Medical Consultation</h3>
               <p className="text-muted-foreground">
-                Professional sample collection and secure transport to certified labs, 
-                ensuring sample integrity throughout the process.
+                Get your samples collected and tested by our facilities.
+              </p>
+            </div>
+
+            <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in [animation-delay:600ms]">
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                <Microscope className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-2xl font-black mb-4">Pathologist Review</h3>
+              <p className="text-muted-foreground">
+                Get your samples collected and tested by our facilities.
               </p>
             </div>
           </div>

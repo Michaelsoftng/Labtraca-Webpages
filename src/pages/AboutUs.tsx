@@ -37,22 +37,29 @@ const AboutUs = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 bg-hero-bg">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl lg:text-7xl font-black text-foreground mb-6 animate-fade-in">
-            Making Healthcare <br />
-            <span className="text-primary">Accessible for All</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in">
+      <section className="relative pt-40 pb-32 px-6 bg-gradient-to-br from-hero-bg via-hero-bg to-primary/5 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
+        
+        <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">
+          <div className="space-y-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground animate-fade-in leading-tight">
+              Making Healthcare <br />
+              <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                Accessible for All
+              </span>
+            </h1>
+          </div>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in [animation-delay:200ms] leading-relaxed">
             We're on a mission to revolutionize how people access lab testing services through technology and convenience.
           </p>
-        </div>
-        
-        {/* Wave Divider */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg className="relative block w-full h-24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-background"></path>
-          </svg>
+          <div className="animate-fade-in [animation-delay:400ms] pt-4">
+            <Link to="/">
+              <Button size="lg" className="rounded-full font-bold text-lg px-8 py-6 h-auto">
+                Learn More
+                <ArrowRight className="ml-2" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 

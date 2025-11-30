@@ -1,12 +1,12 @@
-import { MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { MapPin, Facebook, Twitter, Instagram, Linkedin, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-16 px-6">
+    <footer className="bg-foreground text-background py-12 sm:py-16 px-4 sm:px-6">
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-12">
+          <div className="space-y-6">
             <div className="flex items-center gap-2">
               <MapPin className="w-8 h-8 text-primary fill-primary" />
               <span className="text-2xl font-black">Labtraca</span>
@@ -14,6 +14,31 @@ export const Footer = () => {
             <p className="text-background/70 leading-relaxed">
               Professional lab testing delivered to your doorstep
             </p>
+            
+            <div className="space-y-3 text-background/70">
+              <div className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-background mb-1">Head Office</p>
+                  <p className="text-sm">Wuse Zone 3, Mao close, Suit 4, Abuja, Nigeria</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-background mb-1">24h Support</p>
+                  <a href="tel:+2340813389601" className="text-sm hover:text-primary transition-colors">+234(0)8133896015</a>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-background mb-1">Email</p>
+                  <a href="mailto:info@labtraca.com" className="text-sm hover:text-primary transition-colors">info@labtraca.com</a>
+                </div>
+              </div>
+            </div>
+            
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform">
                 <Facebook className="w-5 h-5 text-primary-foreground" />
@@ -61,10 +86,10 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-background/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/60">
+        <div className="border-t border-background/20 pt-6 sm:pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-background/60">
             <p>&copy; {new Date().getFullYear()} Labtraca. All rights reserved.</p>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-3 sm:gap-6 justify-center">
               <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
               <a href="#" className="hover:text-primary transition-colors">Cookies</a>

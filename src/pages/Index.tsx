@@ -6,6 +6,7 @@ import { DownloadAppSection } from "@/components/DownloadAppSection";
 import { PartnerRegistrationSection } from "@/components/PartnerRegistrationSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
+import CategoriesSection from "@/components/CategoriesSection";
 
 const Index = () => {
   return (
@@ -13,6 +14,7 @@ const Index = () => {
       <Navigation />
       <main>
         <HeroSection />
+        <CategoriesSection />
         <PartnersSection />
         <FeaturesSection />
         <DownloadAppSection />
