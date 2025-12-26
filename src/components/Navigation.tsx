@@ -3,6 +3,7 @@ import { MapPin, Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUserLocation } from "@/utils/location";
+import logo from "@/assets/logo-transparent.png";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,8 +33,11 @@ export const Navigation = () => {
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-2 z-50 flex-shrink-0">
-              <MapPin className="w-8 h-8 text-primary fill-primary" />
-              <span className="text-xl sm:text-2xl font-black text-foreground">Labtraca</span>
+              <img
+                src={logo}
+                alt="Labtraca Logo"
+                className="h-8 w-auto"
+              />
             </Link>
 
             {/* Location Dropdown - Desktop */}

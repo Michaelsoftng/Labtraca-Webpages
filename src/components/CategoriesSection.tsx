@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryBubble from "@/components/App/CategoryBubble";
-import { FlaskConical, Stethoscope, Building2, FlaskRound, AlertCircle } from "lucide-react";
+import { FlaskConical, Stethoscope, Building2, FlaskRound, AlertCircle, MapPin } from "lucide-react";
 import { getUserLocation, isLocationAvailable } from "@/utils/location";
 
 const CategoriesSection = () => {
@@ -39,14 +39,14 @@ const CategoriesSection = () => {
   if (!isAvailable) {
     return (
       <div className="container mx-auto px-6 py-12">
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-8 flex items-start gap-4">
-          <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="font-bold text-amber-900 mb-2">Service Not Available in Your Region</h3>
-            <p className="text-amber-800">
-              We're currently only available in Abuja. We're expanding to more regions soon. Please check back later!
-            </p>
+        <div className="bg-secondary/30 border border-secondary/50 rounded-2xl p-12 text-center max-w-lg mx-auto">
+          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <MapPin className="w-8 h-8 text-primary" />
           </div>
+          <h3 className="text-xl font-bold text-foreground mb-3">Coming to {location || "your city"} soon!</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Labtraca is currently available in Abuja. We're working hard to expand our services to your region.
+          </p>
         </div>
       </div>
     );

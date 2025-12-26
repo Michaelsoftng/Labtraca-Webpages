@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MapPin, CheckCircle, Zap, Truck, ArrowRight } from "lucide-react";
+import HeroImage from "@/assets/hero-collage.png";
 
 export const HeroSection = () => {
   const features = [
@@ -22,16 +23,16 @@ export const HeroSection = () => {
   ];
 
   return (
-    <section className="relative pt-32 pb-32 px-6 bg-gradient-to-br from-hero-bg via-hero-bg to-primary/5 overflow-hidden">
+    <section className="relative pt-32 pb-20 px-6 bg-gradient-to-br from-hero-bg via-hero-bg to-primary/5 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="space-y-12">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
           {/* Main content */}
-          <div className="space-y-8 text-center animate-fade-in">
+          <div className="space-y-8 text-center lg:text-left animate-fade-in">
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight text-foreground">
                 Get a Lab Test{" "}
@@ -39,13 +40,13 @@ export const HeroSection = () => {
                   in Minutes
                 </span>
               </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Our licensed medical professionals come to you, so you can skip the lines and get tested in the comfort of your own home.
               </p>
             </div>
 
             {/* Search box */}
-            <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-3 shadow-2xl border w-full max-w-2xl mx-auto">
+            <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-3 shadow-2xl border w-full max-w-xl mx-auto lg:mx-0">
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 flex items-center gap-3 px-4 py-3 bg-background rounded-xl">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
@@ -62,21 +63,35 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Feature Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in [animation-delay:200ms]">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-card/80 backdrop-blur-sm border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
-              </div>
-            ))}
+          {/* Hero Image */}
+          <div className="relative animate-fade-in [animation-delay:200ms] mt-12 lg:mt-0">
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 border-4 border-white">
+              <img
+                src={HeroImage}
+                alt="Healthcare professionals and family"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            {/* Decorative elements behind image */}
+            <div className="absolute -inset-4 bg-primary/10 rounded-3xl transform -rotate-2 z-0" />
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-accent/20 rounded-full blur-2xl" />
           </div>
+        </div>
+
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in [animation-delay:400ms]">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-card/80 backdrop-blur-sm border rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                <feature.icon className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
+              <p className="text-sm text-muted-foreground">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

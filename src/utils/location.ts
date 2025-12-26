@@ -70,7 +70,9 @@ export const getUserLocation = async (): Promise<string | null> => {
 export const isLocationAvailable = (location: string | null): boolean => {
   if (!location) return false;
 
-  // Only Abuja is available for now
+  // Only Abuja matches are available for now
   const normalizedLocation = location.toLowerCase().trim();
-  return normalizedLocation.includes('abuja');
+  const validLocations = ['abuja', 'fct', 'federal capital territory'];
+
+  return validLocations.some(valid => normalizedLocation.includes(valid));
 };
