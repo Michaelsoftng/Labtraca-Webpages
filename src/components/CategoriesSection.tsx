@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryBubble from "@/components/App/CategoryBubble";
-import { FlaskConical, Stethoscope, Pill, FileHeart, Baby, Activity, Dna, Syringe, AlertCircle } from "lucide-react";
+import { FlaskConical, Stethoscope, Building2, FlaskRound, AlertCircle } from "lucide-react";
 import { getUserLocation, isLocationAvailable } from "@/utils/location";
 
 const CategoriesSection = () => {
@@ -10,14 +10,10 @@ const CategoriesSection = () => {
   const [loading, setLoading] = useState(true);
 
   const categories = [
-    { title: "Medical Tests", icon: FlaskConical, color: "bg-yellow-100 text-yellow-600", path: "/app/tests" },
+    { title: "Tests", icon: FlaskConical, color: "bg-yellow-100 text-yellow-600", path: "/app/tests" },
     { title: "Consultation", icon: Stethoscope, color: "bg-purple-100 text-purple-600", path: "/app/consultation" },
-    { title: "Pharmacy", icon: Pill, color: "bg-green-100 text-green-600", path: "/app/pharmacy" },
-    { title: "Insurance", icon: FileHeart, color: "bg-blue-100 text-blue-600", path: "/app/insurance" },
-    { title: "Pediatrics", icon: Baby, color: "bg-pink-100 text-pink-600", path: "/app/pediatrics" },
-    { title: "Checkups", icon: Activity, color: "bg-orange-100 text-orange-600", path: "/app/checkups" },
-    { title: "Genetics", icon: Dna, color: "bg-cyan-100 text-cyan-600", path: "/app/genetics" },
-    { title: "Vaccines", icon: Syringe, color: "bg-red-100 text-red-600", path: "/app/vaccines" },
+    { title: "Hospitals", icon: Building2, color: "bg-blue-100 text-blue-600", path: "/app/hospitals" },
+    { title: "Laboratories", icon: FlaskRound, color: "bg-green-100 text-green-600", path: "/app/laboratories" },
   ];
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import AppHeader from "@/components/App/AppHeader";
+import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 import TestCard from "@/components/App/TestCard";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -21,27 +22,39 @@ const TestCatalog = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-background pb-20">
-            <AppHeader />
+        <div className="min-h-screen bg-background">
+            <Navigation />
 
-            {/* Breadcrumbs */}
-            <div className="container mx-auto px-4 py-4 flex items-center gap-2 text-sm text-muted-foreground">
-                <Link to="/app" className="hover:text-primary transition-colors">Home</Link>
-                <ChevronRight className="w-4 h-4" />
-                <span className="font-medium text-foreground">Medical Tests</span>
-            </div>
+            {/* Hero Section */}
+            <section className="pt-32 pb-20 px-6 bg-gradient-to-br from-hero-bg to-hero-bg-alt relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
 
-            {/* Sticky Category Nav */}
-            <div className="sticky top-16 z-40 bg-background/95 backdrop-blur border-b">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-6">
+                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4">
+                        <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+                        <ChevronRight className="w-4 h-4" />
+                        <span className="font-medium text-foreground">Medical Tests</span>
+                    </div>
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground animate-fade-in">
+                        Medical Tests
+                    </h1>
+                    <p className="text-xl md:text-2xl text-muted-foreground animate-fade-in [animation-delay:200ms]">
+                        Choose from our wide range of diagnostic tests
+                    </p>
+                </div>
+            </section>
+
+            {/* Category Nav */}
+            <div className="bg-background border-b">
+                <div className="container mx-auto px-6">
                     <div className="flex items-center gap-2 overflow-x-auto py-4 no-scrollbar">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
                                 className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${activeCategory === cat
-                                        ? "bg-primary text-primary-foreground shadow-md"
-                                        : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground"
+                                    ? "bg-primary text-primary-foreground shadow-md"
+                                    : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground"
                                     }`}
                             >
                                 {cat}
@@ -52,23 +65,20 @@ const TestCatalog = () => {
             </div>
 
             {/* Main Content */}
-            <div className="container mx-auto px-4 py-8">
-                <div className="mb-8">
-                    <h1 className="text-3xl font-black mb-2">Medical Tests</h1>
-                    <p className="text-muted-foreground">
-                        Choose from our wide range of diagnostic tests.
-                    </p>
+            <section className="py-20 px-6">
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {tests.map((test, index) => (
+                            <TestCard
+                                key={index}
+                                {...test}
+                            />
+                        ))}
+                    </div>
                 </div>
+            </section>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {tests.map((test, index) => (
-                        <TestCard
-                            key={index}
-                            {...test}
-                        />
-                    ))}
-                </div>
-            </div>
+            <Footer />
         </div>
     );
 };

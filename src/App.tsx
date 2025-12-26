@@ -14,6 +14,9 @@ import NotFound from "./pages/NotFound";
 import TestCatalog from "./pages/TestCatalog";
 import FAQ from "./pages/FAQ";
 import OurApp from "./pages/OurApp";
+import Consultation from "./pages/Consultation";
+import Hospitals from "./pages/Hospitals";
+import Laboratories from "./pages/Laboratories";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +47,9 @@ const App = () => (
           <Route path="/app" element={<OurApp />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/app/tests" element={<TestCatalog />} />
+          <Route path="/app/consultation" element={<Consultation />} />
+          <Route path="/app/hospitals" element={<Hospitals />} />
+          <Route path="/app/laboratories" element={<Laboratories />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
