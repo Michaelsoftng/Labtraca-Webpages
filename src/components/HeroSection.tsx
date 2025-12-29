@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { MapPin, CheckCircle, Zap, Truck, ArrowRight } from "lucide-react";
-import HeroImage from "@/assets/hero-collage.png";
+import { MapPin, CheckCircle, Zap, Truck, FileText, ArrowRight } from "lucide-react";
+import HeroImage from "@/assets/hero-collage-african.png";
 
 export const HeroSection = () => {
   const features = [
@@ -19,6 +19,11 @@ export const HeroSection = () => {
       icon: Truck,
       title: "Reliable Sample Transport",
       description: "Safe and secure delivery"
+    },
+    {
+      icon: FileText,
+      title: "Consultation & Result Review",
+      description: "Expert guidance and detailed analysis"
     }
   ];
 
@@ -79,7 +84,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in [animation-delay:400ms]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in [animation-delay:400ms]">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -94,6 +99,6 @@ export const HeroSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </section >
   );
 };

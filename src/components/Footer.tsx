@@ -14,13 +14,13 @@ export const Footer = () => {
             <p className="text-background/70 leading-relaxed">
               Professional lab testing delivered to your doorstep
             </p>
-            
+
             <div className="space-y-3 text-background/70">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="font-semibold text-background mb-1">Head Office</p>
-                  <p className="text-sm">Wuse Zone 3, Mao close, Suit 4, Abuja, Nigeria</p>
+                  <p className="text-sm">No. 27 Tai Solarin, off 5th Avenue, Gwarinpa, Abuja Nigeria</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -38,7 +38,7 @@ export const Footer = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:scale-110 transition-transform">
                 <Facebook className="w-5 h-5 text-primary-foreground" />
@@ -54,7 +54,7 @@ export const Footer = () => {
               </a>
             </div>
           </div>
-          
+
           <div>
             <h4 className="font-black text-lg mb-4">Discover</h4>
             <ul className="space-y-3 text-background/70">
@@ -64,7 +64,7 @@ export const Footer = () => {
               <li><a href="#partners" className="hover:text-primary transition-colors font-medium">Partners</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-black text-lg mb-4">Services</h4>
             <ul className="space-y-3 text-background/70">
@@ -74,7 +74,7 @@ export const Footer = () => {
               <li><Link to="/how-it-works" className="hover:text-primary transition-colors font-medium">Get Started</Link></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-black text-lg mb-4">Join Us</h4>
             <ul className="space-y-3 text-background/70">
@@ -85,7 +85,7 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-background/20 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-background/60">
             <p>&copy; {new Date().getFullYear()} Labtraca. All rights reserved.</p>
