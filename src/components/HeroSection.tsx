@@ -70,16 +70,13 @@ export const HeroSection = () => {
 
           {/* Hero Image */}
           <div className="relative animate-fade-in [animation-delay:200ms] mt-12 lg:mt-0">
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 border-4 border-white">
+            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl transition-all duration-500">
               <img
                 src={HeroImage}
                 alt="Healthcare professionals and family"
                 className="w-full h-auto object-cover"
               />
             </div>
-            {/* Decorative elements behind image */}
-            <div className="absolute -inset-4 bg-primary/10 rounded-3xl transform -rotate-2 z-0" />
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-accent/20 rounded-full blur-2xl" />
           </div>
         </div>
 
