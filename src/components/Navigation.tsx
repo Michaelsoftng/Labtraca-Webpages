@@ -29,9 +29,9 @@ export const Navigation = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-hero-bg backdrop-blur-sm border-b border-border/50">
-      <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-5">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-8">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-4 sm:py-5">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-8 min-w-0 flex-1 lg:flex-none">
             <Link to="/" className="flex items-center gap-2 z-50 flex-shrink-0">
               <img
                 src={logo}
@@ -76,7 +76,7 @@ export const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden z-50 p-2 text-foreground hover:text-primary transition-colors flex-shrink-0"
+            className="lg:hidden z-50 p-2 text-foreground hover:text-primary transition-colors flex-shrink-0 ml-auto"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
