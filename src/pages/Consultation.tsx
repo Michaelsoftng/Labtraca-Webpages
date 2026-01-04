@@ -78,16 +78,14 @@ const Consultation = () => {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 bg-gradient-to-br from-hero-bg to-hero-bg-alt relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
-
-                <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-6">
+            <section className="pt-32 pb-20 px-6 bg-white">
+                <div className="container mx-auto max-w-4xl text-center space-y-6">
                     <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4">
                         <Link to="/" className="hover:text-primary transition-colors">Home</Link>
                         <ChevronRight className="w-4 h-4" />
                         <span className="font-medium text-foreground">Consultation</span>
                     </div>
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground animate-fade-in">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-black animate-fade-in line-clamp-2">
                         Medical Consultation
                     </h1>
                     <p className="text-xl md:text-2xl text-muted-foreground animate-fade-in [animation-delay:200ms]">
@@ -98,7 +96,7 @@ const Consultation = () => {
 
             {/* Category Nav */}
             <div className="bg-background border-b">
-                <div className="container mx-auto px-6">
+                <div className="container mx-auto max-w-7xl px-6">
                     <div className="flex items-center gap-2 overflow-x-auto py-4 no-scrollbar">
                         {categories.map((cat) => (
                             <button
@@ -118,7 +116,7 @@ const Consultation = () => {
 
             {/* Main Content */}
             <section className="py-20 px-6">
-                <div className="container mx-auto">
+                <div className="container mx-auto max-w-7xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {consultations.map((doctor, index) => (
                             <div

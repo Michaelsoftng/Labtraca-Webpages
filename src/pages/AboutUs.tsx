@@ -35,14 +35,12 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 bg-gradient-to-br from-hero-bg via-hero-bg to-primary/5 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
-        
-        <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">
+      <section className="pt-32 pb-20 px-6 bg-white">
+        <div className="container mx-auto max-w-4xl text-center space-y-8">
           <div className="space-y-6">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground animate-fade-in leading-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black animate-fade-in leading-tight">
               Making Healthcare <br />
               <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                 Accessible for All
@@ -65,7 +63,7 @@ const AboutUs = () => {
 
       {/* Story Section */}
       <section className="py-20 px-6">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl lg:text-5xl font-black text-foreground mb-6">
@@ -83,7 +81,7 @@ const AboutUs = () => {
                 </p>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-primary/10 rounded-3xl p-12 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full -mr-20 -mt-20"></div>
@@ -110,7 +108,7 @@ const AboutUs = () => {
 
       {/* Values Section */}
       <section className="py-20 px-6 bg-secondary/20">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black text-foreground mb-4">
               Our Values
@@ -122,7 +120,7 @@ const AboutUs = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
@@ -143,7 +141,7 @@ const AboutUs = () => {
 
       {/* CTA Section */}
       <section className="py-20 px-6 bg-primary">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto max-w-7xl text-center">
           <h2 className="text-4xl lg:text-5xl font-black text-primary-foreground mb-6">
             Ready to Experience <br />Better Healthcare?
           </h2>

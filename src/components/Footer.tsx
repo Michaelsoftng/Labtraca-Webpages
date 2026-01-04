@@ -27,7 +27,7 @@ export const Footer = () => {
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-background mb-1">24h Support</p>
-                  <a href="tel:+2340813389601" className="text-sm hover:text-primary transition-colors">+234(0)8133896015</a>
+                  <a href="tel:+2340813389601" className="text-sm hover:text-primary transition-colors">+234 813 389 6015</a>
                 </div>
               </div>
               <div className="flex items-center gap-3">

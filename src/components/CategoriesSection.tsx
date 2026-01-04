@@ -53,10 +53,10 @@ const CategoriesSection = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <div className="mb-6 sm:mb-8 text-center">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground mb-2">Our Services</h2>
-        <p className="text-sm sm:text-base text-muted-foreground">Choose from our range of healthcare services</p>
+    <div className="container mx-auto max-w-7xl px-6 py-20">
+      <div className="mb-12 text-center">
+        <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">Our Services</h2>
+        <p className="text-lg text-muted-foreground">Choose from our range of healthcare services</p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 justify-items-center">
         {categories.map((cat, index) => (

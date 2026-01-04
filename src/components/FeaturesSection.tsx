@@ -31,14 +31,14 @@ const features = [
 export const FeaturesSection = () => {
   return (
     <section className="py-20 px-6 bg-background">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-7xl">
         <h2 className="text-4xl md:text-5xl font-black text-center mb-4 text-foreground">
           Anything delivered
         </h2>
         <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
           From routine blood work to specialized testing, we bring the lab to you
         </p>
-        
+
         <div className="grid md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <Card

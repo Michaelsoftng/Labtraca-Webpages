@@ -61,20 +61,19 @@ const PartnerWithUs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-primary/5" />
-        <div className="container mx-auto relative z-10">
+      <section className="pt-32 pb-20 px-6 bg-white">
+        <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6 animate-fade-in">
               <Handshake className="w-4 h-4 text-primary" />
               <span className="text-sm font-bold text-primary">Partnership Opportunities</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-black text-black mb-6 leading-tight">
               Partner <span className="text-primary">With Us</span>
             </h1>
-            <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Join Labtraca's network of trusted laboratories and healthcare providers. Expand your reach and grow your business with our platform.
             </p>
           </div>
@@ -83,14 +82,14 @@ const PartnerWithUs = () => {
 
       {/* Benefits Section */}
       <section className="py-20 px-6 bg-muted/30">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
               Why <span className="text-primary">Partner</span> With Labtraca?
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {benefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
@@ -113,7 +112,7 @@ const PartnerWithUs = () => {
 
       {/* Process Section */}
       <section className="py-20 px-6">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
               Partnership <span className="text-primary">Process</span>
@@ -123,7 +122,7 @@ const PartnerWithUs = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {process.map((item, index) => (
               <div key={index} className="text-center animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-3xl font-black text-primary-foreground mx-auto mb-6">
@@ -281,7 +280,7 @@ const PartnerWithUs = () => {
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
                 <Phone className="w-6 h-6 text-primary" />
               </div>
-              <span className="font-bold">+1 (555) 123-4567</span>
+              <span className="font-bold">+234 813 389 6015</span>
             </div>
             <div className="flex flex-col items-center gap-3">
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
@@ -293,7 +292,7 @@ const PartnerWithUs = () => {
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
-              <span className="font-bold">San Francisco, CA</span>
+              <span className="font-bold">Abuja, Nigeria</span>
             </div>
           </div>
         </div>

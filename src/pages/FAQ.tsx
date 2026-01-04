@@ -46,12 +46,10 @@ const FAQ = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 bg-gradient-to-br from-hero-bg via-hero-bg to-primary/5 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
-        
-        <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">
+      <section className="pt-32 pb-20 px-6 bg-white">
+        <div className="container mx-auto max-w-4xl text-center space-y-8">
           <div className="space-y-6">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground animate-fade-in leading-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black animate-fade-in leading-tight">
               Frequently Asked <br />
               <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
                 Questions
@@ -69,8 +67,8 @@ const FAQ = () => {
         <div className="container mx-auto max-w-3xl">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
+              <AccordionItem
+                key={index}
                 value={`item-${index}`}
                 className="border border-border rounded-lg px-6 data-[state=open]:bg-primary/5"
               >
