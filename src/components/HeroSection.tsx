@@ -22,11 +22,11 @@ export const HeroSection = () => {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-20 lg:items-center mb-16">
           {/* Main content */}
-          <div className="space-y-6 text-left animate-fade-in">
+          <div className="space-y-6 text-center lg:text-left animate-fade-in">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight text-black">
               Get a Lab test in minutes
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Get a lab test in minutes with our mobile app. Our licensed medical professionals come to you, so you can skip the lines and get tested in the comfort of your own home.
             </p>
           </div>
@@ -46,7 +46,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Feature Badges */}
-        <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-12 animate-fade-in [animation-delay:400ms]">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-12 animate-fade-in [animation-delay:400ms] items-center justify-center lg:justify-start lg:items-start">
           {features.map((feature, index) => (
             <div key={index} className="flex items-center gap-3">
               <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">

@@ -36,22 +36,6 @@ const CategoriesSection = () => {
     );
   }
 
-  if (!isAvailable) {
-    return (
-      <div className="container mx-auto px-6 py-12">
-        <div className="bg-secondary/30 border border-secondary/50 rounded-2xl p-12 text-center max-w-lg mx-auto">
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
-            <MapPin className="w-8 h-8 text-primary" />
-          </div>
-          <h3 className="text-xl font-bold text-foreground mb-3">Coming to {location || "your city"} soon!</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            Labtraca is currently available in Abuja. We're working hard to expand our services to your region.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-20">
       <div className="mb-8 md:mb-12 text-center">
