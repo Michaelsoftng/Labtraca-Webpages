@@ -46,7 +46,7 @@ const FAQ = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white">
+      <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
         <div className="container mx-auto max-w-4xl text-center space-y-8">
           <div className="space-y-6">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black animate-fade-in leading-tight">
@@ -63,7 +63,7 @@ const FAQ = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-4 md:py-20 md:px-6">
         <div className="container mx-auto max-w-3xl">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
@@ -85,7 +85,7 @@ const FAQ = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-primary">
+      <section className="py-12 px-4 md:py-20 md:px-6 bg-primary">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl lg:text-5xl font-black text-primary-foreground mb-6">
             Still have questions?

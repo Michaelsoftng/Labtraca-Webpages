@@ -37,7 +37,7 @@ const AboutUs = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white">
+      <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
         <div className="container mx-auto max-w-4xl text-center space-y-8">
           <div className="space-y-6">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black animate-fade-in leading-tight">
@@ -62,7 +62,7 @@ const AboutUs = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-4 md:py-20 md:px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -107,7 +107,7 @@ const AboutUs = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 px-6 bg-secondary/20">
+      <section className="py-12 px-4 md:py-20 md:px-6 bg-secondary/20">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black text-foreground mb-4">
@@ -140,7 +140,7 @@ const AboutUs = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-primary">
+      <section className="py-12 px-4 md:py-20 md:px-6 bg-primary">
         <div className="container mx-auto max-w-7xl text-center">
           <h2 className="text-4xl lg:text-5xl font-black text-primary-foreground mb-6">
             Ready to Experience <br />Better Healthcare?

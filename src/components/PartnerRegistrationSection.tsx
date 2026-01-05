@@ -3,7 +3,7 @@ import { Truck, Droplet, ArrowRight } from "lucide-react";
 
 export const PartnerRegistrationSection = () => {
   return (
-    <section className="py-20 px-6">
+    <section className="py-12 px-4 md:py-20 md:px-6">
       <div className="container mx-auto max-w-7xl space-y-16">
         {/* Dispatcher Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">

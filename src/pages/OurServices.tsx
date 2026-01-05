@@ -9,7 +9,7 @@ const OurServices = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white">
+      <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
         <div className="container mx-auto max-w-4xl text-center space-y-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-black animate-fade-in">
             Our Services
@@ -21,7 +21,7 @@ const OurServices = () => {
       </section>
 
       {/* Core Services */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-4 md:py-20 md:px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in">
@@ -68,7 +68,7 @@ const OurServices = () => {
       </section>
 
       {/* Test Categories */}
-      <section className="py-20 px-6 bg-muted/30">
+      <section className="py-12 px-4 md:py-20 md:px-6 bg-muted/30">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-6">Test Categories</h2>

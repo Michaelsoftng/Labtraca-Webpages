@@ -26,7 +26,7 @@ const TestCatalog = () => {
             <Navigation />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 px-6 bg-white">
+            <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
                 <div className="container mx-auto max-w-4xl text-center space-y-6">
                     <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4">
                         <Link to="/" className="hover:text-primary transition-colors">Home</Link>
@@ -63,7 +63,7 @@ const TestCatalog = () => {
             </div>
 
             {/* Main Content */}
-            <section className="py-20 px-6">
+            <section className="py-12 px-4 md:py-20 md:px-6">
                 <div className="container mx-auto max-w-7xl">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {tests.map((test, index) => (

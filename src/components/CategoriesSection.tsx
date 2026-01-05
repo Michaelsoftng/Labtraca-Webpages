@@ -53,8 +53,8 @@ const CategoriesSection = () => {
   }
 
   return (
-    <div className="container mx-auto max-w-7xl px-6 py-20">
-      <div className="mb-12 text-center">
+    <div className="container mx-auto max-w-7xl px-4 py-8 md:px-6 md:py-20">
+      <div className="mb-8 md:mb-12 text-center">
         <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4">Our Services</h2>
         <p className="text-lg text-muted-foreground">Choose from our range of healthcare services</p>
       </div>

@@ -9,7 +9,7 @@ const HowItWorks = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 bg-white">
+      <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
         <div className="container mx-auto max-w-4xl text-center space-y-6">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-black animate-fade-in">
             How It Works
@@ -21,7 +21,7 @@ const HowItWorks = () => {
       </section>
 
       {/* Platform Description */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-4 md:py-20 md:px-6">
         <div className="container mx-auto max-w-4xl text-center space-y-6">
           <p className="text-lg text-muted-foreground leading-relaxed">
             Our app has two main features: the ability to book a licensed medical professional
@@ -32,7 +32,7 @@ const HowItWorks = () => {
       </section>
 
       {/* For Patients */}
-      <section className="py-20 px-6 bg-muted/30">
+      <section className="py-12 px-4 md:py-20 md:px-6 bg-muted/30">
         <div className="container mx-auto max-w-7xl">
           <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
             For Patients
@@ -113,7 +113,7 @@ const HowItWorks = () => {
       </section>
 
       {/* For Professionals */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-4 md:py-20 md:px-6">
         <div className="container mx-auto max-w-7xl">
           <h2 className="text-4xl md:text-5xl font-black text-center mb-16">
             For Medical Professionals

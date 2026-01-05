@@ -37,9 +37,9 @@ const OurApp = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 bg-gradient-to-br from-hero-bg via-hero-bg to-primary/5 overflow-hidden">
+      <section className="relative pt-28 pb-16 px-4 md:pt-40 md:pb-32 md:px-6 bg-gradient-to-br from-hero-bg via-hero-bg to-primary/5 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
-        
+
         <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">
           <div className="space-y-6">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground animate-fade-in leading-tight">
@@ -66,7 +66,7 @@ const OurApp = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6 bg-muted/30">
+      <section className="py-12 px-4 md:py-20 md:px-6 bg-muted/30">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black text-foreground mb-4">
@@ -79,7 +79,7 @@ const OurApp = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
@@ -99,7 +99,7 @@ const OurApp = () => {
       </section>
 
       {/* How to Use Section */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-4 md:py-20 md:px-6">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-4xl lg:text-5xl font-black text-center text-foreground mb-16">
             How to Use the App
@@ -170,7 +170,7 @@ const OurApp = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-primary">
+      <section className="py-12 px-4 md:py-20 md:px-6 bg-primary">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl lg:text-5xl font-black text-primary-foreground mb-6">
             Ready to Get Started?

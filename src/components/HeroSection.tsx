@@ -18,12 +18,12 @@ export const HeroSection = () => {
   ];
 
   return (
-    <section className="relative pt-32 pb-20 px-6 bg-white overflow-hidden">
+    <section className="relative pt-24 pb-12 px-[0.5px] md:pt-32 md:pb-20 md:px-6 bg-white overflow-hidden">
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-20 lg:items-center mb-16">
           {/* Main content */}
           <div className="space-y-6 text-left animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-black">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight text-black">
               Get a Lab test in minutes
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
@@ -32,7 +32,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Hero Image */}
-          <div className="relative animate-fade-in [animation-delay:200ms] mt-8 lg:mt-0">
+          <div className="relative animate-fade-in [animation-delay:200ms]">
             <div className="relative z-10">
               <img
                 src={HeroImage}
@@ -40,6 +40,8 @@ export const HeroSection = () => {
                 className="w-full h-auto object-contain"
               />
             </div>
+
+
           </div>
         </div>
 
