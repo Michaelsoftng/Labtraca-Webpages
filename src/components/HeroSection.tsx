@@ -46,7 +46,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Feature Badges */}
-        <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-12 animate-fade-in [animation-delay:400ms] items-center justify-center lg:justify-start lg:items-start">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-12 animate-fade-in [animation-delay:400ms] justify-center lg:justify-start lg:items-start">
           {features.map((feature, index) => (
             <div key={index} className="flex items-center gap-3">
               <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
