@@ -14,7 +14,7 @@ const partners = [
 
 export const PartnersSection = () => {
   return (
-    <section className="py-10 px-4 md:py-20 md:px-6 bg-background">
+    <section id="partners" className="py-10 px-4 md:py-20 md:px-6 bg-background">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-black text-center mb-12 text-foreground">
           Top labs and more in Labtraca

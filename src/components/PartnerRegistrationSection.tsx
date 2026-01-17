@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Truck, Droplet, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const PartnerRegistrationSection = () => {
+  const navigate = useNavigate();
+
   return (
-    <section className="py-12 px-4 md:py-20 md:px-6">
+    <section id="register" className="py-12 px-4 md:py-20 md:px-6">
       <div className="container mx-auto max-w-7xl space-y-16">
         {/* Dispatcher Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -34,6 +37,7 @@ export const PartnerRegistrationSection = () => {
             <Button
               size="lg"
               className="rounded-full font-bold text-lg px-10 py-6 h-auto"
+              onClick={() => navigate("/dispatcher")}
             >
               Register as Dispatcher
               <ArrowRight className="ml-2" />
@@ -90,6 +94,7 @@ export const PartnerRegistrationSection = () => {
             <Button
               size="lg"
               className="rounded-full font-bold text-lg px-10 py-6 h-auto"
+              onClick={() => navigate("/phlebotomist")}
             >
               Register as Phlebotomist
               <ArrowRight className="ml-2" />

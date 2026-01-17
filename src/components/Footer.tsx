@@ -78,8 +78,8 @@ export const Footer = () => {
           <div>
             <h4 className="font-black text-lg mb-4">Join Us</h4>
             <ul className="space-y-3 text-background/70">
-              <li><a href="#register" className="hover:text-primary transition-colors font-medium">Become a Dispatcher</a></li>
-              <li><a href="#register" className="hover:text-primary transition-colors font-medium">Become a Phlebotomist</a></li>
+              <li><Link to="/dispatcher" className="hover:text-primary transition-colors font-medium">Become a Dispatcher</Link></li>
+              <li><Link to="/phlebotomist" className="hover:text-primary transition-colors font-medium">Become a Phlebotomist</Link></li>
               <li><Link to="/partner-with-us" className="hover:text-primary transition-colors font-medium">Partner with Us</Link></li>
               <li><a href="mailto:support@labtraca.com" className="hover:text-primary transition-colors font-medium">Contact Support</a></li>
             </ul>
