@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Truck, CheckCircle2, Smartphone, UserCheck, Clock, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { DispatcherForm } from "@/components/forms/DispatcherForm";
 
 const Dispatcher = () => {
     const steps = [
@@ -47,15 +47,12 @@ const Dispatcher = () => {
                                     Download Service App
                                     <Smartphone className="ml-2 w-5 h-5" />
                                 </Button>
-                                <Link to="/contact">
-                                    {/* Fallback support link if they have trouble */}
-                                </Link>
                             </div>
                         </div>
                         <div className="relative animate-fade-in [animation-delay:200ms]">
                             <div className="w-full h-[400px] bg-gradient-to-br from-accent to-accent/60 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden transform md:rotate-3">
                                 <img
-                                    src="/assets/dispatcher.png"
+                                    src="/assets/dispatcher_black.png"
                                     alt="Dispatcher"
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                 />
@@ -96,15 +93,31 @@ const Dispatcher = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+            </section>
 
-                    <div className="mt-16 text-center bg-muted/30 rounded-3xl p-8 md:p-12">
+            {/* Registration Form Section */}
+            <section id="registration-form" className="py-20 px-4 md:px-6 bg-muted/30">
+                <div className="container mx-auto max-w-4xl">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-5xl font-black mb-4">Registration <span className="text-accent">Form</span></h2>
+                        <p className="text-lg text-muted-foreground">Complete the form below to join our fleet</p>
+                    </div>
+                    <DispatcherForm />
+                </div>
+            </section>
+
+            {/* Requirements Section */}
+            <section className="py-20 px-4 md:px-6 bg-background">
+                <div className="container mx-auto max-w-6xl">
+                    <div className="text-center bg-muted/50 rounded-3xl p-8 md:p-12">
                         <h3 className="text-2xl font-bold mb-4">Requirements</h3>
                         <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-left">
                             <div className="flex items-center gap-2">
                                 <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Valid Driver's License</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Reliable Vehicle/Bike</span>
+                                <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Reliable Bike / Motorcycle</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Smartphone (iOS/Android)</span>
@@ -114,7 +127,6 @@ const Dispatcher = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
 

@@ -1,28 +1,13 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Handshake, TrendingUp, Users, Zap, CheckCircle2, Phone, Mail, MapPin } from "lucide-react";
-import { useState } from "react";
+import { GeneralPartnerForm } from "@/components/forms/GeneralPartnerForm";
+import { LaboratoryForm } from "@/components/forms/LaboratoryForm";
+import { HospitalForm } from "@/components/forms/HospitalForm";
 
 const PartnerWithUs = () => {
-  const [formData, setFormData] = useState({
-    organizationName: "",
-    contactName: "",
-    email: "",
-    phone: "",
-    location: "",
-    labType: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission
-  };
+  const [partnerType, setPartnerType] = useState<"laboratory" | "hospital" | "general">("general");
 
   const benefits = [
     {
@@ -43,12 +28,11 @@ const PartnerWithUs = () => {
   ];
 
   const requirements = [
-    "Valid laboratory license and certifications",
-    "Minimum 2 years operational experience",
+    "Valid healthcare license and certifications",
+    "Minimum operational experience in the field",
     "Quality assurance protocols in place",
     "Professional liability insurance",
     "Commitment to patient privacy and data security",
-    "Ability to deliver results within 24-48 hours",
   ];
 
   const process = [
@@ -136,8 +120,52 @@ const PartnerWithUs = () => {
         </div>
       </section>
 
+      {/* Application Form Section */}
+      <section id="registration-form" className="py-12 px-4 md:py-20 md:px-6 bg-muted/30">
+        <div className="container mx-auto max-w-4xl text-center">
+          <div className="mb-12">
+            <h2 className="text-4xl md:text-5xl font-black mb-4">
+              Apply to <span className="text-primary">Partner</span>
+            </h2>
+            <p className="text-xl text-foreground/70 mb-8">
+              Select your partner type and fill out the form below
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <button
+                onClick={() => setPartnerType("general")}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${partnerType === "general" ? "bg-primary text-primary-foreground shadow-lg scale-105" : "bg-card border-2 border-border hover:border-primary/50"
+                  }`}
+              >
+                Strategic Partner
+              </button>
+              <button
+                onClick={() => setPartnerType("laboratory")}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${partnerType === "laboratory" ? "bg-primary text-primary-foreground shadow-lg scale-105" : "bg-card border-2 border-border hover:border-primary/50"
+                  }`}
+              >
+                Laboratory
+              </button>
+              <button
+                onClick={() => setPartnerType("hospital")}
+                className={`px-8 py-3 rounded-full font-bold transition-all ${partnerType === "hospital" ? "bg-primary text-primary-foreground shadow-lg scale-105" : "bg-card border-2 border-border hover:border-primary/50"
+                  }`}
+              >
+                Hospital / Clinic
+              </button>
+            </div>
+          </div>
+
+          <div className="text-left">
+            {partnerType === "general" && <GeneralPartnerForm />}
+            {partnerType === "laboratory" && <LaboratoryForm />}
+            {partnerType === "hospital" && <HospitalForm />}
+          </div>
+        </div>
+      </section>
+
       {/* Requirements Section */}
-      <section className="py-12 px-4 md:py-20 md:px-6 bg-muted/30">
+      <section className="py-12 px-4 md:py-20 md:px-6">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
@@ -157,110 +185,6 @@ const PartnerWithUs = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Application Form Section */}
-      <section className="py-12 px-4 md:py-20 md:px-6">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4">
-              Apply to <span className="text-primary">Partner</span>
-            </h2>
-            <p className="text-xl text-foreground/70">
-              Fill out the form below and our partnership team will get back to you within 2 business days
-            </p>
-          </div>
-
-          <div className="bg-card border-2 border-border rounded-3xl p-8 md:p-12">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="organizationName">Organization Name *</Label>
-                  <Input
-                    id="organizationName"
-                    placeholder="Enter your lab name"
-                    value={formData.organizationName}
-                    onChange={(e) => setFormData({ ...formData, organizationName: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="contactName">Contact Person *</Label>
-                  <Input
-                    id="contactName"
-                    placeholder="Your full name"
-                    value={formData.contactName}
-                    onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number *</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+1 (555) 000-0000"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="location">Location/City *</Label>
-                  <Input
-                    id="location"
-                    placeholder="City, State"
-                    value={formData.location}
-                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="labType">Laboratory Type *</Label>
-                  <Input
-                    id="labType"
-                    placeholder="e.g., Diagnostic Lab, Research Lab"
-                    value={formData.labType}
-                    onChange={(e) => setFormData({ ...formData, labType: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message">Tell Us About Your Organization</Label>
-                <Textarea
-                  id="message"
-                  placeholder="Share details about your lab, services, and why you'd like to partner with Labtraca..."
-                  rows={6}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                />
-              </div>
-
-              <Button type="submit" size="lg" className="w-full rounded-full font-bold">
-                Submit Application
-              </Button>
-            </form>
           </div>
         </div>
       </section>

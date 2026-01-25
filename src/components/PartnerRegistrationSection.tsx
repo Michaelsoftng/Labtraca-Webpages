@@ -47,7 +47,7 @@ export const PartnerRegistrationSection = () => {
           <div className="relative animate-fade-in [animation-delay:200ms]">
             <div className="w-full h-[400px] bg-gradient-to-br from-accent to-accent/60 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
               <img
-                src="/assets/dispatcher.png"
+                src="/assets/dispatcher_black.png"
                 alt="Medical Dispatcher"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
@@ -60,7 +60,7 @@ export const PartnerRegistrationSection = () => {
           <div className="relative order-2 md:order-1 animate-fade-in [animation-delay:200ms]">
             <div className="w-full h-[400px] bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
               <img
-                src="/assets/phlebotomist.png"
+                src="/assets/phlebotomist_black.png"
                 alt="Professional Phlebotomist"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
