@@ -19,6 +19,9 @@ import Hospitals from "./pages/Hospitals";
 import Laboratories from "./pages/Laboratories";
 import Dispatcher from "./pages/Dispatcher";
 import Phlebotomist from "./pages/Phlebotomist";
+import HospitalDetails from "./pages/HospitalDetails";
+import LaboratoryDetails from "./pages/LaboratoryDetails";
+import DoctorDetails from "./pages/DoctorDetails";
 
 const queryClient = new QueryClient();
 
@@ -50,8 +53,11 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/app/tests" element={<TestCatalog />} />
           <Route path="/app/consultation" element={<Consultation />} />
+          <Route path="/app/consultation/:id" element={<DoctorDetails />} />
           <Route path="/app/hospitals" element={<Hospitals />} />
+          <Route path="/app/hospitals/:id" element={<HospitalDetails />} />
           <Route path="/app/laboratories" element={<Laboratories />} />
+          <Route path="/app/laboratories/:id" element={<LaboratoryDetails />} />
           <Route path="/dispatcher" element={<Dispatcher />} />
           <Route path="/phlebotomist" element={<Phlebotomist />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

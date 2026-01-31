@@ -12,8 +12,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { submitToGoogleSheet, fetchFromGoogleSheet } from "@/lib/googleSheets";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const PhlebotomistForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -34,10 +38,51 @@ export const PhlebotomistForm = () => {
     followSOPs: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     console.log("Phlebotomist Form Data:", formData);
-    // Handle submission logic here
+
+    try {
+      const existingData = await fetchFromGoogleSheet("Phlebotomist");
+      const isDuplicate = existingData.some((row: any) =>
+        row.email?.toString().toLowerCase() === formData.email.toLowerCase()
+      );
+
+      if (isDuplicate) {
+        toast.error("A registration with this email already exists.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      await submitToGoogleSheet("Phlebotomist", formData);
+      toast.success("Phlebotomist registration submitted successfully!");
+      // Optional: Reset form
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        gender: "",
+        dob: "",
+        professionalCategory: "",
+        ownLicense: "",
+        licenseNumber: "",
+        issuingBody: "",
+        yearsOfExperience: "",
+        country: "",
+        state: "",
+        lga: "",
+        cityArea: "",
+        baseAddress: "",
+        availability: false,
+        followSOPs: false,
+      });
+    } catch (error) {
+      toast.error("Failed to submit registration. Please try again.");
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -64,6 +109,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
@@ -76,6 +122,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
@@ -88,11 +135,12 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="gender" className="font-bold">Gender *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, gender: value })}>
+                <Select onValueChange={(value) => setFormData({ ...formData, gender: value })} disabled={isSubmitting}>
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Gender" />
                   </SelectTrigger>
@@ -112,6 +160,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -126,7 +175,7 @@ export const PhlebotomistForm = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="professionalCategory" className="font-bold">Professional Category *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, professionalCategory: value })}>
+                <Select onValueChange={(value) => setFormData({ ...formData, professionalCategory: value })} disabled={isSubmitting}>
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Category" />
                   </SelectTrigger>
@@ -139,7 +188,7 @@ export const PhlebotomistForm = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="ownLicense" className="font-bold">Do you Own a valid Licence/Permit? *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, ownLicense: value })}>
+                <Select onValueChange={(value) => setFormData({ ...formData, ownLicense: value })} disabled={isSubmitting}>
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Yes/No" />
                   </SelectTrigger>
@@ -157,6 +206,7 @@ export const PhlebotomistForm = () => {
                   value={formData.licenseNumber}
                   onChange={(e) => setFormData({ ...formData, licenseNumber: e.target.value })}
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
@@ -167,11 +217,12 @@ export const PhlebotomistForm = () => {
                   value={formData.issuingBody}
                   onChange={(e) => setFormData({ ...formData, issuingBody: e.target.value })}
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="yearsOfExperience" className="font-bold">Years of Experience *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, yearsOfExperience: value })}>
+                <Select onValueChange={(value) => setFormData({ ...formData, yearsOfExperience: value })} disabled={isSubmitting}>
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Years" />
                   </SelectTrigger>
@@ -202,6 +253,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
@@ -213,6 +265,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
@@ -224,6 +277,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, lga: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
@@ -235,6 +289,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, cityArea: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="md:col-span-2 space-y-2">
@@ -246,6 +301,7 @@ export const PhlebotomistForm = () => {
                   onChange={(e) => setFormData({ ...formData, baseAddress: e.target.value })}
                   required
                   className="rounded-xl"
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -255,40 +311,37 @@ export const PhlebotomistForm = () => {
           <div className="space-y-6">
             <h3 className="text-xl font-bold border-b-2 border-primary/20 pb-2 flex items-center gap-2">
               <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">4</span>
-              Declaration & Uploads
+              Declaration
             </h3>
-            
+
             <div className="bg-muted/30 p-4 rounded-xl space-y-4">
-               <div className="flex items-center space-x-2">
-                <Checkbox 
-                  id="availability" 
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="availability"
                   onCheckedChange={(checked) => setFormData({ ...formData, availability: !!checked })}
+                  disabled={isSubmitting}
                 />
                 <Label htmlFor="availability" className="text-sm font-medium leading-none cursor-pointer">
                   Available for home sample collection
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
-                <Checkbox 
-                  id="followSOPs" 
+                <Checkbox
+                  id="followSOPs"
                   onCheckedChange={(checked) => setFormData({ ...formData, followSOPs: !!checked })}
                   required
+                  disabled={isSubmitting}
                 />
                 <Label htmlFor="followSOPs" className="text-sm font-medium leading-none cursor-pointer">
                   Willingness to follow Labtraca SOPs *
                 </Label>
               </div>
             </div>
-
-            <div className="space-y-2">
-                <Label className="font-bold">Document Uploads (ID, License, Certificate)</Label>
-                <Input type="file" multiple className="rounded-xl cursor-pointer" />
-                <p className="text-xs text-muted-foreground">Upload scanned copies of your ID and professional certifications.</p>
-            </div>
           </div>
 
-          <Button type="submit" size="lg" className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-primary/20 transition-all">
-            Submit Registration
+          <Button type="submit" size="lg" className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-primary/20 transition-all" disabled={isSubmitting}>
+            {isSubmitting ? <Loader2 className="animate-spin mr-2" /> : null}
+            {isSubmitting ? "Submitting..." : "Submit Registration"}
           </Button>
         </form>
       </CardContent>

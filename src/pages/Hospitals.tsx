@@ -106,11 +106,10 @@ const Hospitals = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${
-                  activeCategory === cat
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground"
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${activeCategory === cat
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {cat}
               </button>
@@ -138,30 +137,39 @@ const Hospitals = () => {
               {hospitals.map((hospital) => (
                 <div
                   key={hospital.id}
-                  className="bg-card border rounded-3xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                  className="bg-card border rounded-3xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Building2 className="w-5 h-5 text-primary" />
-                        <h3 className="font-bold text-lg">
-                          {hospital.name.toUpperCase()}
-                        </h3>
+                  <Link to={`/app/hospitals/${hospital.id}`} className="flex-1 flex flex-col cursor-pointer">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Building2 className="w-8 h-8 text-primary" />
                       </div>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        {hospital.type}
-                      </p>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2">
+                          <h3 className="font-bold text-lg leading-tight mb-1 group-hover:text-primary transition-colors">
+                            {hospital.name.toUpperCase()}
+                          </h3>
+                          <div className="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-full flex-shrink-0">
+                            <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                            <span className="text-xs font-bold text-amber-700">
+                              {hospital.rating}
+                            </span>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground font-medium">
+                          {hospital.type}
+                        </p>
+                      </div>
+                    </div>
 
-                      {/* Address */}
+                    <div className="space-y-3 mb-6 flex-1">
                       {hospital.address && (
-                        <div className="flex items-start gap-2 text-sm text-muted-foreground mb-3">
+                        <div className="flex items-start gap-2 text-sm text-muted-foreground">
                           <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span>{hospital.address}</span>
+                          <span className="line-clamp-2">{hospital.address}</span>
                         </div>
                       )}
-
-                      {/* Contact Details */}
-                      <div className="space-y-2 mb-4">
+                      <div className="space-y-1">
                         {hospital.phoneNumber && (
                           <div className="flex items-center gap-2 text-sm text-muted-foreground">
                             <Phone className="w-4 h-4 text-primary" />
@@ -176,25 +184,14 @@ const Hospitals = () => {
                         )}
                       </div>
                     </div>
-                    <div className="flex flex-col items-center gap-2">
-                      <div className="flex items-center gap-1 bg-amber-50 px-3 py-2 rounded-full">
-                        <Star className="w-4 h-4 fill-amber-500 text-amber-500" />
-                        <span className="text-sm font-bold text-amber-700">
-                          {hospital.rating}
-                        </span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">
-                        {hospital.reviews} reviews
-                      </p>
-                    </div>
-                  </div>
+                  </Link>
 
-                  <div className="flex items-center gap-3 pt-4 border-t">
-                    <Button variant="outline" className="flex-1 font-bold">
+                  <div className="flex items-center gap-3 pt-4 border-t mt-auto">
+                    <Button variant="outline" className="flex-1 font-bold rounded-full">
                       <Phone className="w-4 h-4 mr-2" />
                       Call
                     </Button>
-                    <Button className="flex-1 font-bold">
+                    <Button className="flex-1 font-bold rounded-full">
                       <MapPin className="w-4 h-4 mr-2" />
                       Directions
                     </Button>
@@ -207,7 +204,7 @@ const Hospitals = () => {
       </section>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

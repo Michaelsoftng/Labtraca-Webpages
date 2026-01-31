@@ -11,8 +11,12 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { submitToGoogleSheet, fetchFromGoogleSheet } from "@/lib/googleSheets";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const DispatcherForm = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         fullName: "",
         phone: "",
@@ -25,15 +29,47 @@ export const DispatcherForm = () => {
         lga: "",
         cityArea: "",
         baseLocation: "",
-        workingDays: "",
-        workingHours: "",
-        maxDistance: "",
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
         console.log("Dispatcher Form Data:", formData);
-        // Handle submission logic here
+
+        try {
+            const existingData = await fetchFromGoogleSheet("Dispatcher");
+            const isDuplicate = existingData.some((row: any) =>
+                row.email?.toString().toLowerCase() === formData.email.toLowerCase()
+            );
+
+            if (isDuplicate) {
+                toast.error("A registration with this email already exists.");
+                setIsSubmitting(false);
+                return;
+            }
+
+            await submitToGoogleSheet("Dispatcher", formData);
+            toast.success("Dispatcher registration submitted successfully!");
+            // Optional: Reset form
+            setFormData({
+                fullName: "",
+                phone: "",
+                email: "",
+                gender: "",
+                dispatcherType: "",
+                ownLicense: "",
+                country: "",
+                state: "",
+                lga: "",
+                cityArea: "",
+                baseLocation: "",
+            });
+        } catch (error) {
+            toast.error("Failed to submit registration. Please try again.");
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -60,6 +96,7 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -72,6 +109,7 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -84,11 +122,12 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="gender" className="font-bold">Gender *</Label>
-                                <Select onValueChange={(value) => setFormData({ ...formData, gender: value })}>
+                                <Select onValueChange={(value) => setFormData({ ...formData, gender: value })} disabled={isSubmitting}>
                                     <SelectTrigger className="rounded-xl border-accent/20 focus:ring-accent">
                                         <SelectValue placeholder="Select Gender" />
                                     </SelectTrigger>
@@ -111,7 +150,7 @@ export const DispatcherForm = () => {
                         <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <Label htmlFor="dispatcherType" className="font-bold">Dispatcher Type *</Label>
-                                <Select onValueChange={(value) => setFormData({ ...formData, dispatcherType: value })}>
+                                <Select onValueChange={(value) => setFormData({ ...formData, dispatcherType: value })} disabled={isSubmitting}>
                                     <SelectTrigger className="rounded-xl border-accent/20 focus:ring-accent">
                                         <SelectValue placeholder="Select Vehicle" />
                                     </SelectTrigger>
@@ -123,7 +162,7 @@ export const DispatcherForm = () => {
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="ownLicense" className="font-bold">Valid Driver’s License? *</Label>
-                                <Select onValueChange={(value) => setFormData({ ...formData, ownLicense: value })}>
+                                <Select onValueChange={(value) => setFormData({ ...formData, ownLicense: value })} disabled={isSubmitting}>
                                     <SelectTrigger className="rounded-xl border-accent/20 focus:ring-accent">
                                         <SelectValue placeholder="Select Yes/No" />
                                     </SelectTrigger>
@@ -152,6 +191,7 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -163,6 +203,7 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -174,6 +215,7 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, lga: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -185,6 +227,7 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, cityArea: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="md:col-span-2 space-y-2">
@@ -196,65 +239,15 @@ export const DispatcherForm = () => {
                                     onChange={(e) => setFormData({ ...formData, baseLocation: e.target.value })}
                                     required
                                     className="rounded-xl border-accent/20 focus-visible:ring-accent"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                         </div>
                     </div>
 
-                    {/* Availability */}
-                    <div className="space-y-6">
-                        <h3 className="text-xl font-bold border-b-2 border-accent/20 pb-2 flex items-center gap-2">
-                            <span className="w-8 h-8 bg-accent/10 text-accent rounded-full flex items-center justify-center text-sm">4</span>
-                            Availability & Uploads
-                        </h3>
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <Label htmlFor="workingDays" className="font-bold">Working Days *</Label>
-                                <Input
-                                    id="workingDays"
-                                    placeholder="e.g., Mon-Fri, Weekends"
-                                    value={formData.workingDays}
-                                    onChange={(e) => setFormData({ ...formData, workingDays: e.target.value })}
-                                    required
-                                    className="rounded-xl border-accent/20 focus-visible:ring-accent"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="workingHours" className="font-bold">Working Hours *</Label>
-                                <Input
-                                    id="workingHours"
-                                    placeholder="e.g., 8am - 6pm"
-                                    value={formData.workingHours}
-                                    onChange={(e) => setFormData({ ...formData, workingHours: e.target.value })}
-                                    required
-                                    className="rounded-xl border-accent/20 focus-visible:ring-accent"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="maxDistance" className="font-bold">Max Distance Covered (km) *</Label>
-                                <Input
-                                    id="maxDistance"
-                                    type="number"
-                                    placeholder="e.g., 20"
-                                    value={formData.maxDistance}
-                                    onChange={(e) => setFormData({ ...formData, maxDistance: e.target.value })}
-                                    required
-                                    className="rounded-xl border-accent/20 focus-visible:ring-accent"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="space-y-4 pt-4">
-                            <div className="space-y-2">
-                                <Label className="font-bold">Document Uploads (ID, License, Vehicle Photo)</Label>
-                                <Input type="file" multiple className="rounded-xl cursor-pointer border-accent/20" />
-                                <p className="text-xs text-muted-foreground">Upload scanned copies of your Valid ID, Driver's License, and Vehicle Photo.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <Button type="submit" size="lg" className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-accent/20 transition-all bg-accent text-accent-foreground hover:bg-accent/90">
-                        Submit Registration
+                    <Button type="submit" size="lg" className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-accent/20 transition-all bg-accent text-accent-foreground hover:bg-accent/90" disabled={isSubmitting}>
+                        {isSubmitting ? <Loader2 className="animate-spin mr-2" /> : null}
+                        {isSubmitting ? "Submitting..." : "Submit Registration"}
                     </Button>
                 </form>
             </CardContent>

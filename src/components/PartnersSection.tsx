@@ -56,30 +56,41 @@ export const PartnersSection = () => {
           Top labs and more in Labtraca
         </h2>
 
-        <div className="flex flex-row flex-wrap justify-center gap-6">
-          {partners.length === 0 ? (
-            <div className="col-span-full text-center py-8 text-muted-foreground">
-              No partners available yet
-            </div>
-          ) : (
-            partners.map((partner, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center gap-3 animate-scale-in hover:scale-110 transition-transform cursor-pointer"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <div
-                  className={`w-24 h-24 rounded-full ${partner.color} flex items-center justify-center shadow-lg`}
-                >
-                  <partner.icon className="w-12 h-12 text-white" />
-                </div>
-                <span className="text-sm font-bold text-foreground">
-                  {partner.name.toUpperCase()}
-                </span>
+        {loading ? (
+          <div className="flex flex-row flex-wrap justify-center gap-6">
+            {[...Array(8)].map((_, index) => (
+              <div key={index} className="flex flex-col items-center gap-3">
+                <div className="w-24 h-24 rounded-full bg-muted animate-pulse"></div>
+                <div className="h-4 w-20 bg-muted rounded animate-pulse"></div>
               </div>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-row flex-wrap justify-center gap-6">
+            {partners.length === 0 ? (
+              <div className="col-span-full text-center py-8 text-muted-foreground">
+                No partners available yet
+              </div>
+            ) : (
+              partners.map((partner, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center gap-3 animate-scale-in hover:scale-110 transition-transform cursor-pointer"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <div
+                    className={`w-24 h-24 rounded-full ${partner.color} flex items-center justify-center shadow-lg`}
+                  >
+                    <partner.icon className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-bold text-foreground">
+                    {partner.name.toUpperCase()}
+                  </span>
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

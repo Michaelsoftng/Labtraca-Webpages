@@ -11,8 +11,12 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { submitToGoogleSheet, fetchFromGoogleSheet } from "@/lib/googleSheets";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export const GeneralPartnerForm = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         partnerName: "",
         partnerType: "",
@@ -28,10 +32,46 @@ export const GeneralPartnerForm = () => {
         coverageCapacity: "",
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true);
         console.log("General Partner Form Data:", formData);
-        // Handle submission logic here
+
+        try {
+            const existingData = await fetchFromGoogleSheet("General Partner");
+            const isDuplicate = existingData.some((row: any) =>
+                row.email?.toString().toLowerCase() === formData.email.toLowerCase()
+            );
+
+            if (isDuplicate) {
+                toast.error("A registration with this email already exists.");
+                setIsSubmitting(false);
+                return;
+            }
+
+            await submitToGoogleSheet("General Partner", formData);
+            toast.success("Partnership request submitted successfully!");
+            // Optional: Reset form
+            setFormData({
+                partnerName: "",
+                partnerType: "",
+                natureOfPartnership: "",
+                contactName: "",
+                phone: "",
+                email: "",
+                country: "",
+                state: "",
+                lga: "",
+                cityArea: "",
+                expectedContribution: "",
+                coverageCapacity: "",
+            });
+        } catch (error) {
+            toast.error("Failed to submit request. Please try again.");
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -58,11 +98,12 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, partnerName: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="partnerType" className="font-bold">Partner Type *</Label>
-                                <Select onValueChange={(value) => setFormData({ ...formData, partnerType: value })}>
+                                <Select onValueChange={(value) => setFormData({ ...formData, partnerType: value })} disabled={isSubmitting}>
                                     <SelectTrigger className="rounded-xl">
                                         <SelectValue placeholder="Select type" />
                                     </SelectTrigger>
@@ -75,7 +116,7 @@ export const GeneralPartnerForm = () => {
                             </div>
                             <div className="space-y-2 md:col-span-2">
                                 <Label htmlFor="natureOfPartnership" className="font-bold">Nature of Partnership *</Label>
-                                <Select onValueChange={(value) => setFormData({ ...formData, natureOfPartnership: value })}>
+                                <Select onValueChange={(value) => setFormData({ ...formData, natureOfPartnership: value })} disabled={isSubmitting}>
                                     <SelectTrigger className="rounded-xl">
                                         <SelectValue placeholder="Select nature" />
                                     </SelectTrigger>
@@ -106,6 +147,7 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -118,6 +160,7 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2 md:col-span-2">
@@ -130,6 +173,7 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                         </div>
@@ -151,6 +195,7 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -162,6 +207,7 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -173,6 +219,7 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, lga: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -184,6 +231,7 @@ export const GeneralPartnerForm = () => {
                                     onChange={(e) => setFormData({ ...formData, cityArea: e.target.value })}
                                     required
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                         </div>
@@ -193,7 +241,7 @@ export const GeneralPartnerForm = () => {
                     <div className="space-y-6">
                         <h3 className="text-xl font-bold border-b-2 border-primary/20 pb-2 flex items-center gap-2">
                             <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">4</span>
-                            Partnership Scope & Uploads
+                            Partnership Scope
                         </h3>
                         <div className="grid md:grid-cols-1 gap-6">
                             <div className="space-y-2">
@@ -204,6 +252,7 @@ export const GeneralPartnerForm = () => {
                                     value={formData.expectedContribution}
                                     onChange={(e) => setFormData({ ...formData, expectedContribution: e.target.value })}
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
                             </div>
                             <div className="space-y-2">
@@ -214,21 +263,15 @@ export const GeneralPartnerForm = () => {
                                     value={formData.coverageCapacity}
                                     onChange={(e) => setFormData({ ...formData, coverageCapacity: e.target.value })}
                                     className="rounded-xl"
+                                    disabled={isSubmitting}
                                 />
-                            </div>
-                        </div>
-
-                        <div className="space-y-4 pt-4">
-                            <div className="space-y-2">
-                                <Label className="font-bold">Document Uploads (CAC Certificate, ID of Contact Person)</Label>
-                                <Input type="file" multiple className="rounded-xl cursor-pointer" />
-                                <p className="text-xs text-muted-foreground">Upload scanned copies of CAC Certificate and Valid ID.</p>
                             </div>
                         </div>
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-primary/20 transition-all">
-                        Submit Partnership Request
+                    <Button type="submit" size="lg" className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-primary/20 transition-all" disabled={isSubmitting}>
+                        {isSubmitting ? <Loader2 className="animate-spin mr-2" /> : null}
+                        {isSubmitting ? "Submitting..." : "Submit Partnership Request"}
                     </Button>
                 </form>
             </CardContent>
