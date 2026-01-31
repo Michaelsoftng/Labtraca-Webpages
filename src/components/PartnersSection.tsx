@@ -57,16 +57,16 @@ export const PartnersSection = () => {
         </h2>
 
         {loading ? (
-          <div className="flex flex-row flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
             {[...Array(8)].map((_, index) => (
               <div key={index} className="flex flex-col items-center gap-3">
-                <div className="w-24 h-24 rounded-full bg-muted animate-pulse"></div>
-                <div className="h-4 w-20 bg-muted rounded animate-pulse"></div>
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-muted animate-pulse"></div>
+                <div className="h-3 w-16 bg-muted rounded animate-pulse"></div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="flex flex-row flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
             {partners.length === 0 ? (
               <div className="col-span-full text-center py-8 text-muted-foreground">
                 No partners available yet
@@ -75,15 +75,15 @@ export const PartnersSection = () => {
               partners.map((partner, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center gap-3 animate-scale-in hover:scale-110 transition-transform cursor-pointer"
+                  className="flex flex-col items-center gap-2 md:gap-3 animate-scale-in hover:scale-110 transition-transform cursor-pointer"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <div
-                    className={`w-24 h-24 rounded-full ${partner.color} flex items-center justify-center shadow-lg`}
+                    className={`w-20 h-20 md:w-24 md:h-24 rounded-full ${partner.color} flex items-center justify-center shadow-lg`}
                   >
-                    <partner.icon className="w-12 h-12 text-white" />
+                    <partner.icon className="w-8 h-8 md:w-12 md:h-12 text-white" />
                   </div>
-                  <span className="text-sm font-bold text-foreground">
+                  <span className="text-xs md:text-sm font-bold text-foreground text-center line-clamp-2">
                     {partner.name.toUpperCase()}
                   </span>
                 </div>
