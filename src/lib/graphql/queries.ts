@@ -206,6 +206,7 @@ export const getUserByIdPublic = gql`
         additionalCertifications
         consultationHours
         specialization
+        online
       }
       dispatcher {
         id

@@ -22,15 +22,39 @@ import {
 } from "lucide-react";
 import { useQuery } from "@apollo/client/react";
 
+interface DoctorData {
+  specialization?: string;
+  yearsOfExperience?: string;
+  online?: boolean;
+}
+
+interface FacilityAdminData {
+  rating?: number;
+  ratingCount?: number;
+}
+
+interface UserData {
+  firstName: string;
+  lastName: string;
+  doctor?: DoctorData;
+  facilityAdmin?: FacilityAdminData;
+}
+
+interface GetUserByIdPublicResponse {
+  getUserByIdPublic: UserData;
+}
+
 const DoctorDetails = () => {
   const { id } = useParams();
 
-  const { data: userData, loading } = useQuery(getUserByIdPublic, {
-    variables: {
-      id: id || "",
-    },
-    skip: !id,
-  });
+  const { data: userData, loading } = useQuery<GetUserByIdPublicResponse>(
+    getUserByIdPublic,
+    {
+      variables: {
+        id: id || "",
+      },
+      skip: !id,
+    });
 
   const doctor = userData?.getUserByIdPublic;
 

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Truck, Droplet, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import DispatcherImage from "@/assets/dispatcher-bike.png";
 
 export const PartnerRegistrationSection = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ export const PartnerRegistrationSection = () => {
           <div className="relative animate-fade-in [animation-delay:200ms]">
             <div className="w-full h-[400px] bg-gradient-to-br from-accent to-accent/60 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
               <img
-                src="/assets/dispatcher_black.png"
+                src={DispatcherImage}
                 alt="Medical Dispatcher"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />

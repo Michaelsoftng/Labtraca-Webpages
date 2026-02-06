@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Truck, CheckCircle2, Smartphone, UserCheck, Clock, ArrowRight } from "lucide-react";
 import { DispatcherForm } from "@/components/forms/DispatcherForm";
+import DispatcherImage from "@/assets/dispatcher-bike.png";
 
 const Dispatcher = () => {
     const steps = [
@@ -52,7 +53,7 @@ const Dispatcher = () => {
                         <div className="relative animate-fade-in [animation-delay:200ms]">
                             <div className="w-full h-[400px] bg-gradient-to-br from-accent to-accent/60 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden transform md:rotate-3">
                                 <img
-                                    src="/assets/dispatcher_black.png"
+                                    src={DispatcherImage}
                                     alt="Dispatcher"
                                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                 />

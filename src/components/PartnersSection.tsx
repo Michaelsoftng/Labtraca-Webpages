@@ -1,12 +1,7 @@
-import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import {
-  Building2,
-  TestTube2,
   Hospital,
-  Stethoscope,
-  HeartPulse,
-  ActivitySquare,
-  Syringe,
   Microscope,
 } from "lucide-react";
 import { useQuery } from "@apollo/client/react";
@@ -29,7 +24,7 @@ export const PartnersSection = () => {
     {
       variables: {
         userType: "facility_admin",
-        limit: 8,
+        limit: 4,
         offset: 0,
       },
     },
@@ -37,14 +32,14 @@ export const PartnersSection = () => {
 
   // Map facilities to partner display format
   const partners =
-    data?.getPublicUserByUserType?.users?.slice(0, 8).map((user) => ({
+    data?.getPublicUserByUserType?.users?.slice(0, 4).map((user) => ({
       name: user.facilityAdmin?.facilityName || "Partner",
       color:
         user.facilityAdmin?.facilityType === "HOSPITAL"
           ? "bg-blue-500"
           : "bg-green-500",
       icon:
-        user.facilityAdmin?.facilityType === "HOSPITAL" ? Hospital : TestTube2,
+        user.facilityAdmin?.facilityType === "HOSPITAL" ? Hospital : Microscope,
     })) || [];
   return (
     <section
@@ -58,7 +53,7 @@ export const PartnersSection = () => {
 
         {loading ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
-            {[...Array(8)].map((_, index) => (
+            {[...Array(4)].map((_, index) => (
               <div key={index} className="flex flex-col items-center gap-3">
                 <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-muted animate-pulse"></div>
                 <div className="h-3 w-16 bg-muted rounded animate-pulse"></div>
@@ -91,6 +86,11 @@ export const PartnersSection = () => {
             )}
           </div>
         )}
+        <div className="flex justify-center mt-12">
+          <Button asChild size="lg" className="rounded-full px-8 text-white font-bold">
+            <Link to="/app/laboratories">View More</Link>
+          </Button>
+        </div>
       </div>
     </section>
   );

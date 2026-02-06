@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryBubble from "@/components/App/CategoryBubble";
-import { FlaskConical, Stethoscope, Building2, FlaskRound, AlertCircle, MapPin } from "lucide-react";
+import { TestTube2, Stethoscope, Hospital, Microscope, AlertCircle, MapPin } from "lucide-react";
 import { getUserLocation, isLocationAvailable } from "@/utils/location";
 
 const CategoriesSection = () => {
@@ -10,10 +10,10 @@ const CategoriesSection = () => {
   const [loading, setLoading] = useState(true);
 
   const categories = [
-    { title: "Tests", icon: FlaskConical, color: "bg-yellow-100 text-yellow-600", path: "/app/tests" },
-    { title: "Consultation", icon: Stethoscope, color: "bg-purple-100 text-purple-600", path: "/app/consultation" },
-    { title: "Hospitals", icon: Building2, color: "bg-blue-100 text-blue-600", path: "/app/hospitals" },
-    { title: "Laboratories", icon: FlaskRound, color: "bg-green-100 text-green-600", path: "/app/laboratories" },
+    { title: "Tests", icon: TestTube2, color: "bg-primary/10 text-primary", path: "/app/tests" },
+    { title: "Consultation", icon: Stethoscope, color: "bg-primary/10 text-primary", path: "/app/consultation" },
+    { title: "Hospitals", icon: Hospital, color: "bg-primary/10 text-primary", path: "/app/hospitals" },
+    { title: "Laboratories", icon: Microscope, color: "bg-primary/10 text-primary", path: "/app/laboratories" },
   ];
 
   useEffect(() => {

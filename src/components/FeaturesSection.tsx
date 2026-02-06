@@ -1,30 +1,30 @@
 import { Card } from "@/components/ui/card";
-import { TestTube2, Zap, Clock, Shield } from "lucide-react";
+import { Microscope, Bike, CalendarCheck, UserCheck } from "lucide-react";
 
 const features = [
   {
-    icon: TestTube2,
+    icon: Microscope,
     title: "Your city's top labs",
     description: "With a great variety of labs you can order your tests or explore new health services nearby!",
-    color: "bg-blue-100 text-blue-600",
+    color: "bg-primary/10 text-primary",
   },
   {
-    icon: Zap,
+    icon: Bike,
     title: "Fast service",
     description: "Like a flash! Book a test in your city and get results in hours or days, not weeks",
-    color: "bg-green-100 text-green-600",
+    color: "bg-primary/10 text-primary",
   },
   {
-    icon: Clock,
+    icon: CalendarCheck,
     title: "24/7 availability",
     description: "We're here when you need us. Book appointments that fit your schedule, any time",
-    color: "bg-purple-100 text-purple-600",
+    color: "bg-primary/10 text-primary",
   },
   {
-    icon: Shield,
+    icon: UserCheck,
     title: "Verified professionals",
     description: "All our medical professionals are licensed, certified, and background-checked for your safety",
-    color: "bg-orange-100 text-orange-600",
+    color: "bg-primary/10 text-primary",
   },
 ];
 
