@@ -23,7 +23,7 @@ export const HeroSection = () => {
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 lg:gap-20 lg:items-center mb-16">
           {/* Main content */}
           <div className="space-y-6 text-center lg:text-left animate-fade-in">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight text-black">
+            <h1 className="text-xl sm:text-3xl lg:text-4xl font-black leading-tight text-black">
               Get a Lab test in minutes
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">

@@ -46,7 +46,7 @@ export const FeaturesSection = () => {
               className="p-8 hover:shadow-2xl transition-all duration-300 border-0 animate-fade-in"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="flex items-start gap-6">
+              <div className="flex flex-col sm:flex-row items-start gap-6">
                 <div className={`w-16 h-16 rounded-2xl ${feature.color} flex items-center justify-center flex-shrink-0`}>
                   <feature.icon className="w-8 h-8" />
                 </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Syringe, Wallet, MessageSquarePlus, ClipboardList } from "lucide-react";
+import { Syringe, Microscope, MessageSquarePlus, Hospital } from "lucide-react";
 import { getUserLocation } from "@/utils/location";
 import { Button } from "@/components/ui/button";
 
@@ -19,13 +19,13 @@ const CategoriesSection = () => {
       path: "/app/tests"
     },
     {
-      title: "Health Insurance",
+      title: "Partner Labs",
       description: "Get your samples collected and tested by our facilities.",
-      icon: Wallet,
+      icon: Microscope,
       bgColor: "bg-[#EAF7E2]",
       borderColor: "border-transparent",
       iconColor: "text-green-600",
-      path: "/app/insurance"
+      path: "/app/laboratories"
     },
     {
       title: "Medical Consultation",
@@ -37,13 +37,13 @@ const CategoriesSection = () => {
       path: "/app/consultation"
     },
     {
-      title: "Pathologist Review",
+      title: "Partner Hospitals",
       description: "Get your samples collected and tested by our facilities.",
-      icon: ClipboardList,
+      icon: Hospital,
       bgColor: "bg-[#E8F0FE]",
       borderColor: "border-transparent",
       iconColor: "text-blue-600",
-      path: "/app/pathologist"
+      path: "/app/hospitals"
     },
   ];
 
@@ -68,10 +68,10 @@ const CategoriesSection = () => {
     <section className="bg-[#F7FCF8] py-16 md:py-28">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="mb-12 md:mb-20 text-center">
-          <div className="inline-block px-4 py-1 rounded-lg border border-[#22C55E] text-[#22C55E] text-xs font-bold uppercase tracking-wider mb-6">
+          <div className="inline-block px-5 py-2 rounded-lg border border-[#22C55E] text-[#22C55E] text-sm font-bold uppercase tracking-wider mb-6">
             Services
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-6 max-w-4xl mx-auto leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-6 max-w-4xl mx-auto leading-tight">
             Do more for your health with our App
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -99,21 +99,7 @@ const CategoriesSection = () => {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button
-            className="bg-[#22C55E] hover:bg-[#16a34a] text-white px-8 py-7 text-lg rounded-xl font-bold h-auto w-full sm:w-auto transition-all shadow-lg shadow-green-200"
-            onClick={() => navigate("/app/download")}
-          >
-            Download App Now
-          </Button>
-          <Button
-            variant="outline"
-            className="border-[#22C55E] text-[#22C55E] hover:bg-green-50 px-8 py-7 text-lg rounded-xl font-bold h-auto w-full sm:w-auto transition-all"
-            onClick={() => navigate("/app/partner")}
-          >
-            Partner with us
-          </Button>
-        </div>
+
       </div>
     </section>
   );
