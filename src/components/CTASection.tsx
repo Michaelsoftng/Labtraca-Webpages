@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   return (
-    <section className="py-12 px-4 md:py-20 md:px-6 bg-primary text-primary-foreground relative overflow-hidden">
+    <section className="py-12 px-4 md:py-20 md:px-6 bg-gradient-to-br from-[#22C55E] to-[#16a34a] text-primary-foreground relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
 
       <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">

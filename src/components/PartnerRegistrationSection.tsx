@@ -7,7 +7,7 @@ export const PartnerRegistrationSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="register" className="py-12 px-4 md:py-20 md:px-6">
+    <section id="register" className="py-12 px-4 md:py-20 md:px-6 bg-[#F7FCF8]">
       <div className="container mx-auto max-w-7xl space-y-16">
         {/* Dispatcher Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center">

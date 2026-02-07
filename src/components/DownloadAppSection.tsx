@@ -3,7 +3,7 @@ import { Smartphone } from "lucide-react";
 
 export const DownloadAppSection = () => {
   return (
-    <section id="download" className="py-12 px-4 md:py-20 md:px-6 bg-gradient-to-br from-primary/10 to-secondary/10 relative overflow-hidden">
+    <section id="download" className="py-12 px-4 md:py-20 md:px-6 bg-white relative overflow-hidden">
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">

@@ -30,7 +30,7 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section id="features" className="py-12 px-4 md:py-20 md:px-6 bg-background">
+    <section id="features" className="py-12 px-4 md:py-20 md:px-6 bg-[#F7FCF8]">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-5xl font-black text-center mb-4 text-foreground">
           Anything Delivered
