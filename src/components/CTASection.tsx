@@ -8,7 +8,7 @@ export const CTASection = () => {
 
       <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black animate-fade-in">
-          Ready to get tested?
+          Ready To Get Tested?
         </h2>
         <p className="text-xl md:text-2xl opacity-90 animate-fade-in [animation-delay:200ms]">
           Join thousands who trust Labtraca for their health needs

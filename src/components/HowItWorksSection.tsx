@@ -2,10 +2,10 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const HowItWorksSection = () => {
     return (
-        <section className="py-20 px-4 md:py-32 md:px-6 bg-[#0A1128] text-white overflow-hidden">
-            <div className="container mx-auto max-w-7xl">
-                <div className="text-center mb-20 animate-fade-in">
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight">
+        <section className="py-12 px-4 md:py-24 md:px-6 bg-white overflow-hidden">
+            <div className="container mx-auto max-w-7xl bg-[#0A1128] rounded-[3rem] py-16 px-6 md:py-24 md:px-12 text-white relative">
+                <div className="text-center mb-20 animate-fade-in relative z-10">
+                    <h2 className="text-3xl md:text-5xl lg:text-5xl font-black mb-8 leading-tight text-white">
                         A platform for you to get the <span className="text-primary">lab test faster.</span>
                     </h2>
                     <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
@@ -13,7 +13,7 @@ export const HowItWorksSection = () => {
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-16 lg:gap-32">
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
                     {/* Step 1: Book tests */}
                     <div className="flex flex-col items-center animate-fade-in [animation-delay:200ms]">
                         <div className="bg-[#151F3C] p-6 pb-0 rounded-[3rem] shadow-2xl mb-10 w-full max-w-[340px] aspect-[9/16] relative overflow-hidden border border-slate-700/50 group">
@@ -61,7 +61,7 @@ export const HowItWorksSection = () => {
                         </div>
 
                         <div className="text-center group">
-                            <h3 className="text-2xl font-black mb-4 group-hover:text-primary transition-colors">Book tests available</h3>
+                            <h3 className="text-2xl font-black mb-4 group-hover:text-primary transition-colors text-white">Book tests available</h3>
                             <p className="text-slate-400 max-w-[300px] leading-relaxed">
                                 Easily book a licensed medical professional to come to your home and perform a lab test. Select your test, date, and time.
                             </p>
@@ -93,9 +93,9 @@ export const HowItWorksSection = () => {
                                     <div className="absolute left-[11px] top-3 bottom-0 w-[2px] bg-slate-100"></div>
 
                                     {[
+                                        { title: "Sample collected", time: "20/02, 02:00PM", sub: "Your sample has been collected", active: true },
                                         { title: "Result ready", time: "21/02, 06:30AM", sub: "Your test results are ready", active: true },
                                         { title: "Result sent", time: "21/02, 06:30AM", sub: "Your test results have been sent to you", active: true },
-                                        { title: "Sample collected", time: "20/02, 02:00PM", sub: "Your sample has been collected", active: false },
                                     ].map((step, i) => (
                                         <div key={i} className="flex gap-5 relative group/item">
                                             <div className={`w-6 h-6 rounded-full flex items-center justify-center z-10 ${step.active ? 'bg-green-500' : 'bg-slate-200'}`}>
@@ -121,7 +121,7 @@ export const HowItWorksSection = () => {
                         </div>
 
                         <div className="text-center group">
-                            <h3 className="text-2xl font-black mb-4 group-hover:text-primary transition-colors">Get your results</h3>
+                            <h3 className="text-2xl font-black mb-4 group-hover:text-primary transition-colors text-white">Get your results</h3>
                             <p className="text-slate-400 max-w-[300px] leading-relaxed">
                                 Track the progress of your test and get your results right from your mobile device.
                             </p>

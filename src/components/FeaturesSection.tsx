@@ -4,25 +4,25 @@ import { Microscope, Bike, CalendarCheck, UserCheck } from "lucide-react";
 const features = [
   {
     icon: Microscope,
-    title: "Your city's top labs",
+    title: "Your City's Top Labs",
     description: "With a great variety of labs you can order your tests or explore new health services nearby!",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: Bike,
-    title: "Fast service",
+    title: "Fast Service",
     description: "Like a flash! Book a test in your city and get results in hours or days, not weeks",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: CalendarCheck,
-    title: "24/7 availability",
+    title: "24/7 Availability",
     description: "We're here when you need us. Book appointments that fit your schedule, any time",
     color: "bg-primary/10 text-primary",
   },
   {
     icon: UserCheck,
-    title: "Verified professionals",
+    title: "Verified Professionals",
     description: "All our medical professionals are licensed, certified, and background-checked for your safety",
     color: "bg-primary/10 text-primary",
   },
