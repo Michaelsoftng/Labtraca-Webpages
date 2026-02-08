@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Shield, Heart, Microscope, Clock, CheckCircle, ArrowRight, FlaskConical, FileHeart, Stethoscope } from "lucide-react";
+import { Shield, Heart, Microscope, Clock, CheckCircle, ArrowRight, Syringe, MessageSquarePlus, Hospital } from "lucide-react";
 
 const OurServices = () => {
   return (
@@ -26,41 +26,41 @@ const OurServices = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                <FlaskConical className="w-8 h-8 text-primary" />
+                <Syringe className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-2xl font-black mb-4">Medical Test</h3>
               <p className="text-muted-foreground">
-                Get your samples collected and tested by our facilities.
+                Book a test and have our licensed professionals collect your sample from the comfort of your home or office.
               </p>
             </div>
 
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in [animation-delay:200ms]">
-              <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mb-6">
-                <FileHeart className="w-8 h-8 text-secondary" />
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                <Microscope className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-black mb-4">Health Insurance</h3>
+              <h3 className="text-2xl font-black mb-4">Partner Labs</h3>
               <p className="text-muted-foreground">
-                Get your samples collected and tested by our facilities.
+                Explore and order tests from our wide variety of accredited laboratories nearby.
               </p>
             </div>
 
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in [animation-delay:400ms]">
-              <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mb-6">
-                <Stethoscope className="w-8 h-8 text-accent" />
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                <MessageSquarePlus className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-2xl font-black mb-4">Medical Consultation</h3>
               <p className="text-muted-foreground">
-                Get your samples collected and tested by our facilities.
+                Connect with qualified doctors and get expert medical advice from the comfort of your home.
               </p>
             </div>
 
             <div className="bg-card rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all animate-fade-in [animation-delay:600ms]">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                <Microscope className="w-8 h-8 text-primary" />
+                <Hospital className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-2xl font-black mb-4">Pathologist Review</h3>
+              <h3 className="text-2xl font-black mb-4">Partner Hospitals</h3>
               <p className="text-muted-foreground">
-                Get your samples collected and tested by our facilities.
+                Access premium healthcare services from our network of verified hospitals and clinics.
               </p>
             </div>
           </div>
