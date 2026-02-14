@@ -18,6 +18,7 @@ interface GetPublicUserByUserTypeData {
   getPublicUserByUserType?: {
     users?: Array<{
       id: string;
+      accountStatus?: string;
       facilityAdmin?: {
         facilityName: string;
         facilityType: string;
@@ -58,10 +59,14 @@ const Hospitals = () => {
     "Diagnostic Center",
   ];
 
-  // Filter users to only show those with HOSPITAL facility type
+  // Filter users to only show those with HOSPITAL facility type and ACTIVE status
   const hospitals =
     data?.getPublicUserByUserType?.users
-      ?.filter((user) => user.facilityAdmin?.facilityType === "HOSPITAL")
+      ?.filter(
+        (user) =>
+          user.facilityAdmin?.facilityType === "HOSPITAL" &&
+          user.accountStatus !== "DEACTIVATED",
+      )
       .map((user) => ({
         id: user.id,
         name: user.facilityAdmin?.facilityName,

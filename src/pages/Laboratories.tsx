@@ -21,6 +21,7 @@ interface GetPublicUserByTypeData {
   getPublicUserByUserType: {
     users: Array<{
       id: string;
+      accountStatus?: string;
       facilityAdmin?: {
         facilityName: string;
         facilityType: string;
@@ -60,10 +61,14 @@ const Laboratories = () => {
     "Blood Bank",
   ];
 
-  // Filter users to only show those with LABORATORY facility type
+  // Filter users to only show those with LABORATORY facility type and ACTIVE status
   const laboratories =
     data?.getPublicUserByUserType?.users
-      ?.filter((user) => user.facilityAdmin?.facilityType === "LABORATORY")
+      ?.filter(
+        (user) =>
+          user.facilityAdmin?.facilityType === "LABORATORY" &&
+          user.accountStatus !== "DEACTIVATED",
+      )
       .map((user) => ({
         id: user.id,
         name: user.facilityAdmin?.facilityName,
@@ -108,11 +113,10 @@ const Laboratories = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${
-                  activeCategory === cat
+                className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${activeCategory === cat
                     ? "bg-primary text-primary-foreground shadow-md"
                     : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
