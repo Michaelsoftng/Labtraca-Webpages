@@ -1,7 +1,8 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Calendar, FileText, DollarSign, ArrowRight, Search, Syringe, FlaskConical, ClipboardCheck } from "lucide-react";
+import { Calendar, FileText, ArrowRight, Search, Syringe, FlaskConical, ClipboardCheck } from "lucide-react";
+import { Naira } from "@/components/icons/Naira";
 
 const HowItWorks = () => {
   return (
@@ -74,8 +75,8 @@ const HowItWorks = () => {
             {/* Step 3: Testing */}
             <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow animate-fade-in [animation-delay:200ms]">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <FlaskConical className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <FlaskConical className="w-8 h-8 text-accent" />
                 </div>
                 <div className="space-y-3">
                   <div className="text-sm font-bold text-primary">Step 3</div>
@@ -123,7 +124,7 @@ const HowItWorks = () => {
             <div className="bg-primary/5 rounded-3xl p-8 md:p-12 space-y-6">
               <div className="flex items-start gap-6">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-8 h-8 text-primary" />
+                  <Naira className="w-8 h-8 text-primary" />
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-2xl md:text-3xl font-black">Drive more, earn more</h3>
@@ -135,10 +136,10 @@ const HowItWorks = () => {
               </div>
             </div>
 
-            <div className="bg-secondary/5 rounded-3xl p-8 md:p-12 space-y-6">
+            <div className="bg-primary/5 rounded-3xl p-8 md:p-12 space-y-6">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-8 h-8 text-secondary" />
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-8 h-8 text-primary" />
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-2xl md:text-3xl font-black">Set when you are available</h3>
