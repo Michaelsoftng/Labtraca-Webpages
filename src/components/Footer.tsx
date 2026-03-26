@@ -212,12 +212,18 @@ export const Footer = () => {
               &copy; {new Date().getFullYear()} Labtraca. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-3 sm:gap-6 justify-center">
-              <a href="#" className="hover:text-primary transition-colors">
+              <Link
+                to="https://sites.google.com/view/labtraca-user/home"
+                className="hover:text-primary transition-colors"
+              >
                 Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
+              </Link>
+              <Link
+                to="/terms-conditions"
+                className="hover:text-primary transition-colors"
+              >
                 Terms of Service
-              </a>
+              </Link>
               <a href="#" className="hover:text-primary transition-colors">
                 Cookies
               </a>
