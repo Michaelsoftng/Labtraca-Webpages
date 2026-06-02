@@ -12,7 +12,7 @@ export const Navigation = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Lab Tests", path: "/app/tests" },
-    { name: "Collaborative Pharmacy Ecosystem", path: "/partner-with-us" },
+    { name: "Health Ecosystem", path: "/health-ecosystem" },
     { name: "Our App", path: "/app" },
     { name: "About Us", path: "/about" },
   ];

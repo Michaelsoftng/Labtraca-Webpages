@@ -23,6 +23,7 @@ import HospitalDetails from "./pages/HospitalDetails";
 import LaboratoryDetails from "./pages/LaboratoryDetails";
 import DoctorDetails from "./pages/DoctorDetails";
 import TermsConditions from "./pages/TermsConditions";
+import HealthEcosystem from "./pages/HealthEcosystem";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +63,7 @@ const App = () => (
           <Route path="/dispatcher" element={<Dispatcher />} />
           <Route path="/phlebotomist" element={<Phlebotomist />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/health-ecosystem" element={<HealthEcosystem />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
