@@ -1,159 +1,279 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, Target, Award, ArrowRight } from "lucide-react";
+import { ShieldCheck, HeartHandshake, Zap, Crosshair } from "lucide-react";
 import { Link } from "react-router-dom";
+import PhoneMockup from "@/assets/about.svg";
+import LabImage from "@/assets/about bg.svg";
+
+/* ─── Shared sub-components ─────────────────────────── */
+
+const HeroBadge = () => (
+  <span className="inline-block border border-primary text-primary text-xs font-semibold px-3 py-1 rounded-full tracking-wide">
+    Clinical Precision
+  </span>
+);
+
+const PhoneCard = () => (
+  <div className="space-y-4">
+    <div className="relative overflow-hidden rounded-2xl bg-[#0F172A] min-h-[240px] flex items-center justify-center">
+      <img src={PhoneMockup} alt="App mockup" className="w-full h-auto object-cover" />
+      <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-transparent">
+        <p className="text-primary text-xs font-semibold tracking-wide uppercase mb-1">Our Vision</p>
+        <p className="text-white font-bold text-lg">Democratizing Healthcare</p>
+      </div>
+    </div>
+    <div className="grid grid-cols-2 gap-4">
+      <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 space-y-2">
+        <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+          <Crosshair className="w-4 h-4 text-primary" />
+        </div>
+        <h4 className="font-bold text-gray-900 text-sm">Precision</h4>
+        <p className="text-xs text-gray-500 leading-relaxed">Surgical precision in temperature control.</p>
+      </div>
+      <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 space-y-2">
+        <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+          <Zap className="w-4 h-4 text-primary" />
+        </div>
+        <h4 className="font-bold text-gray-900 text-sm">Speed</h4>
+        <p className="text-xs text-gray-500 leading-relaxed">Fastest possible laboratory turnover times.</p>
+      </div>
+    </div>
+  </div>
+);
+
+/* ─── Page ───────────────────────────────────────────── */
 
 const AboutUs = () => {
-  const values = [
-    {
-      icon: Heart,
-      title: "Patient-Centered Care",
-      description: "Your health and comfort are our top priorities. We bring quality lab testing directly to your doorstep.",
-      color: "bg-primary/10 text-primary"
-    },
-    {
-      icon: Users,
-      title: "Professional Excellence",
-      description: "Our network of certified medical professionals ensures accurate results and exceptional service every time.",
-      color: "bg-accent/10 text-accent"
-    },
-    {
-      icon: Target,
-      title: "Innovation",
-      description: "We leverage technology to make healthcare more accessible, convenient, and affordable for everyone.",
-      color: "bg-primary/10 text-primary"
-    },
-    {
-      icon: Award,
-      title: "Trust & Reliability",
-      description: "Certified labs, secure data handling, and transparent processes you can count on.",
-      color: "bg-accent/10 text-accent"
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
-        <div className="container mx-auto max-w-4xl text-center space-y-8">
-          <div className="space-y-6">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black animate-fade-in leading-tight">
-              Making Healthcare <br />
-              <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                Accessible for All
-              </span>
-            </h1>
-          </div>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in [animation-delay:200ms] leading-relaxed">
-            We're on a mission to revolutionize how people access lab testing services through technology and convenience.
+      {/* ── MOBILE Hero — white bg, dark text ── */}
+      <section className="pt-24 pb-0 px-4 lg:hidden">
+        <div className="container mx-auto max-w-6xl py-10 space-y-5">
+          <HeroBadge />
+          <h1 className="text-3xl font-black text-gray-900 leading-tight">
+            Revolutionizing Medical Logistics through{" "}
+            <span className="text-primary">Clinical Precision.</span>
+          </h1>
+          <p className="text-gray-500 text-base leading-relaxed">
+            At Labtraca, we don't just move samples; we move lives. Our mission is to
+            bridge the gap between diagnostics and patient care with unmatched speed
+            and absolute safety.
           </p>
-          <div className="animate-fade-in [animation-delay:400ms] pt-4">
-            <Link to="/">
-              <Button size="lg" className="rounded-full font-bold text-lg px-8 py-6 h-auto">
-                Learn More
-                <ArrowRight className="ml-2" />
-              </Button>
-            </Link>
+          <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+            <Button className="rounded-full px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white">
+              Get Started
+            </Button>
+          </a>
+        </div>
+      </section>
+
+      {/* ── MOBILE Phone card — between hero text and origin story ── */}
+      <section className="py-6 px-4 lg:hidden">
+        <div className="container mx-auto max-w-6xl">
+          <PhoneCard />
+        </div>
+      </section>
+
+      {/* ── DESKTOP Hero — dark image, white text ── */}
+      <section className="pt-24 pb-0 px-4 md:px-8 hidden lg:block">
+        <div className="container mx-auto max-w-6xl">
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl min-h-[420px]">
+            <img
+              src={LabImage}
+              alt="Medical laboratory"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[#0F172A]/75" />
+            <div className="relative z-10 p-10 md:p-14 flex flex-col justify-end min-h-[420px]">
+              <div className="max-w-2xl space-y-5">
+                <HeroBadge />
+                <h1 className="text-4xl lg:text-5xl font-black text-white leading-tight">
+                  Revolutionizing Medical Logistics
+                  <br />
+                  through <span className="text-primary">Clinical Precision.</span>
+                </h1>
+                <p className="text-gray-300 text-base leading-relaxed max-w-lg">
+                  At Labtraca, we don't just move samples; we move lives. Our mission is to
+                  bridge the gap between diagnostics and patient care with unmatched speed
+                  and absolute safety.
+                </p>
+                <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+                  <Button className="rounded-full px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white mt-1">
+                    Get Started
+                  </Button>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="py-12 px-4 md:py-20 md:px-6">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-black text-foreground mb-6">
-                Our Story
+      {/* ── Origin Story — desktop: two-col (text | phone card), mobile: text only ── */}
+      <section className="py-16 md:py-24 px-4 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left — text */}
+            <div className="space-y-7">
+              <span className="inline-block border border-primary text-primary text-xs font-semibold px-3 py-1 rounded-full tracking-wide">
+                Our Origin Story
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
+                Born from a need for{" "}
+                <span className="text-primary">Reliability.</span>
               </h2>
-              <div className="space-y-4 text-lg text-muted-foreground">
+              <div className="w-8 h-1 bg-primary rounded-full" />
+              <div className="space-y-4 text-gray-500 text-base leading-relaxed">
                 <p>
-                  Labtraca was born from a simple observation: getting lab tests shouldn't require taking time off work, sitting in waiting rooms, or navigating complex healthcare systems.
+                  Labtraca was founded by a team of clinical pathologists and logistics experts
+                  who realized that the weakest link in modern healthcare wasn't the diagnostic
+                  technology itself, but the journey of the sample from patient to lab.
                 </p>
                 <p>
-                  Founded in 2023, we set out to create a platform that connects people with certified medical professionals who can perform lab tests in the comfort of their homes or offices.
+                  We saw delays that cost critical time and temperature excursions that
+                  compromised vital data. We decided to fix it by building a logistics ecosystem
+                  specifically designed for the clinical environment.
                 </p>
-                <p>
-                  Today, we're proud to serve thousands of customers across the region, making healthcare more accessible one test at a time.
-                </p>
+              </div>
+              <div className="flex gap-10 pt-2 border-t border-gray-100">
+                {[
+                  { value: "500k+", label: "Samples" },
+                  { value: "99.9%", label: "Integrity" },
+                  { value: "15min", label: "Avg Pickup" },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <p className="text-2xl font-black text-gray-900">{stat.value}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="relative">
-              <div className="bg-primary/10 rounded-3xl p-12 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full -mr-20 -mt-20"></div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/20 rounded-full -ml-16 -mb-16"></div>
-                <div className="relative space-y-6">
-                  <div className="bg-card p-6 rounded-2xl shadow-lg">
-                    <p className="text-4xl font-black text-primary mb-2">10,000+</p>
-                    <p className="text-muted-foreground">Tests Completed</p>
-                  </div>
-                  <div className="bg-card p-6 rounded-2xl shadow-lg">
-                    <p className="text-4xl font-black text-primary mb-2">500+</p>
-                    <p className="text-muted-foreground">Medical Professionals</p>
-                  </div>
-                  <div className="bg-card p-6 rounded-2xl shadow-lg">
-                    <p className="text-4xl font-black text-primary mb-2">50+</p>
-                    <p className="text-muted-foreground">Partner Labs</p>
-                  </div>
-                </div>
-              </div>
+            {/* Right — phone card, desktop only */}
+            <div className="hidden lg:block">
+              <PhoneCard />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-12 px-4 md:py-20 md:px-6 bg-secondary/20">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-black text-foreground mb-4">
-              Our Values
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              The principles that guide everything we do
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
+      {/* ── Values ── */}
+      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+        <div className="container mx-auto max-w-6xl text-center">
+          <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
+            Values that Drive us Every Day
+          </h2>
+          <p className="text-gray-500 text-base max-w-lg mx-auto mb-5">
+            Our culture is built on the foundation of clinical ethics and high-performance logistics
+            engineering.
+          </p>
+          <div className="w-8 h-1 bg-primary rounded-full mx-auto mb-12" />
+          <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "Trust",
+                description:
+                  "Transparency is at our core. Labs and patients see exactly where their samples are, every step of the way.",
+              },
+              {
+                icon: HeartHandshake,
+                title: "Integrity",
+                description:
+                  "We handle every specimen with the reverence it deserves, adhering to strict HIPAA and clinical compliance protocols.",
+              },
+            ].map((val) => (
               <div
-                key={index}
-                className="bg-card p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                key={val.title}
+                className="bg-white border border-gray-100 rounded-2xl p-7 flex items-start gap-4 text-left hover:shadow-md transition-shadow"
               >
-                <div className={`w-16 h-16 rounded-2xl ${value.color} flex items-center justify-center mb-6`}>
-                  <value.icon className="w-8 h-8" />
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <val.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {value.description}
-                </p>
+                <div className="space-y-1.5">
+                  <h3 className="font-bold text-gray-900">{val.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{val.description}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 px-4 md:py-20 md:px-6 bg-primary">
-        <div className="container mx-auto max-w-7xl text-center">
-          <h2 className="text-4xl lg:text-5xl font-black text-primary-foreground mb-6">
-            Ready to Experience <br />Better Healthcare?
-          </h2>
-          <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who've made the switch to convenient, professional lab testing.
-          </p>
-          <Link to="/">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6 h-auto rounded-full">
-              Get Started Now
-              <ArrowRight className="ml-2" />
-            </Button>
-          </Link>
+      {/* ── Why We Do This ── */}
+      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900">Why We Do This</h2>
+              <p className="text-gray-500 text-base leading-relaxed">
+                Behind every test tube is a person waiting for answers. We do this because we
+                believe logistics should never be the reason a patient waits for a diagnosis or
+                misses a treatment window.
+              </p>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: HeartHandshake,
+                    title: "Patient-First Culture",
+                    description: "Every courier is trained in medical handling and patient privacy.",
+                  },
+                  {
+                    icon: ShieldCheck,
+                    title: "Clinical Leadership",
+                    description:
+                      "Our advisory board includes leading pathologists and diagnostic researchers.",
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
+                      <p className="text-sm text-gray-500 mt-0.5">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl md:rounded-3xl hidden lg:block">
+              <img src={LabImage} alt="Laboratory" className="w-full h-full object-cover max-h-[340px]" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="bg-[#0F172A] rounded-2xl md:rounded-3xl py-16 md:py-20 px-8 md:px-14 text-center space-y-6">
+            <h2 className="text-2xl md:text-4xl font-black text-white leading-tight max-w-2xl mx-auto">
+              Ready to Experience True Clinical Logistics?
+            </h2>
+            <p className="text-gray-400 text-base max-w-lg mx-auto leading-relaxed">
+              Join over 200 labs and thousands of patients who trust Labtraca for their
+              diagnostic transport needs within our collaborative pharmacy ecosystem
+              enhancing health service delivery.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+              <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+                <Button className="rounded-full px-8 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white min-w-[180px]">
+                  Get Started Today
+                </Button>
+              </a>
+              <Link to="/about">
+                <Button
+                  variant="outline"
+                  className="rounded-full px-8 py-3 h-auto text-sm font-semibold border-white/30 text-white hover:bg-white/10 min-w-[180px] bg-transparent"
+                >
+                  Contact Our Team
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
