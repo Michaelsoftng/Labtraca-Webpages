@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Truck, Droplet, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import DispatcherImage from "@/assets/dispatcher-bike.png";
 
@@ -7,99 +6,37 @@ export const PartnerRegistrationSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="register" className="py-12 px-4 md:py-20 md:px-6 bg-[#F7FCF8]">
-      <div className="container mx-auto max-w-7xl space-y-16">
-        {/* Dispatcher Section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-fade-in">
-            <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center">
-              <Truck className="w-10 h-10 text-accent" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground">
-              Become a Dispatcher
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Join our logistics team and coordinate sample collections efficiently. Flexible hours, competitive pay, and the opportunity to make healthcare more accessible.
-            </p>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">✓</span>
-                <span>Flexible scheduling</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">✓</span>
-                <span>Competitive earnings</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">✓</span>
-                <span>Work in your area</span>
-              </li>
-            </ul>
-            <Button
-              size="lg"
-              className="rounded-full font-bold text-lg px-10 py-6 h-auto"
-              onClick={() => navigate("/dispatcher")}
-            >
-              Register as Dispatcher
-              <ArrowRight className="ml-2" />
-            </Button>
-          </div>
+    <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+      <div className="container mx-auto max-w-6xl">
+        <div className="relative overflow-hidden rounded-2xl md:rounded-3xl">
+          {/* Background image */}
+          <img
+            src={DispatcherImage}
+            alt="Dispatcher on bike"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
 
-          <div className="relative animate-fade-in [animation-delay:200ms]">
-            <div className="w-full h-[400px] bg-gradient-to-br from-accent to-accent/60 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
-              <img
-                src={DispatcherImage}
-                alt="Medical Dispatcher"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-        </div>
+          {/* Teal overlay */}
+          <div className="absolute inset-0 bg-primary/80" />
 
-        {/* Phlebotomist Section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative order-2 md:order-1 animate-fade-in [animation-delay:200ms]">
-            <div className="w-full h-[400px] bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
-              <img
-                src="/assets/phlebotomist_black.png"
-                alt="Professional Phlebotomist"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
+          <div className="relative z-10 py-16 md:py-20 px-8 md:px-14">
+            <div className="max-w-lg space-y-6 animate-fade-in">
+              <span className="inline-block text-white/70 text-sm font-semibold tracking-wide uppercase">
+                Join our Dispatcher Fleet
+              </span>
 
-          <div className="space-y-6 order-1 md:order-2 animate-fade-in">
-            <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center">
-              <Droplet className="w-10 h-10 text-primary" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
+                Earn professional rates while delivering essential healthcare
+                services across your city.
+              </h2>
+
+              <Button
+                onClick={() => navigate("/dispatcher")}
+                className="rounded-full px-8 py-3 h-auto text-sm font-bold bg-white text-primary hover:bg-white/90 border-2 border-white shadow-lg"
+              >
+                Become a Partner
+              </Button>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground">
-              Become a Phlebotomist
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Use your medical skills to provide convenient at-home and workplace lab services. Join a network of healthcare professionals making a difference.
-            </p>
-            <ul className="space-y-3 text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">✓</span>
-                <span>Licensed professionals only</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">✓</span>
-                <span>Premium compensation</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-bold">✓</span>
-                <span>Modern equipment provided</span>
-              </li>
-            </ul>
-            <Button
-              size="lg"
-              className="rounded-full font-bold text-lg px-10 py-6 h-auto"
-              onClick={() => navigate("/phlebotomist")}
-            >
-              Register as Phlebotomist
-              <ArrowRight className="ml-2" />
-            </Button>
           </div>
         </div>
       </div>

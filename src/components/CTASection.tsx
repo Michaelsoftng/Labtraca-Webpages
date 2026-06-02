@@ -1,35 +1,65 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Network, Lock, Headphones, ShieldCheck } from "lucide-react";
+
+const standardItems = [
+  {
+    icon: Network,
+    iconColor: "text-primary",
+    iconBg: "bg-primary/10",
+    title: "Hyper-Local Labs",
+    description: "Connected to 200+ certified facilities nearby.",
+  },
+  {
+    icon: Lock,
+    iconColor: "text-gray-700",
+    iconBg: "bg-gray-100",
+    title: "Total Privacy",
+    description: "End-to-end encrypted medical data handling.",
+  },
+  {
+    icon: Headphones,
+    iconColor: "text-gray-700",
+    iconBg: "bg-gray-100",
+    title: "24/7 Professional Support",
+    description: "Real clinicians ready to assist you any time.",
+  },
+];
 
 export const CTASection = () => {
   return (
-    <section className="py-12 px-4 md:py-20 md:px-6 bg-gradient-to-br from-[#22C55E] to-[#16a34a] text-primary-foreground relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent)]" />
-
-      <div className="container mx-auto max-w-4xl text-center relative z-10 space-y-8">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black animate-fade-in">
-          Ready To Get Tested?
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-gray-50">
+      <div className="container mx-auto max-w-6xl">
+        <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-10">
+          Why Labtraca?
         </h2>
-        <p className="text-xl md:text-2xl opacity-90 animate-fade-in [animation-delay:200ms]">
-          Join thousands who trust Labtraca for their health needs
-        </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in [animation-delay:400ms]">
-          <Button
-            size="lg"
-            variant="secondary"
-            className="rounded-full font-bold text-lg px-10 py-6 h-auto shadow-xl hover:scale-105 transition-transform"
-          >
-            Book Your Test Now
-            <ArrowRight className="ml-2" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="rounded-full font-bold text-lg px-10 py-6 h-auto border-2 border-white text-white hover:bg-white hover:text-primary shadow-xl hover:scale-105 transition-all"
-          >
-            Become a Partner
-          </Button>
+        <div className="grid sm:grid-cols-3 gap-5 mb-5">
+          {standardItems.map((item, i) => (
+            <div
+              key={i}
+              className="bg-white border border-gray-100 rounded-2xl p-7 flex flex-col gap-4 hover:shadow-md transition-shadow"
+            >
+              <div className={`w-11 h-11 rounded-xl ${item.iconBg} flex items-center justify-center`}>
+                <item.icon className={`w-5 h-5 ${item.iconColor}`} />
+              </div>
+              <div className="space-y-1.5">
+                <h3 className="font-bold text-gray-900">{item.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Digital Health Passport — full-width, icon on the right */}
+        <div className="bg-white border border-gray-100 rounded-2xl p-7 flex items-center justify-between gap-6 hover:shadow-md transition-shadow">
+          <div className="space-y-1.5 flex-1">
+            <h3 className="font-bold text-gray-900 text-lg">Digital Health Passport</h3>
+            <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
+              All your records in one verified place. Manage your entire medical history in one secure digital wallet.
+            </p>
+          </div>
+          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <ShieldCheck className="w-8 h-8 text-primary" />
+          </div>
         </div>
       </div>
     </section>

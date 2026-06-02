@@ -6,7 +6,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 
 const client = new ApolloClient({
   link: createHttpLink({
-    uri: "https://api.labtraca.com/graphql",
+    uri: "https://portalapi.labtraca.com/graphql",
   }),
   cache: new InMemoryCache(),
 });

@@ -2,24 +2,24 @@ import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
-import { DownloadAppSection } from "@/components/DownloadAppSection";
 import { PartnerRegistrationSection } from "@/components/PartnerRegistrationSection";
-import { CTASection } from "@/components/CTASection";
-import { Footer } from "@/components/Footer";
 import CategoriesSection from "@/components/CategoriesSection";
+import { CTASection } from "@/components/CTASection";
+import { DownloadAppSection } from "@/components/DownloadAppSection";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navigation />
       <main>
         <HeroSection />
-        <CategoriesSection />
         <HowItWorksSection />
         <FeaturesSection />
-        <DownloadAppSection />
         <PartnerRegistrationSection />
+        <CategoriesSection />
         <CTASection />
+        <DownloadAppSection />
       </main>
       <Footer />
     </div>

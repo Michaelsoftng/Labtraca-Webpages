@@ -1,66 +1,68 @@
-import { Card } from "@/components/ui/card";
-import { Microscope, Bike, CalendarCheck, UserCheck } from "lucide-react";
+import { MapPin, Thermometer } from "lucide-react";
+import MedicalIllustration from "@/assets/Overlay+Border+Shadow.svg";
 
 const features = [
   {
-    icon: Microscope,
-    title: "Your City's Top Labs",
-    description: "With a great variety of labs you can order your tests or explore new health services nearby!",
-    color: "bg-primary/10 text-primary",
+    icon: MapPin,
+    title: "GPS Pinpointing",
+    description: "Military-grade location tracking for precise pickup.",
   },
   {
-    icon: Bike,
-    title: "Fast Service",
-    description: "Like a flash! Book a test in your city and get results in hours or days, not weeks",
-    color: "bg-primary/10 text-primary",
-  },
-  {
-    icon: CalendarCheck,
-    title: "24/7 Availability",
-    description: "We're here when you need us. Book appointments that fit your schedule, any time",
-    color: "bg-primary/10 text-primary",
-  },
-  {
-    icon: UserCheck,
-    title: "Verified Professionals",
-    description: "All our medical professionals are licensed, certified, and background-checked for your safety",
-    color: "bg-primary/10 text-primary",
+    icon: Thermometer,
+    title: "Cold-Chain Monitoring",
+    description: "IoT sensors ensure samples stay at optimal temperatures.",
   },
 ];
 
 export const FeaturesSection = () => {
   return (
-    <section id="features" className="py-12 px-4 md:py-20 md:px-6 bg-[#F7FCF8]">
-      <div className="container mx-auto max-w-7xl">
-        <h2 className="text-3xl md:text-5xl font-black text-center mb-4 text-foreground">
-          Anything Delivered
-        </h2>
-        <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
-          From routine blood work to specialized testing, we bring the lab to you
-        </p>
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-[#0F172A]">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left — text + features */}
+          <div className="space-y-8 animate-fade-in">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
+                Watch your health
+                <br />
+                come to you
+              </h2>
+              <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-md">
+                Real-time precision for every medical sample. No more waiting in
+                long clinic queues.
+              </p>
+            </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="p-8 hover:shadow-2xl transition-all duration-300 border-0 animate-fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <div className="flex flex-col sm:flex-row items-start gap-6">
-                <div className={`w-16 h-16 rounded-2xl ${feature.color} flex items-center justify-center flex-shrink-0`}>
-                  <feature.icon className="w-8 h-8" />
+            <div className="space-y-4">
+              {features.map((feature, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/8 transition-colors"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <feature.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm mb-1">
+                      {feature.title}
+                    </h4>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-black text-foreground">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            </Card>
-          ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Right — illustration */}
+          <div className="flex justify-center lg:justify-end animate-fade-in [animation-delay:200ms]">
+            <img
+              src={MedicalIllustration}
+              alt="Medical logistics illustration"
+              className="w-full max-w-[480px] h-auto object-contain"
+            />
+          </div>
         </div>
       </div>
     </section>
