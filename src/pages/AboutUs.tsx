@@ -17,9 +17,15 @@ const HeroBadge = () => (
 const PhoneCard = () => (
   <div className="space-y-4">
     <div className="relative overflow-hidden rounded-2xl bg-[#0F172A] min-h-[240px] flex items-center justify-center">
-      <img src={PhoneMockup} alt="App mockup" className="w-full h-auto object-cover" />
+      <img
+        src={PhoneMockup}
+        alt="App mockup"
+        className="w-full h-auto object-cover"
+      />
       <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-transparent">
-        <p className="text-primary text-xs font-semibold tracking-wide uppercase mb-1">Our Vision</p>
+        <p className="text-primary text-xs font-semibold tracking-wide uppercase mb-1">
+          Our Vision
+        </p>
         <p className="text-white font-bold text-lg">Democratizing Healthcare</p>
       </div>
     </div>
@@ -29,14 +35,18 @@ const PhoneCard = () => (
           <Crosshair className="w-4 h-4 text-primary" />
         </div>
         <h4 className="font-bold text-gray-900 text-sm">Precision</h4>
-        <p className="text-xs text-gray-500 leading-relaxed">Surgical precision in temperature control.</p>
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Surgical precision in temperature control.
+        </p>
       </div>
       <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 space-y-2">
         <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
           <Zap className="w-4 h-4 text-primary" />
         </div>
         <h4 className="font-bold text-gray-900 text-sm">Speed</h4>
-        <p className="text-xs text-gray-500 leading-relaxed">Fastest possible laboratory turnover times.</p>
+        <p className="text-xs text-gray-500 leading-relaxed">
+          Fastest possible laboratory turnover times.
+        </p>
       </div>
     </div>
   </div>
@@ -50,7 +60,7 @@ const AboutUs = () => {
       <Navigation />
 
       {/* ── MOBILE Hero — white bg, dark text ── */}
-      <section className="pt-24 pb-0 px-4 lg:hidden">
+      <section className="pt-24 pb-0 lg:hidden">
         <div className="container mx-auto max-w-6xl py-10 space-y-5">
           <HeroBadge />
           <h1 className="text-3xl font-black text-gray-900 leading-tight">
@@ -58,11 +68,15 @@ const AboutUs = () => {
             <span className="text-primary">Clinical Precision.</span>
           </h1>
           <p className="text-gray-500 text-base leading-relaxed">
-            At Labtraca, we don't just move samples; we move lives. Our mission is to
-            bridge the gap between diagnostics and patient care with unmatched speed
-            and absolute safety.
+            At Labtraca, we don't just move samples; we move lives. Our mission
+            is to bridge the gap between diagnostics and patient care with
+            unmatched speed and absolute safety.
           </p>
-          <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://app.labtraca.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Button className="rounded-full px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white">
               Get Started
             </Button>
@@ -71,7 +85,7 @@ const AboutUs = () => {
       </section>
 
       {/* ── MOBILE Phone card — between hero text and origin story ── */}
-      <section className="py-6 px-4 lg:hidden">
+      <section className="py-6 lg:hidden">
         <div className="container mx-auto max-w-6xl">
           <PhoneCard />
         </div>
@@ -93,14 +107,19 @@ const AboutUs = () => {
                 <h1 className="text-4xl lg:text-5xl font-black text-white leading-tight">
                   Revolutionizing Medical Logistics
                   <br />
-                  through <span className="text-primary">Clinical Precision.</span>
+                  through{" "}
+                  <span className="text-primary">Clinical Precision.</span>
                 </h1>
                 <p className="text-gray-300 text-base leading-relaxed max-w-lg">
-                  At Labtraca, we don't just move samples; we move lives. Our mission is to
-                  bridge the gap between diagnostics and patient care with unmatched speed
-                  and absolute safety.
+                  At Labtraca, we don't just move samples; we move lives. Our
+                  mission is to bridge the gap between diagnostics and patient
+                  care with unmatched speed and absolute safety.
                 </p>
-                <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://app.labtraca.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button className="rounded-full px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white mt-1">
                     Get Started
                   </Button>
@@ -112,7 +131,7 @@ const AboutUs = () => {
       </section>
 
       {/* ── Origin Story — desktop: two-col (text | phone card), mobile: text only ── */}
-      <section className="py-16 md:py-24 px-4 md:px-8">
+      <section className="py-16 md:py-24 md:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left — text */}
@@ -127,14 +146,16 @@ const AboutUs = () => {
               <div className="w-8 h-1 bg-primary rounded-full" />
               <div className="space-y-4 text-gray-500 text-base leading-relaxed">
                 <p>
-                  Labtraca was founded by a team of clinical pathologists and logistics experts
-                  who realized that the weakest link in modern healthcare wasn't the diagnostic
-                  technology itself, but the journey of the sample from patient to lab.
+                  Labtraca was founded by a team of clinical pathologists and
+                  logistics experts who realized that the weakest link in modern
+                  healthcare wasn't the diagnostic technology itself, but the
+                  journey of the sample from patient to lab.
                 </p>
                 <p>
-                  We saw delays that cost critical time and temperature excursions that
-                  compromised vital data. We decided to fix it by building a logistics ecosystem
-                  specifically designed for the clinical environment.
+                  We saw delays that cost critical time and temperature
+                  excursions that compromised vital data. We decided to fix it
+                  by building a logistics ecosystem specifically designed for
+                  the clinical environment.
                 </p>
               </div>
               <div className="flex gap-10 pt-2 border-t border-gray-100">
@@ -144,7 +165,9 @@ const AboutUs = () => {
                   { value: "15min", label: "Avg Pickup" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <p className="text-2xl font-black text-gray-900">{stat.value}</p>
+                    <p className="text-2xl font-black text-gray-900">
+                      {stat.value}
+                    </p>
                     <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
                   </div>
                 ))}
@@ -160,14 +183,14 @@ const AboutUs = () => {
       </section>
 
       {/* ── Values ── */}
-      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+      <section className="py-16 md:py-20 md:px-8 lg:bg-white bg-[#F1F3FF]">
         <div className="container mx-auto max-w-6xl text-center">
           <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
             Values that Drive us Every Day
           </h2>
           <p className="text-gray-500 text-base max-w-lg mx-auto mb-5">
-            Our culture is built on the foundation of clinical ethics and high-performance logistics
-            engineering.
+            Our culture is built on the foundation of clinical ethics and
+            high-performance logistics engineering.
           </p>
           <div className="w-8 h-1 bg-primary rounded-full mx-auto mb-12" />
           <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
@@ -194,7 +217,9 @@ const AboutUs = () => {
                 </div>
                 <div className="space-y-1.5">
                   <h3 className="font-bold text-gray-900">{val.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{val.description}</p>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    {val.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -203,22 +228,25 @@ const AboutUs = () => {
       </section>
 
       {/* ── Why We Do This ── */}
-      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+      <section className="py-16 md:py-20 md:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black text-gray-900">Why We Do This</h2>
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900">
+                Why We Do This
+              </h2>
               <p className="text-gray-500 text-base leading-relaxed">
-                Behind every test tube is a person waiting for answers. We do this because we
-                believe logistics should never be the reason a patient waits for a diagnosis or
-                misses a treatment window.
+                Behind every test tube is a person waiting for answers. We do
+                this because we believe logistics should never be the reason a
+                patient waits for a diagnosis or misses a treatment window.
               </p>
               <div className="space-y-4">
                 {[
                   {
                     icon: HeartHandshake,
                     title: "Patient-First Culture",
-                    description: "Every courier is trained in medical handling and patient privacy.",
+                    description:
+                      "Every courier is trained in medical handling and patient privacy.",
                   },
                   {
                     icon: ShieldCheck,
@@ -232,34 +260,46 @@ const AboutUs = () => {
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 text-sm">{item.title}</h4>
-                      <p className="text-sm text-gray-500 mt-0.5">{item.description}</p>
+                      <h4 className="font-bold text-gray-900 text-sm">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-gray-500 mt-0.5">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
             <div className="overflow-hidden rounded-2xl md:rounded-3xl hidden lg:block">
-              <img src={LabImage} alt="Laboratory" className="w-full h-full object-cover max-h-[340px]" />
+              <img
+                src={LabImage}
+                alt="Laboratory"
+                className="w-full h-full object-cover max-h-[340px]"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="py-16 md:py-20 px-4 md:px-8 bg-white">
+      {/* ── CTA — desktop only ── */}
+      <section className="hidden md:block py-16 md:py-20 md:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="bg-[#0F172A] rounded-2xl md:rounded-3xl py-16 md:py-20 px-8 md:px-14 text-center space-y-6">
             <h2 className="text-2xl md:text-4xl font-black text-white leading-tight max-w-2xl mx-auto">
               Ready to Experience True Clinical Logistics?
             </h2>
             <p className="text-gray-400 text-base max-w-lg mx-auto leading-relaxed">
-              Join over 200 labs and thousands of patients who trust Labtraca for their
-              diagnostic transport needs within our collaborative pharmacy ecosystem
-              enhancing health service delivery.
+              Join over 200 labs and thousands of patients who trust Labtraca
+              for their diagnostic transport needs within our collaborative
+              pharmacy ecosystem enhancing health service delivery.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://app.labtraca.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button className="rounded-full px-8 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white min-w-[180px]">
                   Get Started Today
                 </Button>
