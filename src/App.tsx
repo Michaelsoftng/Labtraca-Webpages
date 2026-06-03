@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import HowItWorks from "./pages/HowItWorks";
-import OurServices from "./pages/OurServices";
 import Partners from "./pages/Partners";
 import PartnerWithUs from "./pages/PartnerWithUs";
 import NotFound from "./pages/NotFound";
@@ -48,7 +47,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
-          <Route path="/services" element={<OurServices />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/partner-with-us" element={<PartnerWithUs />} />
           <Route path="/app" element={<OurApp />} />
