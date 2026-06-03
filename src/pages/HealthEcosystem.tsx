@@ -2,9 +2,20 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
-  FlaskConical, PersonStanding, Pipette, Network,
-  CheckCircle2, Code2, BarChart3, Database, ShieldCheck,
-  ClipboardList, Bike, ScanLine, PackageCheck, ArrowRight,
+  FlaskConical,
+  PersonStanding,
+  Pipette,
+  Network,
+  CheckCircle2,
+  Code2,
+  BarChart3,
+  Database,
+  ShieldCheck,
+  ClipboardList,
+  Bike,
+  ScanLine,
+  PackageCheck,
+  ArrowRight,
   LayoutGrid,
 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -19,25 +30,29 @@ const desktopSteps = [
     icon: ClipboardList,
     number: "1.",
     title: "Request",
-    description: "Schedule diagnostics collection via app or integrated enterprise dashboard.",
+    description:
+      "Schedule diagnostics collection via app or integrated enterprise dashboard.",
   },
   {
     icon: Bike,
     number: "2.",
     title: "Dispatch",
-    description: "Vetted courier or dispatch rider arrives with specialized temperature-controlled kits.",
+    description:
+      "Vetted courier or dispatch rider arrives with specialized temperature-controlled kits.",
   },
   {
     icon: ScanLine,
     number: "3.",
     title: "Validation",
-    description: "Secure scanning and chain-of-custody logging for all diagnostics at every touchpoint.",
+    description:
+      "Secure scanning and chain-of-custody logging for all diagnostics at every touchpoint.",
   },
   {
     icon: PackageCheck,
     number: "4.",
     title: "Delivery",
-    description: "Handover to clinical destination with instant digital proof of delivery.",
+    description:
+      "Handover to clinical destination with instant digital proof of delivery.",
   },
 ];
 
@@ -61,7 +76,7 @@ const mobileSteps = [
 
 const HealthEcosystem = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F9F9FF]">
       <Navigation />
 
       {/* ══════════════════════════════════════════
@@ -69,7 +84,7 @@ const HealthEcosystem = () => {
       ══════════════════════════════════════════ */}
 
       {/* Mobile — Hero */}
-      <section className="lg:hidden pt-[72px] pb-4 px-4 bg-white">
+      <section className="lg:hidden pt-[72px] pb-4 px-4 bg-[#F9F9FF]">
         <div className="py-5 space-y-1.5">
           <h1 className="text-2xl font-black text-gray-900 leading-tight">
             Our Specialized Services
@@ -81,8 +96,7 @@ const HealthEcosystem = () => {
       </section>
 
       {/* Mobile — Service Cards */}
-      <section className="lg:hidden px-4 pb-6 bg-white space-y-4">
-
+      <section className="lg:hidden px-4 pb-6 bg-[#F9F9FF] space-y-4">
         {/* Lab Test Collection */}
         <div className="bg-white border border-gray-200 rounded-2xl p-5">
           <div className="flex items-start justify-between mb-3">
@@ -93,12 +107,19 @@ const HealthEcosystem = () => {
               High Demand
             </span>
           </div>
-          <h3 className="font-black text-gray-900 text-xl mb-2">Lab Test Collection</h3>
+          <h3 className="font-black text-gray-900 text-xl mb-2">
+            Lab Test Collection
+          </h3>
           <p className="text-sm text-gray-500 leading-relaxed mb-4">
-            Secure diagnostics transport of biological samples from patient to laboratory
-            with real-time temperature tracking.
+            Secure diagnostics transport of biological samples from patient to
+            laboratory with real-time temperature tracking.
           </p>
-          <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer" className="block">
+          <a
+            href="https://app.labtraca.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
             <Button className="w-full rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold h-11">
               Learn More
             </Button>
@@ -113,10 +134,12 @@ const HealthEcosystem = () => {
             className="w-full h-44 object-cover"
           />
           <div className="p-5">
-            <h3 className="font-black text-gray-900 text-xl mb-2">Dispatch Riders</h3>
+            <h3 className="font-black text-gray-900 text-xl mb-2">
+              Dispatch Riders
+            </h3>
             <p className="text-sm text-gray-500 leading-relaxed mb-4">
-              Rapid response diagnostics logistics team equipped for time-critical
-              medical deliveries and urban navigation.
+              Rapid response diagnostics logistics team equipped for
+              time-critical medical deliveries and urban navigation.
             </p>
             <Button
               variant="outline"
@@ -132,10 +155,12 @@ const HealthEcosystem = () => {
           <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-3">
             <Network className="w-5 h-5 text-gray-500" />
           </div>
-          <h3 className="font-black text-gray-900 text-xl mb-2">Pharmacy Collaboration</h3>
+          <h3 className="font-black text-gray-900 text-xl mb-2">
+            Pharmacy Collaboration
+          </h3>
           <p className="text-sm text-gray-500 leading-relaxed mb-4">
-            A collaborative diagnostics ecosystem enhancing health service delivery through
-            integrated pharmacy network solutions.
+            A collaborative diagnostics ecosystem enhancing health service
+            delivery through integrated pharmacy network solutions.
           </p>
           <Button
             variant="outline"
@@ -150,10 +175,12 @@ const HealthEcosystem = () => {
           <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-3">
             <Pipette className="w-5 h-5 text-gray-500" />
           </div>
-          <h3 className="font-black text-gray-900 text-xl mb-2">Mobile Phlebotomy</h3>
+          <h3 className="font-black text-gray-900 text-xl mb-2">
+            Mobile Phlebotomy
+          </h3>
           <p className="text-sm text-gray-500 leading-relaxed mb-4">
-            Certified professionals dispatched for professional blood draws and diagnostics
-            sample preparation at your location.
+            Certified professionals dispatched for professional blood draws and
+            diagnostics sample preparation at your location.
           </p>
           <Button
             variant="outline"
@@ -168,10 +195,12 @@ const HealthEcosystem = () => {
           <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-3">
             <LayoutGrid className="w-5 h-5 text-white" />
           </div>
-          <h3 className="font-black text-white text-xl mb-2">Enterprise Solutions</h3>
+          <h3 className="font-black text-white text-xl mb-2">
+            Enterprise Solutions
+          </h3>
           <p className="text-sm text-white/70 leading-relaxed mb-4">
-            Bulk diagnostics logistics infrastructure for hospitals and clinics requiring
-            high-volume daily sample rotation.
+            Bulk diagnostics logistics infrastructure for hospitals and clinics
+            requiring high-volume daily sample rotation.
           </p>
           <Button className="w-full rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold h-11">
             Inquire Now
@@ -189,8 +218,12 @@ const HealthEcosystem = () => {
                 <span className="text-white text-sm font-bold">{step.num}</span>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 text-sm leading-snug">{step.title}</h4>
-                <p className="text-sm text-gray-500 mt-0.5 leading-relaxed">{step.desc}</p>
+                <h4 className="font-bold text-gray-900 text-sm leading-snug">
+                  {step.title}
+                </h4>
+                <p className="text-sm text-gray-500 mt-0.5 leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             </div>
           ))}
@@ -200,8 +233,15 @@ const HealthEcosystem = () => {
       {/* Mobile — Simple Footer */}
       <footer className="lg:hidden border-t border-gray-100 px-4 pt-8 pb-24 bg-white">
         <div className="flex flex-wrap gap-x-5 gap-y-2 justify-center mb-4">
-          <Link to="/about" className="text-sm text-gray-500 hover:text-gray-900">About Us</Link>
-          <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Support</a>
+          <Link
+            to="/about"
+            className="text-sm text-gray-500 hover:text-gray-900"
+          >
+            About Us
+          </Link>
+          <a href="#" className="text-sm text-gray-500 hover:text-gray-900">
+            Support
+          </a>
           <a
             href="https://sites.google.com/view/labtraca-user/home"
             target="_blank"
@@ -210,13 +250,17 @@ const HealthEcosystem = () => {
           >
             Privacy Policy
           </a>
-          <Link to="/terms-conditions" className="text-sm text-gray-500 hover:text-gray-900">
+          <Link
+            to="/terms-conditions"
+            className="text-sm text-gray-500 hover:text-gray-900"
+          >
             Terms of Service
           </Link>
         </div>
-        <p className="text-xs text-gray-400 text-center">© 2024 Labtraca Medical Logistics</p>
+        <p className="text-xs text-gray-400 text-center">
+          © 2024 Labtraca Medical Logistics
+        </p>
       </footer>
-
 
       {/* ══════════════════════════════════════════
           DESKTOP LAYOUT  (hidden below lg)
@@ -234,12 +278,17 @@ const HealthEcosystem = () => {
                 Comprehensive Diagnostics &amp; Logistics for Modern Healthcare.
               </h1>
               <p className="text-gray-500 text-base leading-relaxed max-w-md">
-                Labtraca bridges the gap between clinical excellence and logistical precision.
-                We provide secure, rapid transport for diagnostics and medical assets across
-                the entire healthcare ecosystem.
+                Labtraca bridges the gap between clinical excellence and
+                logistical precision. We provide secure, rapid transport for
+                diagnostics and medical assets across the entire healthcare
+                ecosystem.
               </p>
               <div className="flex flex-wrap gap-3 pt-1">
-                <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://app.labtraca.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button className="rounded-full px-6 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white">
                     Book Collection
                   </Button>
@@ -263,8 +312,12 @@ const HealthEcosystem = () => {
                   <CheckCircle2 className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-900 leading-tight">ISO Certified</p>
-                  <p className="text-[10px] text-gray-500 leading-tight">Clinical-Grade Logistics</p>
+                  <p className="text-xs font-bold text-gray-900 leading-tight">
+                    ISO Certified
+                  </p>
+                  <p className="text-[10px] text-gray-500 leading-tight">
+                    Clinical-Grade Logistics
+                  </p>
                 </div>
               </div>
             </div>
@@ -276,35 +329,51 @@ const HealthEcosystem = () => {
       <section className="hidden lg:block py-16 md:py-20 px-4 md:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-5 gap-4 auto-rows-fr">
-
             {/* Lab Test Collection */}
             <div className="col-span-2 bg-white border border-gray-100 rounded-2xl p-6 flex flex-col gap-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                 <FlaskConical className="w-5 h-5 text-primary" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-black text-gray-900 text-lg">Lab Test Collection</h3>
+                <h3 className="font-black text-gray-900 text-lg">
+                  Lab Test Collection
+                </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  On-demand diagnostics logistics for patients. We collect from your doorstep
-                  and deliver to certified partner laboratories within hours.
+                  On-demand diagnostics logistics for patients. We collect from
+                  your doorstep and deliver to certified partner laboratories
+                  within hours.
                 </p>
               </div>
               <ul className="space-y-1.5">
-                {["Temperature Controlled", "Real-time Tracking", "Digital Chain of Custody"].map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-xs text-gray-500">
+                {[
+                  "Temperature Controlled",
+                  "Real-time Tracking",
+                  "Digital Chain of Custody",
+                ].map((f) => (
+                  <li
+                    key={f}
+                    className="flex items-center gap-2 text-xs text-gray-500"
+                  >
                     <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                     {f}
                   </li>
                 ))}
               </ul>
-              <a href="https://app.labtraca.com/" className="text-sm text-primary font-semibold hover:underline mt-auto flex items-center gap-1">
+              <a
+                href="https://app.labtraca.com/"
+                className="text-sm text-primary font-semibold hover:underline mt-auto flex items-center gap-1"
+              >
                 Schedule a pick-up <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
 
             {/* Centre doctor image */}
             <div className="col-span-1 overflow-hidden rounded-2xl">
-              <img src={DoctorImage} alt="Healthcare professional" className="w-full h-full object-cover" />
+              <img
+                src={DoctorImage}
+                alt="Healthcare professional"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Rapid Dispatch */}
@@ -315,12 +384,16 @@ const HealthEcosystem = () => {
               <div className="space-y-2">
                 <h3 className="font-black text-lg">Rapid Dispatch</h3>
                 <p className="text-sm text-white/80 leading-relaxed">
-                  Medical-grade dispatch riders for fast, secure delivery of diagnostics
-                  and clinical samples across the city.
+                  Medical-grade dispatch riders for fast, secure delivery of
+                  diagnostics and clinical samples across the city.
                 </p>
               </div>
               <div className="mt-auto overflow-hidden rounded-xl -mx-2 -mb-2">
-                <img src={DispatchRider} alt="Dispatch rider" className="w-full h-[160px] object-cover" />
+                <img
+                  src={DispatchRider}
+                  alt="Dispatch rider"
+                  className="w-full h-[160px] object-cover"
+                />
               </div>
             </div>
 
@@ -333,14 +406,21 @@ const HealthEcosystem = () => {
                 <Pipette className="w-5 h-5 text-primary" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-black text-gray-900 text-lg">Phlebotomy Care</h3>
+                <h3 className="font-black text-gray-900 text-lg">
+                  Phlebotomy Care
+                </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Licensed phlebotomists delivered to your location. High-quality diagnostics
-                  collection in the comfort of your home or office.
+                  Licensed phlebotomists delivered to your location.
+                  High-quality diagnostics collection in the comfort of your
+                  home or office.
                 </p>
               </div>
               <div className="mt-auto overflow-hidden rounded-xl -mx-2 -mb-2">
-                <img src={PhlebotomistImage} alt="Phlebotomist at work" className="w-full h-[160px] object-cover" />
+                <img
+                  src={PhlebotomistImage}
+                  alt="Phlebotomist at work"
+                  className="w-full h-[160px] object-cover"
+                />
               </div>
             </div>
 
@@ -353,9 +433,10 @@ const HealthEcosystem = () => {
                 <div className="space-y-2">
                   <h3 className="font-black text-lg">Enterprise Diagnostics</h3>
                   <p className="text-sm text-white/70 leading-relaxed">
-                    Integrated B2B logistics and diagnostics support for hospitals, diagnostic
-                    centers, and pharmaceutical manufacturers. Scalable infrastructure for
-                    multi-site operations.
+                    Integrated B2B logistics and diagnostics support for
+                    hospitals, diagnostic centers, and pharmaceutical
+                    manufacturers. Scalable infrastructure for multi-site
+                    operations.
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mt-auto">
@@ -373,10 +454,13 @@ const HealthEcosystem = () => {
                 </div>
               </div>
               <div className="w-[160px] flex-shrink-0 overflow-hidden rounded-xl">
-                <img src={LabInterior} alt="Enterprise diagnostics" className="w-full h-full object-cover" />
+                <img
+                  src={LabInterior}
+                  alt="Enterprise diagnostics"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -389,20 +473,27 @@ const HealthEcosystem = () => {
               Precision Diagnostics &amp; Logistics. Simplified.
             </h2>
             <p className="text-gray-500 text-base max-w-xl mx-auto leading-relaxed">
-              Our systematic approach ensures that every sample and clinical asset reaches
-              its destination with medical-grade integrity.
+              Our systematic approach ensures that every sample and clinical
+              asset reaches its destination with medical-grade integrity.
             </p>
           </div>
           <div className="relative">
             <div className="absolute top-8 left-[12%] right-[12%] h-px bg-gray-200" />
             <div className="grid grid-cols-4 gap-8">
               {desktopSteps.map((step, i) => (
-                <div key={i} className="flex flex-col items-center text-center space-y-3">
+                <div
+                  key={i}
+                  className="flex flex-col items-center text-center space-y-3"
+                >
                   <div className="w-16 h-16 rounded-full border-2 border-primary/30 bg-white flex items-center justify-center relative z-10">
                     <step.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <p className="font-black text-sm text-gray-900">{step.number} {step.title}</p>
-                  <p className="text-xs text-gray-500 leading-relaxed max-w-[160px]">{step.description}</p>
+                  <p className="font-black text-sm text-gray-900">
+                    {step.number} {step.title}
+                  </p>
+                  <p className="text-xs text-gray-500 leading-relaxed max-w-[160px]">
+                    {step.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -421,11 +512,15 @@ const HealthEcosystem = () => {
               Ready to optimize your diagnostics logistics?
             </h2>
             <p className="text-gray-600 text-base max-w-lg mx-auto leading-relaxed">
-              Join 500+ clinics and health providers trusting Labtraca for secure
-              healthcare and diagnostics delivery support.
+              Join 500+ clinics and health providers trusting Labtraca for
+              secure healthcare and diagnostics delivery support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://app.labtraca.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button className="rounded-full px-8 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white min-w-[180px]">
                   Register as Patient
                 </Button>
