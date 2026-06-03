@@ -4,30 +4,30 @@ import logo from "@/assets/logo-transparent.png";
 
 const columns = [
   {
-    heading: "Services",
-    links: [
-      { label: "Diagnostics Logistics", to: "/health-ecosystem" },
-      { label: "Home Collection", to: "/app/tests" },
-      { label: "Health Ecosystem", to: "/health-ecosystem" },
-      { label: "Enterprise", to: "/partner-with-us" },
-    ],
-  },
-  {
     heading: "Company",
     links: [
       { label: "About Us", to: "/about" },
       { label: "Careers", to: "#" },
-      { label: "News", to: "#" },
+      { label: "News Room", to: "#" },
       { label: "Contact", to: "mailto:info@labtraca.com" },
+    ],
+  },
+  {
+    heading: "Services",
+    links: [
+      { label: "Lab Logistics", to: "/health-ecosystem" },
+      { label: "Home Collection", to: "/app/tests" },
+      { label: "Enterprise Solutions", to: "/partner-with-us" },
+      { label: "Digital Health", to: "/app" },
     ],
   },
   {
     heading: "Legal",
     links: [
-      { label: "Privacy", to: "https://sites.google.com/view/labtraca-user/home" },
-      { label: "Terms", to: "/terms-conditions" },
+      { label: "Privacy Policy", to: "https://sites.google.com/view/labtraca-user/home" },
+      { label: "Terms of Service", to: "/terms-conditions" },
       { label: "Compliance", to: "#" },
-      { label: "Digital Health", to: "/app" },
+      { label: "Cookie Settings", to: "#" },
     ],
   },
 ];
@@ -41,8 +41,7 @@ export const Footer = () => {
           <div className="space-y-4">
             <img src={logo} alt="Labtraca" className="h-8 w-auto" />
             <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">
-              The future of healthcare diagnostics and logistics. Safe, secure, and always
-              clinical-grade.
+              Revolutionizing medical sample logistics with speed, safety, and clinical precision.
             </p>
           </div>
 
@@ -81,7 +80,7 @@ export const Footer = () => {
 
         <div className="border-t border-gray-100 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-gray-400">
-            &copy; {new Date().getFullYear()} Labtraca Medical Logistics. All rights reserved.
+            &copy; {new Date().getFullYear()} Labtraca Medical Technologies. All rights reserved.
           </p>
           <div className="flex gap-3">
             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (

@@ -1,64 +1,78 @@
 import { Network, Lock, Headphones, ShieldCheck } from "lucide-react";
 
-const standardItems = [
-  {
-    icon: Network,
-    iconColor: "text-primary",
-    iconBg: "bg-primary/10",
-    title: "Hyper-Local Labs",
-    description: "Connected to 200+ certified facilities nearby.",
-  },
-  {
-    icon: Lock,
-    iconColor: "text-gray-700",
-    iconBg: "bg-gray-100",
-    title: "Total Privacy",
-    description: "End-to-end encrypted medical data handling.",
-  },
-  {
-    icon: Headphones,
-    iconColor: "text-gray-700",
-    iconBg: "bg-gray-100",
-    title: "24/7 Professional Support",
-    description: "Real clinicians ready to assist you any time.",
-  },
-];
-
 export const CTASection = () => {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-gray-50">
+    <section className="py-10 md:py-24 md:px-8 lg:bg-[#F1F3FF]">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-10">
+        <h2 className="text-xl md:text-3xl font-black text-gray-900 mb-6 md:mb-10">
           Why Labtraca?
         </h2>
 
-        <div className="grid sm:grid-cols-3 gap-5 mb-5">
-          {standardItems.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white border border-gray-100 rounded-2xl p-7 flex flex-col gap-4 hover:shadow-md transition-shadow"
-            >
-              <div className={`w-11 h-11 rounded-xl ${item.iconBg} flex items-center justify-center`}>
-                <item.icon className={`w-5 h-5 ${item.iconColor}`} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-5">
+          {/* Hyper-Local Labs — col 1 always */}
+          <div className="col-span-1 order-1 aspect-square sm:aspect-auto overflow-hidden lg:bg-white bg-[#E9EDFF] border border-[#BCC9C8] rounded-2xl hover:shadow-md transition-shadow">
+            <div className="h-full flex flex-col gap-2 sm:gap-3 md:gap-4 p-4 sm:p-5 md:p-7">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Network className="w-5 h-5" />
               </div>
-              <div className="space-y-1.5">
-                <h3 className="font-bold text-gray-900">{item.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.description}</p>
+              <div className="space-y-1 sm:space-y-1.5">
+                <h3 className="font-bold text-gray-900 text-sm sm:text-base">
+                  Hyper-Local Labs
+                </h3>
+                <p className="text-xs sm:text-xs text-gray-500 leading-relaxed line-clamp-3">
+                  Connected to 200+ certified facilities nearby.
+                </p>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Digital Health Passport — full-width, icon on the right */}
-        <div className="bg-white border border-gray-100 rounded-2xl p-7 flex items-center justify-between gap-6 hover:shadow-md transition-shadow">
-          <div className="space-y-1.5 flex-1">
-            <h3 className="font-bold text-gray-900 text-lg">Digital Health Passport</h3>
-            <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
-              All your records in one verified place. Manage your entire medical history in one secure digital wallet.
-            </p>
           </div>
-          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <ShieldCheck className="w-8 h-8 text-primary" />
+
+          {/* Total Privacy — col 2 always */}
+          <div className="col-span-1 order-2 aspect-square sm:aspect-auto overflow-hidden lg:bg-white bg-[#E9EDFF] border border-[#BCC9C8] rounded-2xl hover:shadow-md transition-shadow">
+            <div className="h-full flex flex-col gap-2 sm:gap-3 md:gap-4 p-4 sm:p-5 md:p-7">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Lock className="w-5 h-5" />
+              </div>
+              <div className="space-y-1 sm:space-y-1.5">
+                <h3 className="font-bold text-gray-900 text-sm sm:text-base">
+                  Total Privacy
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed line-clamp-3">
+                  End-to-end encrypted medical data handling.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Digital Health Passport — full-width, 3rd on mobile / 4th (last row) on desktop */}
+          <div className="col-span-2 sm:col-span-3 order-3 sm:order-4 bg-[#D1E7E7] border border-[#BCC9C8] rounded-2xl p-5 md:p-7 flex items-center justify-between gap-4 md:gap-6 hover:shadow-md transition-shadow">
+            <div className="space-y-1.5 flex-1">
+              <h3 className="font-bold text-gray-900 text-lg">
+                Digital Health Passport
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed max-w-xl">
+                All your records in one verified place. Manage your entire
+                medical history in one secure digital wallet.
+              </p>
+            </div>
+            <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <ShieldCheck className="w-8 h-8 text-primary" />
+            </div>
+          </div>
+
+          {/* 24/7 Professional Support — full-width on mobile / col 3 on desktop */}
+          <div className="col-span-2 sm:col-span-1 order-4 sm:order-3 lg:bg-white bg-[#E9EDFF] border border-[#BCC9C8] rounded-2xl p-5 md:p-7 flex flex-row sm:flex-col items-start gap-3 md:gap-4 hover:shadow-md transition-shadow">
+            <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0">
+              <Headphones className="w-5 h-5" />
+            </div>
+
+            <div className="space-y-1.5">
+              <h3 className="font-bold text-gray-900">
+                24/7 Professional Support
+              </h3>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Real clinicians ready to assist you any time.
+              </p>
+            </div>
           </div>
         </div>
       </div>
