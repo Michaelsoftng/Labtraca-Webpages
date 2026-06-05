@@ -506,7 +506,7 @@ const HealthEcosystem = () => {
         <div className="container mx-auto max-w-6xl">
           <div
             className="rounded-2xl md:rounded-3xl py-16 px-8 md:px-16 text-center space-y-6"
-            style={{ backgroundColor: "hsl(180 40% 94%)" }}
+            style={{ backgroundColor: "#E1E8FD" }}
           >
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 max-w-xl mx-auto leading-tight">
               Ready to optimize your diagnostics logistics?

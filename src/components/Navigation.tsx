@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import logo from "@/assets/logo-transparent.png";
@@ -13,8 +13,9 @@ export const Navigation = () => {
     { name: "Home", path: "/" },
     { name: "Lab Tests", path: "/app/tests" },
     { name: "Health Ecosystem", path: "/health-ecosystem" },
-    { name: "Our App", path: "/app" },
+    { name: "Partners", path: "/partners" },
     { name: "About Us", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) =>
@@ -22,15 +23,36 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
-        <div className="container mx-auto px-4 py-3 md:px-8">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F9F9FF] border-b border-gray-200">
+        {/* Mobile bar */}
+        <div className="flex lg:hidden items-center justify-between px-4 h-16">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              className="p-1 text-primary"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+            <Link to="/" onClick={closeMenu}>
+              <img src={logo} alt="Labtraca Logo" className="h-8 w-auto object-contain" />
+            </Link>
+          </div>
+          <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
+            <div className="w-10 h-10 rounded-full bg-[#d1e7e7] border border-[#bcc9c8] flex items-center justify-center cursor-pointer">
+              <User className="w-5 h-5 text-[#4e6262]" />
+            </div>
+          </a>
+        </div>
+
+        {/* Desktop bar */}
+        <div className="hidden lg:block container mx-auto px-4 py-3 md:px-8">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center z-50 flex-shrink-0" onClick={closeMenu}>
+            <Link to="/" className="flex items-center flex-shrink-0">
               <img src={logo} alt="Labtraca Logo" className="h-9 w-auto" />
             </Link>
 
-            {/* Desktop nav links */}
-            <div className="hidden lg:flex items-center gap-6">
+            <div className="flex items-center gap-6">
               {navLinks.map((item) => (
                 <Link
                   key={item.name}
@@ -46,8 +68,7 @@ export const Navigation = () => {
               ))}
             </div>
 
-            {/* Desktop CTAs */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="flex items-center gap-3">
               <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="outline"
@@ -62,22 +83,13 @@ export const Navigation = () => {
                 </Button>
               </a>
             </div>
-
-            {/* Mobile toggle */}
-            <button
-              className="lg:hidden z-50 p-2 text-gray-700 hover:text-primary transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile overlay */}
+      {/* Mobile overlay menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-[57px] bg-white z-40 lg:hidden">
+        <div className="fixed inset-0 top-16 bg-[#F9F9FF] z-40 lg:hidden">
           <div className="flex flex-col items-center pt-10 px-6 gap-6">
             {navLinks.map((item) => (
               <Link

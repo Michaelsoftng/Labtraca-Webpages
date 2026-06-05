@@ -1,99 +1,113 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 
-const columns = [
-  {
-    heading: "Company",
-    links: [
-      { label: "About Us", to: "/about" },
-      { label: "Careers", to: "#" },
-      { label: "News Room", to: "#" },
-      { label: "Contact", to: "mailto:info@labtraca.com" },
-    ],
-  },
-  {
-    heading: "Services",
-    links: [
-      { label: "Lab Logistics", to: "/health-ecosystem" },
-      { label: "Home Collection", to: "/app/tests" },
-      { label: "Enterprise Solutions", to: "/partner-with-us" },
-      { label: "Digital Health", to: "/app" },
-    ],
-  },
-  {
-    heading: "Legal",
-    links: [
-      { label: "Privacy Policy", to: "https://sites.google.com/view/labtraca-user/home" },
-      { label: "Terms of Service", to: "/terms-conditions" },
-      { label: "Compliance", to: "#" },
-      { label: "Cookie Settings", to: "#" },
-    ],
-  },
+const services = [
+  { label: "Lab Logistics", to: "/health-ecosystem" },
+  { label: "Home Collection", to: "/app/tests" },
+  { label: "Enterprise Solutions", to: "/partner-with-us" },
+  { label: "Collaborative Pharmacy Ecosystem", to: "/health-ecosystem" },
 ];
+
+const company = [
+  { label: "About Us", to: "/about" },
+  { label: "Careers", to: "/phlebotomist" },
+  { label: "Partners", to: "/partners" },
+  { label: "Contact", to: "/contact" },
+];
+
+const legal = [
+  { label: "Privacy Policy", to: "https://sites.google.com/view/labtraca-user/home", external: true },
+  { label: "Terms of Service", to: "/terms-conditions", external: false },
+  { label: "Compliance", to: "#", external: false },
+];
+
+const NavLink = ({ to, label, external }: { to: string; label: string; external?: boolean }) =>
+  external ? (
+    <a href={to} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+      {label}
+    </a>
+  ) : (
+    <Link to={to} className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+      {label}
+    </Link>
+  );
 
 export const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-100 pt-12 pb-8 px-4 md:px-8">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
-          {/* Brand column */}
-          <div className="space-y-4">
-            <img src={logo} alt="Labtraca" className="h-8 w-auto" />
-            <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">
-              Revolutionizing medical sample logistics with speed, safety, and clinical precision.
+
+        {/* Mobile layout */}
+        <div className="sm:hidden space-y-8 mb-8">
+          <div className="space-y-3">
+            <img src={logo} alt="Labtraca" className="h-7 w-auto" />
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Redefining medical logistics with precision, speed, and clinical integrity.
             </p>
           </div>
 
-          {/* Link columns */}
-          {columns.map((col) => (
-            <div key={col.heading}>
-              <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">
-                {col.heading}
-              </h4>
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-sm font-bold text-gray-900 mb-4">Services</h4>
               <ul className="space-y-3">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    {link.to.startsWith("http") || link.to.startsWith("mailto") ? (
-                      <a
-                        href={link.to}
-                        className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-                        target={link.to.startsWith("http") ? "_blank" : undefined}
-                        rel={link.to.startsWith("http") ? "noopener noreferrer" : undefined}
-                      >
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link
-                        to={link.to}
-                        className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
+                {services.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
               </ul>
             </div>
-          ))}
-        </div>
+            <div>
+              <h4 className="text-sm font-bold text-gray-900 mb-4">Company</h4>
+              <ul className="space-y-3">
+                {company.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
+              </ul>
+            </div>
+          </div>
 
-        <div className="border-t border-gray-100 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-gray-400">
-            &copy; {new Date().getFullYear()} Labtraca Medical Technologies. All rights reserved.
-          </p>
-          <div className="flex gap-3">
-            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-7 h-7 rounded-full bg-gray-100 hover:bg-primary/10 flex items-center justify-center transition-colors"
-              >
-                <Icon className="w-3 h-3 text-gray-500" />
-              </a>
-            ))}
+          <div className="border-t border-gray-100 pt-6 space-y-3">
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
+              {legal.map((l) => <NavLink key={l.label} to={l.to} label={l.label} external={l.external} />)}
+            </div>
+            <p className="text-xs text-gray-400">
+              &copy; {new Date().getFullYear()} Labtraca Medical Logistics. All rights reserved.
+            </p>
           </div>
         </div>
+
+        {/* Desktop layout */}
+        <div className="hidden sm:grid grid-cols-4 gap-10 mb-10">
+          <div className="space-y-4">
+            <img src={logo} alt="Labtraca" className="h-8 w-auto" />
+            <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">
+              Redefining medical logistics with precision, speed, and clinical integrity.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Services</h4>
+            <ul className="space-y-3">
+              {services.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Company</h4>
+            <ul className="space-y-3">
+              {company.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Legal</h4>
+            <ul className="space-y-3">
+              {legal.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} external={l.external} /></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <div className="hidden sm:block border-t border-gray-100 pt-6">
+          <p className="text-xs text-gray-400">
+            &copy; {new Date().getFullYear()} Labtraca Medical Logistics. All rights reserved.
+          </p>
+        </div>
+
       </div>
     </footer>
   );

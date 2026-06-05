@@ -23,16 +23,13 @@ import LaboratoryDetails from "./pages/LaboratoryDetails";
 import DoctorDetails from "./pages/DoctorDetails";
 import TermsConditions from "./pages/TermsConditions";
 import HealthEcosystem from "./pages/HealthEcosystem";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 };
 
@@ -62,7 +59,7 @@ const App = () => (
           <Route path="/phlebotomist" element={<Phlebotomist />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/health-ecosystem" element={<HealthEcosystem />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

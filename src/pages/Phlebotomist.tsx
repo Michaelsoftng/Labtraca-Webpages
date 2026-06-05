@@ -1,149 +1,402 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Droplet, CheckCircle2, Smartphone, UserCheck, Clock, ArrowRight } from "lucide-react";
+import { ShieldCheck, Calendar, TrendingUp, GraduationCap, Wrench, CheckCircle2, ArrowRight } from "lucide-react";
 import { PhlebotomistForm } from "@/components/forms/PhlebotomistForm";
+import { submitToGoogleSheet } from "@/lib/googleSheets";
+import { toast } from "sonner";
+// @ts-ignore
+import phlebotomistImg from "@/assets/A professional black female phlebotomist or nurse in a clean white lab coat and blue gloves, carefully handling a medical specimen container..svg";
 
 const Phlebotomist = () => {
-    const steps = [
-        {
-            icon: Smartphone,
-            title: "1. Download App",
-            description: "Download the Labtraca Service App from your app store."
-        },
-        {
-            icon: UserCheck,
-            title: "2. Register Profile",
-            description: "Sign up as a Phlebotomist. Upload your medical licenses and certifications."
-        },
-        {
-            icon: Clock,
-            title: "3. Verification",
-            description: "We verify your credentials. Once approved, you can accept home-collection requests."
-        }
-    ];
+  const [desktopStep, setDesktopStep] = useState(1);
+  const [mobileSubmitting, setMobileSubmitting] = useState(false);
+  const [mobileForm, setMobileForm] = useState({
+    fullName: "",
+    email: "",
+    certNumber: "",
+    availability: { day: false, night: false, weekend: false, onCall: false },
+  });
 
-    return (
-        <div className="min-h-screen bg-background">
-            <Navigation />
+  const handleMobileSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setMobileSubmitting(true);
+    try {
+      await submitToGoogleSheet("Phlebotomist", {
+        fullName: mobileForm.fullName,
+        email: mobileForm.email,
+        licenseNumber: mobileForm.certNumber,
+        availability: Object.entries(mobileForm.availability)
+          .filter(([, v]) => v)
+          .map(([k]) => k)
+          .join(", ") || "None selected",
+      });
+      toast.success("Application submitted successfully!");
+      setMobileForm({ fullName: "", email: "", certNumber: "", availability: { day: false, night: false, weekend: false, onCall: false } });
+    } catch {
+      toast.error("Failed to submit. Please try again.");
+    } finally {
+      setMobileSubmitting(false);
+    }
+  };
 
-            {/* Hero Section */}
-            <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-gradient-to-br from-primary/10 to-background">
-                <div className="container mx-auto max-w-7xl">
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6 animate-fade-in">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 rounded-full mb-2">
-                                <Droplet className="w-4 h-4 text-primary" />
-                                <span className="text-sm font-bold text-primary">Medical Professional</span>
-                            </div>
-                            <h1 className="text-4xl md:text-6xl font-black text-foreground leading-tight">
-                                Become a <span className="text-primary">Phlebotomist</span>
-                            </h1>
-                            <p className="text-xl text-muted-foreground leading-relaxed">
-                                Empower your medical career. Provide specialized at-home lab services, help patients, and earn on your own schedule.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                <Button size="lg" className="rounded-full font-bold h-12 px-8 bg-foreground text-background hover:bg-foreground/90">
-                                    <svg className="mr-2 h-5 w-5" viewBox="0 0 814 1000" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z" />
-                                    </svg>
-                                    App Store
-                                </Button>
-                                <Button size="lg" variant="outline" className="rounded-full font-bold h-12 px-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                                    <svg className="mr-2 h-5 w-5" viewBox="0 0 28.5 32" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.54 15.28.12 29.34a3.64 3.64 0 0 0 5.33 2.16l15.1-8.6z" fill="#ea4335" />
-                                        <path d="m27.11 12.89-6.53-3.74-7.35 6.45 7.38 7.28 6.48-3.7a3.55 3.55 0 0 0 0-6.29z" fill="#fbbc04" />
-                                        <path d="M.12 2.66a3.46 3.46 0 0 0-.12.92v24.84a3.66 3.66 0 0 0 .12.92L14 15.64Z" fill="#4285f4" />
-                                        <path d="m13.64 16 6.94-6.85L5.5.51A3.72 3.72 0 0 0 3.63 0 3.64 3.64 0 0 0 .12 2.65Z" fill="#34a853" />
-                                    </svg>
-                                    Google Play
-                                </Button>
-                            </div>
-                        </div>
-                        <div className="relative animate-fade-in [animation-delay:200ms]">
-                            <div className="w-full h-[400px] bg-gradient-to-br from-primary to-secondary rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden transform md:-rotate-3">
-                                <img
-                                    src="/assets/phlebotomist_black.png"
-                                    alt="Phlebotomist"
-                                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  return (
+    <div className="min-h-screen bg-[#F9F9FF]">
+      <Navigation />
 
-            {/* How it works steps */}
-            <section className="py-20 px-4 md:px-6 bg-background">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-black mb-6">Join the Network</h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Three steps to start your journey with Labtraca
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {steps.map((step, index) => (
-                            <div
-                                key={index}
-                                className="bg-card border border-border p-8 rounded-3xl relative hover:shadow-lg transition-all animate-fade-in"
-                                style={{ animationDelay: `${index * 150}ms` }}
-                            >
-                                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
-                                    <step.icon className="w-7 h-7 text-primary" />
-                                </div>
-                                <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                                <p className="text-muted-foreground">{step.description}</p>
-
-                                {index < steps.length - 1 && (
-                                    <div className="hidden md:block absolute top-12 right-0 translate-x-1/2 text-primary/30">
-                                        <ArrowRight className="w-6 h-6" />
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Registration Form Section */}
-            <section id="registration-form" className="py-20 px-4 md:px-6 bg-muted/30">
-                <div className="container mx-auto max-w-4xl">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-5xl font-black mb-4">Registration <span className="text-primary">Form</span></h2>
-                        <p className="text-lg text-muted-foreground">Complete the form below to begin your application</p>
-                    </div>
-                    <PhlebotomistForm />
-                </div>
-            </section>
-
-            {/* Requirements Section */}
-            <section className="py-20 px-4 md:px-6 bg-background">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center bg-muted/50 rounded-3xl p-8 md:p-12">
-                        <h3 className="text-2xl font-bold mb-4">Requirements</h3>
-                        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-left">
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Valid Certifications</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Medical License</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Minimum 1 Year Exp.</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="text-green-500 w-5 h-5" /> <span>Background Check</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <Footer />
+      {/* ─── MOBILE ─── */}
+      <div className="sm:hidden pt-16">
+        {/* Hero image */}
+        <div className="relative w-full h-64 overflow-hidden">
+          <img src={phlebotomistImg} alt="Phlebotomist" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 p-5">
+            <span className="inline-block bg-primary text-white text-xs font-bold px-3 py-1 rounded-full mb-2">
+              Careers
+            </span>
+            <h1 className="text-white text-[22px] font-bold leading-tight">
+              Join our Team of Certified Phlebotomists.
+            </h1>
+          </div>
         </div>
-    );
+
+        {/* Feature cards */}
+        <div className="px-4 py-6 space-y-3">
+          {[
+            {
+              Icon: ShieldCheck,
+              title: "Clinical Excellence",
+              desc: "We uphold the highest medical standards in diagnostic specimen collection and handling.",
+            },
+            {
+              Icon: Calendar,
+              title: "Flexible Scheduling",
+              desc: "Choose shifts that fit your lifestyle. We offer part-time, full-time, and per-diem opportunities.",
+            },
+          ].map(({ Icon, title, desc }) => (
+            <div key={title} className="bg-white border border-gray-200 rounded-2xl p-5 flex gap-4 items-start shadow-sm">
+              <div className="w-10 h-10 rounded-full bg-[#d1e7e7] flex items-center justify-center flex-shrink-0">
+                <Icon className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900 mb-1">{title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Apply Now form */}
+        <div className="mx-4 mb-8 bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+          <h2 className="text-2xl font-bold text-gray-900 mb-1">Apply Now</h2>
+          <p className="text-sm text-gray-500 mb-6">Complete the form below to start your journey with Labtraca.</p>
+          <form onSubmit={handleMobileSubmit} className="space-y-4">
+            <div>
+              <label className="text-xs font-semibold text-gray-600 block mb-1.5">Full Name</label>
+              <input
+                type="text"
+                placeholder="Jane Doe"
+                value={mobileForm.fullName}
+                onChange={(e) => setMobileForm({ ...mobileForm, fullName: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-gray-600 block mb-1.5">Email Address</label>
+              <input
+                type="email"
+                placeholder="jane.doe@example.com"
+                value={mobileForm.email}
+                onChange={(e) => setMobileForm({ ...mobileForm, email: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-gray-600 block mb-1.5">Certification Number</label>
+              <input
+                type="text"
+                placeholder="CPT-123456"
+                value={mobileForm.certNumber}
+                onChange={(e) => setMobileForm({ ...mobileForm, certNumber: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-gray-600 block mb-2">Availability</label>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { key: "day", label: "Day" },
+                  { key: "night", label: "Night" },
+                  { key: "weekend", label: "Weekend" },
+                  { key: "onCall", label: "On-Call" },
+                ].map((opt) => (
+                  <label
+                    key={opt.key}
+                    className="flex items-center gap-2.5 border border-gray-200 rounded-xl px-4 py-3 cursor-pointer bg-[#F9F9FF]"
+                  >
+                    <input
+                      type="checkbox"
+                      className="accent-primary w-4 h-4 rounded"
+                      checked={mobileForm.availability[opt.key as keyof typeof mobileForm.availability]}
+                      onChange={(e) =>
+                        setMobileForm({
+                          ...mobileForm,
+                          availability: { ...mobileForm.availability, [opt.key]: e.target.checked },
+                        })
+                      }
+                    />
+                    <span className="text-sm text-gray-700">{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <button
+              type="submit"
+              disabled={mobileSubmitting}
+              className="w-full bg-primary text-white py-4 rounded-xl font-bold text-base active:scale-[0.98] transition-transform shadow-md mt-2 disabled:opacity-70"
+            >
+              {mobileSubmitting ? "Submitting..." : "Submit Application"}
+            </button>
+          </form>
+        </div>
+
+        {/* Why Work With Us */}
+        <div className="px-4 pb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-5">Why Work With Us?</h2>
+          <div className="space-y-3">
+            {[
+              {
+                Icon: TrendingUp,
+                title: "Competitive Pay",
+                desc: "Industry-leading compensation packages and benefit options.",
+                bg: "bg-primary",
+                iconBg: "bg-white/20",
+                iconColor: "text-white",
+                titleColor: "text-white",
+                descColor: "text-white/80",
+              },
+              {
+                Icon: GraduationCap,
+                title: "CME Support",
+                desc: "Stipends for continuing medical education and license renewals.",
+                bg: "bg-[#d1e7e7]",
+                iconBg: "bg-primary/10",
+                iconColor: "text-primary",
+                titleColor: "text-gray-900",
+                descColor: "text-gray-600",
+              },
+              {
+                Icon: Wrench,
+                title: "Modern Equipment",
+                desc: "Access to the latest precision collection tools and logistics software.",
+                bg: "bg-white",
+                iconBg: "bg-[#d1e7e7]",
+                iconColor: "text-primary",
+                titleColor: "text-gray-900",
+                descColor: "text-gray-500",
+              },
+            ].map(({ Icon, title, desc, bg, iconBg, iconColor, titleColor, descColor }) => (
+              <div key={title} className={`${bg} border border-gray-200 rounded-2xl p-5 flex gap-4 items-start`}>
+                <div className={`w-10 h-10 rounded-full ${iconBg} flex items-center justify-center flex-shrink-0`}>
+                  <Icon className={`w-5 h-5 ${iconColor}`} />
+                </div>
+                <div>
+                  <h3 className={`font-bold mb-1 ${titleColor}`}>{title}</h3>
+                  <p className={`text-sm leading-relaxed ${descColor}`}>{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ─── DESKTOP ─── */}
+      <div className="hidden sm:block">
+        {/* Hero */}
+        <section className="pt-32 pb-20 px-4 md:px-8 bg-white">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid grid-cols-2 gap-16 items-center">
+              <div className="space-y-6">
+                <span className="text-xs font-bold text-primary uppercase tracking-widest">
+                  Careers in Labtraca
+                </span>
+                <h1 className="text-5xl font-black text-gray-900 leading-tight">
+                  Join our Team of{" "}
+                  <span className="text-primary">
+                    Certified <br />Phlebotomists
+                  </span>
+                </h1>
+                <p className="text-gray-500 text-lg leading-relaxed max-w-md">
+                  Advance your career with a leader in medical logistics. We offer professional growth, clinical excellence, and the flexibility you need to balance life and work.
+                </p>
+                <div className="flex gap-3 pt-1">
+                  <a href="#apply">
+                    <button className="bg-primary text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-md">
+                      Apply Now <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </a>
+                  <a href="#benefits">
+                    <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-bold hover:border-primary hover:text-primary transition-colors">
+                      View Benefits
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="rounded-2xl overflow-hidden h-[420px]">
+                  <img
+                    src={phlebotomistImg}
+                    alt="Certified Phlebotomist"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute bottom-4 left-4 right-16 bg-white/95 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3 shadow-lg border border-gray-100">
+                  <div className="w-10 h-10 rounded-full bg-[#d1e7e7] flex items-center justify-center flex-shrink-0">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-900 text-sm">Clinical Precision</p>
+                    <p className="text-xs text-gray-500">Accredited Laboratory standards</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Labtraca — bento grid */}
+        <section id="benefits" className="py-20 px-4 md:px-8 bg-[#F9F9FF]">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-14">
+              <h2 className="text-4xl font-black text-gray-900 mb-3">Why Labtraca?</h2>
+              <p className="text-gray-500 max-w-lg mx-auto leading-relaxed">
+                We provide the environment and resources you need to deliver high-quality patient care while maintaining professional autonomy.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {/* Clinical Excellence */}
+              <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-[#d1e7e7] flex items-center justify-center mb-4">
+                  <ShieldCheck className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Clinical Excellence</h3>
+                <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                  Work with state-of-the-art diagnostic equipment and standardized protocols that ensure patient safety and specimen integrity at every step.
+                </p>
+                <div className="space-y-2">
+                  {["ISO Certified Lab", "Strict 6A Protocols", "Digital Tracking"].map((item) => (
+                    <div key={item} className="flex items-center gap-2 border border-gray-200 rounded-lg px-4 py-2.5 bg-[#F9F9FF]">
+                      <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span className="text-sm text-gray-700">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Flexible Scheduling */}
+              <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-[#d1e7e7] flex items-center justify-center mb-4">
+                  <Calendar className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Flexible Scheduling</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Pick shifts that fit your life. Our smart scheduling app allows you to manage your availability in real-time.
+                </p>
+              </div>
+
+              {/* Professional Growth */}
+              <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-[#d1e7e7] flex items-center justify-center mb-4">
+                  <TrendingUp className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Professional Growth</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  Access continuing education credits and clear pathways to lead phlebotomist and supervisory roles.
+                </p>
+              </div>
+
+              {/* CTA card */}
+              <div className="bg-primary rounded-2xl p-7 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Ready to make an impact?</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    Our recruitment process is streamlined for clinical professionals.
+                  </p>
+                </div>
+                <a href="#apply">
+                  <button className="mt-8 border-2 border-white text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-white hover:text-primary transition-colors">
+                    Start Application
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Application Form */}
+        <section id="apply" className="py-20 px-4 md:px-8 bg-white">
+          <div className="container mx-auto max-w-2xl">
+            {desktopStep === 1 ? (
+              <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+                <div className="h-1.5 bg-gray-100">
+                  <div className="h-full bg-primary w-1/3 rounded-r-full" />
+                </div>
+                <div className="p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-1">Personal Information</h2>
+                  <p className="text-sm text-gray-500 mb-7">Tell us about yourself so we can get in touch.</p>
+                  <form
+                    className="space-y-4"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setDesktopStep(2);
+                    }}
+                  >
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-xs font-semibold text-gray-600 block mb-1.5">First Name</label>
+                        <input type="text" placeholder="Jane" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                      </div>
+                      <div>
+                        <label className="text-xs font-semibold text-gray-600 block mb-1.5">Last Name</label>
+                        <input type="text" placeholder="Doe" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-gray-600 block mb-1.5">Email Address</label>
+                      <input type="email" placeholder="jane.doe@example.com" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-gray-600 block mb-1.5">Phone Number</label>
+                      <input type="tel" placeholder="(555) 000-0000" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                    </div>
+                    <div className="flex justify-end pt-2">
+                      <button type="submit" className="bg-primary text-white px-6 py-3 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-md">
+                        Next Step <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <button
+                  onClick={() => setDesktopStep(1)}
+                  className="mb-6 text-sm text-primary font-semibold flex items-center gap-1 hover:underline"
+                >
+                  ← Back
+                </button>
+                <PhlebotomistForm />
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default Phlebotomist;
