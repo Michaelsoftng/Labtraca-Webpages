@@ -23,7 +23,6 @@ import {
   ChevronRight,
   Clock,
   ArrowLeft,
-  CalendarCheck,
 } from "lucide-react";
 import { useQuery } from "@apollo/client/react";
 
@@ -216,16 +215,12 @@ const HospitalDetails = () => {
           {/* Sidebar: Call to Action / Info */}
           <div className="space-y-6">
             <div className="bg-card border rounded-2xl p-6 shadow-sm space-y-4 sticky top-24">
-              <h3 className="font-bold text-lg">Book an Appointment</h3>
+              <h3 className="font-bold text-lg">Contact Hospital</h3>
               <p className="text-sm text-muted-foreground">
-                Contact this specific facility to schedule your tests or visit
-                them directly.
+                Contact this specific facility for test availability or visit
+                details.
               </p>
               <div className="grid gap-3">
-                <Button className="w-full font-bold" size="lg">
-                  <CalendarCheck className="mr-2 w-4 h-4" />
-                  Book Test
-                </Button>
                 <Button
                   variant="outline"
                   className="w-full font-bold"

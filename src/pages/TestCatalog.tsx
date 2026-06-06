@@ -1,42 +1,48 @@
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Search, MapPin, ArrowRight } from "lucide-react";
+import { Search } from "lucide-react";
 import { useQuery } from "@apollo/client/react";
 import { GetTests } from "@/lib/graphql/queries";
-import { Link } from "react-router-dom";
 
-const CATEGORIES = ["General Health", "Hematology", "Metabolic", "Cardiac", "Vitamin", "Diabetes", "Thyroid", "Allergy"];
+type Test = {
+  id: string;
+  name: string;
+  code?: string | null;
+  description?: string | null;
+  specimen?: string | null;
+  group?: string | null;
+  price?: number | string | null;
+};
 
-const FALLBACK_TESTS = [
-  { id: "1", name: "Full Lipid Profile", labName: "Synlab Diagnostics", price: 15000, icon: "heart_check", category: "Cardiac" },
-  { id: "2", name: "Complete Blood Count", labName: "Union Diagnostic", price: 8500, icon: "biotech", category: "Hematology" },
-  { id: "3", name: "HbA1c Diabetes Test", labName: "Me Cure Diagnostics", price: 12000, icon: "opacity", category: "Diabetes" },
-  { id: "4", name: "Thyroid Panel (TSH)", labName: "Synlab Diagnostics", price: 9800, icon: "monitor_heart", category: "Thyroid" },
-  { id: "5", name: "Vitamin D & B12", labName: "PathCare Labs", price: 11500, icon: "science", category: "Vitamin" },
-  { id: "6", name: "Metabolic Panel", labName: "Clina-Lancet", price: 13000, icon: "colorize", category: "Metabolic" },
-];
+const formatPrice = (price: Test["price"]) => {
+  if (price === null || price === undefined || price === "") {
+    return "Price unavailable";
+  }
 
-const MOBILE_TESTS = [
-  { id: "1", title: "Full Lipid Profile", desc: "Detailed measurement of cholesterol levels including HDL, LDL, and Triglycerides.", price: "₦12,500", popular: false },
-  { id: "2", title: "Diabetes Screening (HbA1c)", desc: "Average blood sugar levels over the past 3 months for diabetic monitoring.", price: "₦8,200", popular: false },
-  { id: "3", title: "Executive Wellness Package", desc: "A comprehensive 45-parameter screening covering cardiac, renal, liver, and metabolic health.", price: "₦45,000", popular: true },
-];
+  const numericPrice = typeof price === "number" ? price : Number(price);
+
+  if (Number.isFinite(numericPrice)) {
+    return `₦${numericPrice.toLocaleString()}`;
+  }
+
+  return price;
+};
 
 const TestCatalog = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [checkedCats, setCheckedCats] = useState<string[]>([]);
   const [search, setSearch] = useState("");
 
-  const { data } = useQuery<{ getPublicAllTest?: { tests: any[] } }>(GetTests, {
-    variables: { limit: 20, offset: 0 },
-  });
+  const { data } = useQuery<{ getPublicAllTest?: { tests: Test[] } }>(
+    GetTests,
+    {
+      variables: { limit: 20, offset: 0 },
+    },
+  );
 
   const apiTests = data?.getPublicAllTest?.tests || [];
-  const desktopTests = apiTests.length > 0 ? apiTests : FALLBACK_TESTS;
-
-  const toggleCat = (cat: string) =>
-    setCheckedCats((prev) => prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]);
+  const tests = apiTests.filter((test) =>
+    test.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <div className="min-h-screen bg-[#F9F9FF]">
@@ -45,8 +51,12 @@ const TestCatalog = () => {
       {/* ─── MOBILE ─── */}
       <main className="sm:hidden pt-16 px-4 pb-20">
         <section className="pt-8 pb-4">
-          <h1 className="text-2xl font-bold text-primary mb-1">Comprehensive Testing.</h1>
-          <p className="text-sm text-gray-500">Browse individual tests or curated packages.</p>
+          <h1 className="text-2xl font-bold text-black mb-1">
+            Diagnostic Tests
+          </h1>
+          <p className="text-sm text-gray-500">
+            Browse individual tests or curated packages.
+          </p>
         </section>
 
         {/* Search */}
@@ -64,30 +74,55 @@ const TestCatalog = () => {
         </div>
 
         <div className="flex flex-col gap-5">
-          {MOBILE_TESTS.filter((t) => t.title.toLowerCase().includes(search.toLowerCase())).map((test) => (
-            <article key={test.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+          {tests.map((test) => (
+            <article
+              key={test.id}
+              className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm"
+            >
               <div className="p-4 flex gap-4">
                 <div className="w-20 h-20 rounded-lg bg-[#d1e7e7] flex items-center justify-center flex-shrink-0">
                   <Search className="w-8 h-8 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-start mb-1 gap-2">
-                    <h3 className="font-bold text-base leading-tight text-primary">{test.title}</h3>
-                    {test.popular && (
-                      <span className="text-[10px] font-bold bg-primary text-white px-2 py-0.5 rounded-full flex-shrink-0">POPULAR</span>
+                    <h3 className="font-bold text-base leading-tight text-black">
+                      {test.name}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-gray-500 line-clamp-2 min-h-10">
+                    {test.description || "No description available."}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {test.group && (
+                      <span className="text-[11px] font-bold uppercase tracking-wide text-primary bg-primary/10 px-2 py-1 rounded-full">
+                        {test.group}
+                      </span>
+                    )}
+                    {test.specimen && (
+                      <span className="text-[11px] font-bold uppercase tracking-wide text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                        {test.specimen}
+                      </span>
+                    )}
+                    {test.code && (
+                      <span className="text-[11px] font-bold uppercase tracking-wide text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                        {test.code}
+                      </span>
                     )}
                   </div>
-                  <p className="text-sm text-gray-500 line-clamp-2">{test.desc}</p>
                 </div>
               </div>
               <div className="bg-[#f1f3ff] px-4 py-3 flex justify-between items-center">
-                <span className="font-bold text-base text-primary">{test.price}</span>
-                <button className="bg-primary text-white px-4 py-2 rounded-lg font-bold text-sm">
-                  Compare Prices
-                </button>
+                <span className="font-bold text-base text-primary">
+                  {formatPrice(test.price)}
+                </span>
               </div>
             </article>
           ))}
+          {tests.length === 0 && (
+            <div className="bg-white rounded-xl border border-gray-200 px-4 py-8 text-center text-sm text-gray-500">
+              No tests found.
+            </div>
+          )}
         </div>
       </main>
 
@@ -95,62 +130,52 @@ const TestCatalog = () => {
       <main className="hidden sm:block pt-32 pb-20 px-4 md:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-10">
-            <h1 className="text-4xl font-black text-gray-900 mb-2">Diagnostic Tests</h1>
-            <p className="text-gray-500">Compare prices from top-rated labs across the city.</p>
+            <h1 className="text-4xl font-black text-gray-900 mb-2">
+              Diagnostic Tests
+            </h1>
+            <p className="text-gray-500">
+              Browse individual tests or curated packages.
+            </p>
           </div>
 
-          <div className="grid grid-cols-4 gap-8">
-            {/* Sidebar */}
-            <aside>
-              <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-                <h3 className="font-bold text-xs uppercase tracking-wider text-gray-600 mb-4">Categories</h3>
-                <div className="space-y-3">
-                  {CATEGORIES.map((cat) => (
-                    <label key={cat} className="flex items-center gap-2.5 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        className="rounded border-gray-300 text-primary accent-primary w-4 h-4"
-                        checked={checkedCats.includes(cat)}
-                        onChange={() => toggleCat(cat)}
-                      />
-                      <span className="text-sm text-gray-700">{cat}</span>
-                    </label>
-                  ))}
+          <div className="space-y-4">
+            {tests.map((test, i) => (
+              <div
+                key={test.id || i}
+                className="bg-white border border-gray-200 rounded-2xl p-6 flex justify-between items-center shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="flex gap-4 items-center">
+                  <div className="w-12 h-12 rounded-full bg-[#d1e7e7] flex items-center justify-center flex-shrink-0">
+                    <span className="text-primary font-bold text-lg">
+                      {test.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg text-gray-900">
+                      {test.name}
+                    </h4>
+                    <p className="text-sm text-gray-500">
+                      {test.group || test.code || "Labtraca Network"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="text-right">
+                    <p className="text-2xl font-bold text-primary">
+                      {formatPrice(test.price)}
+                    </p>
+                    <p className="text-[10px] uppercase font-bold text-gray-400">
+                      Total Cost
+                    </p>
+                  </div>
                 </div>
               </div>
-            </aside>
-
-            {/* Test cards */}
-            <div className="col-span-3 space-y-4">
-              {desktopTests
-                .filter((t: any) => checkedCats.length === 0 || checkedCats.includes(t.category))
-                .map((test: any, i: number) => (
-                  <div key={test.id || i} className="bg-white border border-gray-200 rounded-2xl p-6 flex justify-between items-center shadow-sm hover:shadow-md transition-shadow">
-                    <div className="flex gap-4 items-center">
-                      <div className="w-12 h-12 rounded-full bg-[#d1e7e7] flex items-center justify-center flex-shrink-0">
-                        <span className="text-primary font-bold text-lg">
-                          {(test.name || test.title || "").charAt(0)}
-                        </span>
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-lg text-gray-900">{test.name || test.title}</h4>
-                        <p className="text-sm text-gray-500">{test.labName || test.lab || "Labtraca Network"}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-6">
-                      <div className="text-right">
-                        <p className="text-2xl font-bold text-primary">
-                          ₦{(test.price || 0).toLocaleString()}
-                        </p>
-                        <p className="text-[10px] uppercase font-bold text-gray-400">Total Cost</p>
-                      </div>
-                      <button className="bg-primary text-white px-6 py-2.5 rounded-xl font-bold text-sm hover:bg-primary/90 transition-colors">
-                        Book Test
-                      </button>
-                    </div>
-                  </div>
-                ))}
-            </div>
+            ))}
+            {tests.length === 0 && (
+              <div className="bg-white border border-gray-200 rounded-2xl p-8 text-center text-gray-500">
+                No tests found.
+              </div>
+            )}
           </div>
         </div>
       </main>

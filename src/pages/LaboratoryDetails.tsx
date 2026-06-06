@@ -24,7 +24,6 @@ import {
   Clock,
   ArrowLeft,
   CheckCircle2,
-  CalendarCheck,
 } from "lucide-react";
 import { useQuery } from "@apollo/client/react";
 
@@ -221,14 +220,10 @@ const LaboratoryDetails = () => {
             <div className="bg-card border rounded-2xl p-6 shadow-sm space-y-4 sticky top-24">
               <h3 className="font-bold text-lg">Contact Laboratory</h3>
               <p className="text-sm text-muted-foreground">
-                Get more information about required preparations or book a
-                visit.
+                Get more information about required preparations or test
+                availability.
               </p>
               <div className="grid gap-3">
-                <Button className="w-full font-bold" size="lg">
-                  <CalendarCheck className="mr-2 w-4 h-4" />
-                  Book Test
-                </Button>
                 <Button
                   variant="outline"
                   className="w-full font-bold"

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { ArrowRight, MapPin, TrendingUp, Truck, DollarSign } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight, TrendingUp, Truck, DollarSign } from "lucide-react";
 import { GeneralPartnerForm } from "@/components/forms/GeneralPartnerForm";
 import { LaboratoryForm } from "@/components/forms/LaboratoryForm";
 import { HospitalForm } from "@/components/forms/HospitalForm";
@@ -34,12 +33,6 @@ const partnerTypes = [
   },
 ];
 
-const MOBILE_PARTNERS = [
-  { name: "Advanced Genomics Lab", location: "Berlin, Germany • ISO Certified" },
-  { name: "Synlab Nigeria", location: "Lagos, Nigeria • CAP Accredited" },
-  { name: "Me Cure Diagnostics", location: "Abuja, Nigeria • ISO 15189" },
-];
-
 const PartnerWithUs = () => {
   const [selectedType, setSelectedType] = useState<"laboratory" | "hospital" | "general" | null>(null);
 
@@ -48,54 +41,87 @@ const PartnerWithUs = () => {
       <Navigation />
 
       {/* ─── MOBILE ─── */}
-      <main className="sm:hidden pt-16 px-4 pb-20">
-        <section className="pt-8 pb-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">Partner Network</h1>
-          <p className="text-sm text-gray-500">Join our growing ecosystem of healthcare partners.</p>
+      <main className="sm:hidden pt-16 pb-20">
+        <section className="px-4 pt-8 pb-6">
+          <span className="text-xs font-black uppercase tracking-wide text-primary">
+            Partner Network
+          </span>
+          <h1 className="text-3xl font-black text-gray-900 leading-tight mt-2 mb-3">
+            Partner with Labtraca
+          </h1>
+          <p className="text-sm text-gray-500 leading-relaxed">
+            Scale your health facility or logistics business with our diagnostic network.
+          </p>
         </section>
 
-        {/* Map banner */}
-        <div className="relative h-48 rounded-2xl overflow-hidden mb-6 bg-gray-300">
-          <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-            <span className="bg-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-              Explore Nearby Labs
-            </span>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 mb-8">
-          {MOBILE_PARTNERS.map((p, i) => (
-            <div key={i} className="bg-white p-4 border border-gray-200 rounded-xl flex justify-between items-center shadow-sm">
-              <div>
-                <h3 className="font-bold text-gray-900">{p.name}</h3>
-                <p className="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
-                  <MapPin className="w-3 h-3" /> {p.location}
-                </p>
+        <section className="px-4 space-y-3 mb-6">
+          {partnerTypes.map((pt) => (
+            <button
+              key={pt.type}
+              onClick={() => setSelectedType(pt.type)}
+              className={`w-full text-left bg-white border rounded-2xl p-4 shadow-sm transition-all ${
+                selectedType === pt.type
+                  ? "border-primary ring-2 ring-primary/10"
+                  : "border-gray-200"
+              }`}
+            >
+              <div className="flex gap-4">
+                <div className={`w-12 h-12 ${pt.color} rounded-xl flex items-center justify-center shrink-0`}>
+                  <pt.lucide className="w-6 h-6 text-primary" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-3 mb-1">
+                    <h3 className="font-bold text-gray-900 leading-tight">
+                      {pt.title}
+                    </h3>
+                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
+                  </div>
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    {pt.desc}
+                  </p>
+                </div>
               </div>
-              <button className="bg-primary text-white p-2 rounded-full">
-                <ArrowRight className="w-4 h-4" />
-              </button>
+            </button>
+          ))}
+        </section>
+
+        <section className="px-4 grid grid-cols-2 gap-3 mb-8">
+          {[
+            { value: "150+", label: "Partner Labs" },
+            { value: "50K+", label: "Tests Completed" },
+            { value: "95%", label: "Satisfaction" },
+            { value: "30+", label: "Cities Covered" },
+          ].map((s) => (
+            <div key={s.label} className="bg-white border border-gray-200 rounded-2xl p-4">
+              <p className="text-2xl font-black text-primary">{s.value}</p>
+              <p className="text-[11px] text-gray-500 uppercase font-bold tracking-wide">
+                {s.label}
+              </p>
             </div>
           ))}
-        </div>
-
-        <div className="bg-primary rounded-2xl p-6 text-white mb-6">
-          <h2 className="text-xl font-bold mb-2">Ready to partner?</h2>
-          <p className="text-white/80 text-sm mb-4">Fill our partner form to get started with Labtraca.</p>
-          <button
-            onClick={() => setSelectedType("general")}
-            className="bg-white text-primary px-5 py-2.5 rounded-xl font-bold text-sm"
-          >
-            Apply Now
-          </button>
-        </div>
+        </section>
 
         {selectedType && (
-          <div className="mb-8">
+          <section className="px-3 mb-8">
+            <div className="px-1 mb-4 flex gap-2 overflow-x-auto pb-1">
+              {partnerTypes.map((pt) => (
+                <button
+                  key={pt.type}
+                  onClick={() => setSelectedType(pt.type)}
+                  className={`px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap transition-colors ${
+                    selectedType === pt.type
+                      ? "bg-primary text-white"
+                      : "bg-white border border-gray-200 text-gray-600"
+                  }`}
+                >
+                  {pt.title}
+                </button>
+              ))}
+            </div>
             {selectedType === "laboratory" && <LaboratoryForm />}
             {selectedType === "hospital" && <HospitalForm />}
             {selectedType === "general" && <GeneralPartnerForm />}
-          </div>
+          </section>
         )}
       </main>
 

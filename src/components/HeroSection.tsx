@@ -16,22 +16,22 @@ export const HeroSection = () => {
             <span className="text-primary block">Delivered at your Door</span>
           </h1>
           <p className="text-lg text-gray-500 leading-relaxed mb-10">
-            On-demand clinical logistics. Get samples collected and results
-            delivered with the speed of food delivery.
+            On-demand clinical diadnosis and logistics. Get samples collected
+            and results delivered with the speed of food delivery.
           </p>
           <div className="flex flex-col gap-3">
             <div className="relative">
               <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Enter delivery address"
+                placeholder="Enter sample collection address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <Button className="w-full rounded-xl py-4 h-auto text-lg font-bold bg-primary hover:bg-primary/90 text-white shadow-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
-              Check availability
+              Explore partner labs
               <ArrowRight className="w-5 h-5" />
             </Button>
           </div>
@@ -47,22 +47,22 @@ export const HeroSection = () => {
               <span className="text-primary block">Delivered at your Door</span>
             </h1>
             <p className="text-base lg:text-lg text-gray-500 leading-relaxed max-w-md">
-              On-demand clinical logistics. Get samples collected and results
-              delivered with the speed of food delivery.
+              On-demand clinical diadnosis and logistics. Get samples collected
+              and results delivered with the speed of food delivery.
             </p>
             <div className="space-y-3">
               <div className="relative max-w-sm">
                 <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Enter delivery address"
+                  placeholder="Enter sample collection address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary shadow-sm"
                 />
               </div>
               <Button className="rounded-xl px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white shadow-md flex items-center gap-2">
-                Check availability
+                Explore partner labs
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
