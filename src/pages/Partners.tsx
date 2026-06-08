@@ -1,21 +1,33 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import {
+  ChevronRight,
   MapPin,
-  ArrowRight,
   Star,
   Phone,
-  Mail,
+  Building2,
   FlaskRound,
+  Mail,
   CheckCircle2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { useQuery } from "@apollo/client/react";
 import { GET_PUBLIC_USERS_BY_TYPE } from "@/lib/graphql/queries";
-import { Button } from "@/components/ui/button";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationLink,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
 
 interface GetPublicUserByTypeData {
   getPublicUserByUserType: {
+    usersCount: number;
     users: Array<{
       id: string;
       accountStatus?: string;
@@ -35,192 +47,248 @@ interface GetPublicUserByTypeData {
   };
 }
 
-const FALLBACK_PARTNERS = [
-  {
-    id: "1",
-    name: "Central Clinical Labs",
-    location: "Chicago, IL",
-    category: "Hematology",
-  },
-  {
-    id: "2",
-    name: "St. Margaret Health",
-    location: "San Francisco, CA",
-    category: "Oncology",
-  },
-  {
-    id: "3",
-    name: "OmniPath Laboratories",
-    location: "Houston, TX",
-    category: "Microbiology",
-  },
-  {
-    id: "4",
-    name: "Synlab Nigeria",
-    location: "Lagos, Nigeria",
-    category: "General Diagnostics",
-  },
-  {
-    id: "5",
-    name: "Me Cure Diagnostics",
-    location: "Abuja, Nigeria",
-    category: "Metabolic",
-  },
-  {
-    id: "6",
-    name: "Advanced Genomics Lab",
-    location: "Berlin, Germany",
-    category: "Genomics",
-  },
-];
+const PAGE_SIZE = 12;
 
 const Partners = () => {
+  const [page, setPage] = useState(1);
+
   const { data, loading } = useQuery<GetPublicUserByTypeData>(
     GET_PUBLIC_USERS_BY_TYPE,
     {
-      variables: { userType: "facility_admin", limit: 20, offset: 0 },
+      variables: {
+        userType: "facility_admin",
+        limit: PAGE_SIZE,
+        offset: (page - 1) * PAGE_SIZE,
+      },
     },
   );
 
-  const laboratories =
+  const facilities =
     data?.getPublicUserByUserType?.users
       ?.filter(
         (u) =>
-          u.facilityAdmin?.facilityType === "LABORATORY" &&
+          (u.facilityAdmin?.facilityType === "LABORATORY" ||
+            u.facilityAdmin?.facilityType === "HOSPITAL") &&
           u.accountStatus !== "DEACTIVATED",
       )
       .map((u) => ({
         id: u.id,
         name: u.facilityAdmin?.facilityName || "—",
-        location: `${u.city || ""} ${u.state || ""}`.trim() || "Nigeria",
-        category: u.facilityAdmin?.facilityType || "Laboratory",
+        type: u.facilityAdmin?.facilityType || "",
         rating: u.facilityAdmin?.rating || 4.5,
-        phone: u.phoneNumber,
+        reviews: u.facilityAdmin?.ratingCount || 0,
+        phoneNumber: u.phoneNumber,
         email: u.email,
-        address:
-          `${u.streetAddress || ""} ${u.city || ""} ${u.state || ""}`.trim(),
+        address: `${u.streetAddress || ""} ${u.city || ""} ${u.state || ""}`.trim(),
       })) || [];
 
-  const partners = laboratories.length > 0 ? laboratories : FALLBACK_PARTNERS;
+  const totalCount = data?.getPublicUserByUserType?.usersCount ?? 0;
+  const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
+
+  const getPageNumbers = () => {
+    const pages: (number | "ellipsis")[] = [];
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (page > 3) pages.push("ellipsis");
+      for (let i = Math.max(2, page - 1); i <= Math.min(totalPages - 1, page + 1); i++) pages.push(i);
+      if (page < totalPages - 2) pages.push("ellipsis");
+      pages.push(totalPages);
+    }
+    return pages;
+  };
+
+  const PaginationBar = () => (
+    <Pagination className="mt-8">
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            aria-disabled={page === 1}
+            className={page === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+          />
+        </PaginationItem>
+        {getPageNumbers().map((p, i) =>
+          p === "ellipsis" ? (
+            <PaginationItem key={`ellipsis-${i}`}>
+              <PaginationEllipsis />
+            </PaginationItem>
+          ) : (
+            <PaginationItem key={p}>
+              <PaginationLink
+                isActive={p === page}
+                onClick={() => setPage(p)}
+                className="cursor-pointer"
+              >
+                {p}
+              </PaginationLink>
+            </PaginationItem>
+          )
+        )}
+        <PaginationItem>
+          <PaginationNext
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            aria-disabled={page === totalPages}
+            className={page === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
 
   return (
-    <div className="min-h-screen bg-[#F9F9FF]">
+    <div className="min-h-screen bg-canvas">
       <Navigation />
 
-      {/* ─── MOBILE ─── */}
-      <main className="sm:hidden pt-16 px-4 pb-20">
-        <section className="pt-8 pb-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">
-            Our Global Partner Network
+      {/* Hero */}
+      <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
+        <div className="container mx-auto max-w-4xl text-center space-y-6">
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="font-medium text-foreground">Partners</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-black animate-fade-in">
+            Our Partner Network
           </h1>
-          <p className="text-sm text-gray-500">
-            Connecting you to the nost trusted clinical laboratories and
-            hospital centers for seamless diagnostic logistics.
+          <p className="text-xl md:text-2xl text-muted-foreground animate-fade-in [animation-delay:200ms]">
+            Accredited laboratories and trusted hospitals across the network
           </p>
-        </section>
-
-        {/* Map banner */}
-        <div className="relative h-48 rounded-2xl overflow-hidden mb-6 bg-gray-200">
-          <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-            <span className="bg-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-              Explore Nearby Labs
-            </span>
-          </div>
         </div>
+      </section>
 
-        {loading ? (
-          <div className="text-center py-10 text-gray-400">
-            Loading partners…
-          </div>
-        ) : (
-          <div className="flex flex-col gap-4">
-            {partners.map((p) => (
-              <div
-                key={p.id}
-                className="bg-white p-4 border border-gray-200 rounded-xl flex justify-between items-center shadow-sm"
-              >
-                <div>
-                  <h3 className="font-bold text-gray-900 text-sm">{p.name}</h3>
-                  <p className="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
-                    <MapPin className="w-3 h-3 flex-shrink-0" /> {p.location}
-                  </p>
-                </div>
-                <Link to={`/app/laboratories/${p.id}`}>
-                  <button className="bg-primary text-white p-2 rounded-full">
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </Link>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <Link to="/partner-with-us" className="mt-8 block">
-          <button className="w-full bg-primary text-white py-4 rounded-xl font-bold">
-            Become a Partner
-          </button>
-        </Link>
-      </main>
-
-      {/* ─── DESKTOP ─── */}
-      <main className="hidden sm:block pt-32 pb-20 px-4 md:px-8 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <div className="mb-12">
-            <h1 className="text-5xl font-black text-gray-900 mb-3">
-              Global Partner Network
-            </h1>
-            <p className="text-gray-500 text-lg max-w-xl leading-relaxed">
-              Meet the laboratories and healthcare providers powering the
-              Labtraca ecosystem.
-            </p>
-          </div>
-
+      {/* Main Content */}
+      <section className="py-12 px-4 md:py-20 md:px-6">
+        <div className="container mx-auto max-w-7xl">
           {loading ? (
-            <div className="text-center py-20 text-gray-400">
-              Loading partners…
-            </div>
-          ) : (
-            <div className="grid grid-cols-3 gap-6 mb-16">
-              {partners.map((partner) => (
-                <Link
-                  key={partner.id}
-                  to={`/app/laboratories/${partner.id}`}
-                  className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-primary hover:-translate-y-1 transition-all shadow-sm hover:shadow-md block"
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="bg-card border rounded-3xl p-6 flex flex-col gap-4 animate-pulse"
                 >
-                  <div className="w-14 h-14 bg-[#d1e7e7] rounded-xl flex items-center justify-center mb-5">
-                    <FlaskRound className="w-7 h-7 text-primary" />
-                  </div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-bold text-gray-900 leading-tight">
-                      {partner.name}
-                    </h3>
-                    <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  </div>
-                  <p className="text-gray-500 text-sm flex items-center gap-1 mb-3">
-                    <MapPin className="w-3.5 h-3.5 flex-shrink-0" />{" "}
-                    {partner.location}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-block px-3 py-1 bg-[#f1f3ff] rounded-full text-xs font-semibold text-gray-600">
-                      {partner.category}
-                    </span>
-                    <div className="flex items-center gap-1 text-xs text-amber-600 font-bold">
-                      <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
-                      {(partner as any).rating || 4.5}
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 rounded-2xl bg-muted flex-shrink-0" />
+                    <div className="flex-1 space-y-2">
+                      <div className="h-4 bg-muted rounded w-3/4" />
+                      <div className="h-3 bg-muted rounded w-1/2" />
                     </div>
                   </div>
-                </Link>
+                  <div className="space-y-2">
+                    <div className="h-3 bg-muted rounded w-full" />
+                    <div className="h-3 bg-muted rounded w-2/3" />
+                  </div>
+                  <div className="flex gap-3 pt-4 border-t">
+                    <div className="h-9 bg-muted rounded-full flex-1" />
+                    <div className="h-9 bg-muted rounded-full flex-1" />
+                  </div>
+                </div>
               ))}
             </div>
-          )}
+          ) : facilities.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12">
+              <Building2 className="w-16 h-16 text-muted-foreground mb-4" />
+              <h3 className="text-xl font-bold text-muted-foreground mb-2">
+                No Partners Registered Yet
+              </h3>
+              <p className="text-muted-foreground text-center">
+                We're working to bring healthcare facilities online. Please check back soon.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {facilities.map((facility) => {
+                  const isLab = facility.type === "LABORATORY";
+                  const detailPath = isLab
+                    ? `/app/laboratories/${facility.id}`
+                    : `/app/hospitals/${facility.id}`;
+                  const Icon = isLab ? FlaskRound : Building2;
 
+                  return (
+                    <div
+                      key={facility.id}
+                      className="bg-card border rounded-3xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
+                    >
+                      <Link to={detailPath} className="flex-1 flex flex-col cursor-pointer">
+                        <div className="flex items-start gap-4 mb-6">
+                          <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Icon className="w-8 h-8 text-primary" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-start justify-between gap-2">
+                              <div className="flex items-center gap-2 flex-1 min-w-0">
+                                <h3 className="font-bold text-lg leading-tight mb-1 truncate">
+                                  {facility.name.toUpperCase()}
+                                </h3>
+                                <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
+                              </div>
+                              <div className="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-full flex-shrink-0">
+                                <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                                <span className="text-xs font-bold text-amber-700">
+                                  {facility.rating}
+                                </span>
+                              </div>
+                            </div>
+                            <p className="text-sm text-muted-foreground font-medium">
+                              {facility.type}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-3 mb-6 flex-1">
+                          {facility.address && (
+                            <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                              <span className="line-clamp-2">{facility.address}</span>
+                            </div>
+                          )}
+                          <div className="space-y-1">
+                            {facility.phoneNumber && (
+                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <Phone className="w-4 h-4 text-primary" />
+                                <span>{facility.phoneNumber}</span>
+                              </div>
+                            )}
+                            {facility.email && (
+                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <Mail className="w-4 h-4 text-primary" />
+                                <span className="truncate">{facility.email}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </Link>
+
+                      <div className="flex items-center gap-3 pt-4 border-t mt-auto">
+                        <Button variant="outline" className="flex-1 font-bold rounded-full">
+                          <Phone className="w-4 h-4 mr-2" />
+                          Call
+                        </Button>
+                        <Button className="flex-1 font-bold rounded-full">
+                          <MapPin className="w-4 h-4 mr-2" />
+                          Directions
+                        </Button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {totalPages > 1 && <PaginationBar />}
+            </>
+          )}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 px-4 md:px-8">
+        <div className="container mx-auto max-w-4xl">
           <div className="bg-primary rounded-2xl p-12 text-center text-white">
-            <h2 className="text-3xl font-black mb-3">
-              Ready to Join Our Network?
-            </h2>
+            <h2 className="text-3xl font-black mb-3">Ready to Join Our Network?</h2>
             <p className="text-white/80 max-w-lg mx-auto mb-8 leading-relaxed">
-              Partner with Labtraca and expand your reach to thousands of
-              customers seeking quality lab testing services.
+              Partner with Labtraca and expand your reach to thousands of customers seeking quality
+              lab testing services.
             </p>
             <Link to="/partner-with-us">
               <button className="bg-white text-primary px-8 py-3.5 rounded-xl font-bold hover:bg-white/90 transition-colors">
@@ -229,7 +297,7 @@ const Partners = () => {
             </Link>
           </div>
         </div>
-      </main>
+      </section>
 
       <Footer />
     </div>

@@ -7,17 +7,17 @@ export const HeroSection = () => {
   const [address, setAddress] = useState("");
 
   return (
-    <section className="pt-16 sm:pt-[57px] bg-[#F9F9FF] overflow-hidden">
+    <section className="pt-16 sm:pt-[57px] bg-canvas overflow-hidden">
       {/* Mobile layout */}
-      <div className="sm:hidden px-4 pt-10 pb-16 bg-gradient-to-b from-[#F9F9FF] to-[#e9edff]">
+      <div className="sm:hidden px-4 pt-10 pb-16 bg-gradient-to-b from-canvas to-card-surface">
         <div className="max-w-md mx-auto text-center">
-          <h1 className="text-[40px] font-bold leading-tight text-gray-900 mb-6">
+          <h1 className="text-[40px] font-bold leading-tight text-foreground mb-6">
             Your health,{" "}
             <span className="text-primary block">Delivered at your Door</span>
           </h1>
-          <p className="text-lg text-gray-500 leading-relaxed mb-10">
-            On-demand clinical diadnosis and logistics. Get samples collected
-            and results delivered with the speed of food delivery.
+          <p className="text-lg text-muted-foreground leading-relaxed mb-10">
+            On-demand clinical diagnostics and logistics. Get samples collected
+            and results delivered with speed delivery in your devices.
           </p>
           <div className="flex flex-col gap-3">
             <div className="relative">
@@ -27,7 +27,7 @@ export const HeroSection = () => {
                 placeholder="Enter sample collection address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                className="w-full pl-12 pr-4 py-4 rounded-xl border border-border bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <Button className="w-full rounded-xl py-4 h-auto text-lg font-bold bg-primary hover:bg-primary/90 text-white shadow-lg flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
@@ -42,13 +42,14 @@ export const HeroSection = () => {
       <div className="hidden sm:block container mx-auto max-w-7xl px-4 md:px-8 py-10 md:py-24">
         <div className="flex items-center gap-3 md:gap-16">
           <div className="flex-1 min-w-0 space-y-4 md:space-y-7 animate-fade-in">
-            <h1 className="text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight">
+            <h1 className="text-5xl lg:text-6xl font-black tracking-tight text-foreground leading-tight">
               Your health,{" "}
               <span className="text-primary block">Delivered at your Door</span>
             </h1>
-            <p className="text-base lg:text-lg text-gray-500 leading-relaxed max-w-md">
-              On-demand clinical diadnosis and logistics. Get samples collected
-              and results delivered with the speed of food delivery.
+            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-md">
+              On-demand clinical diagnostics and logistics. Get samples
+              collected and results delivered with speed delivery in your
+              devices.
             </p>
             <div className="space-y-3">
               <div className="relative max-w-sm">
@@ -58,7 +59,7 @@ export const HeroSection = () => {
                   placeholder="Enter sample collection address"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary shadow-sm"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-border bg-white text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary shadow-sm"
                 />
               </div>
               <Button className="rounded-xl px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white shadow-md flex items-center gap-2">

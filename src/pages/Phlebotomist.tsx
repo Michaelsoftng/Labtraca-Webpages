@@ -41,7 +41,7 @@ const Phlebotomist = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F9F9FF]">
+    <div className="min-h-screen bg-canvas">
       <Navigation />
 
       {/* ─── MOBILE ─── */}
@@ -74,22 +74,22 @@ const Phlebotomist = () => {
               desc: "Choose shifts that fit your lifestyle. We offer part-time, full-time, and per-diem opportunities.",
             },
           ].map(({ Icon, title, desc }) => (
-            <div key={title} className="bg-white border border-gray-200 rounded-2xl p-5 flex gap-4 items-start shadow-sm">
-              <div className="w-10 h-10 rounded-full bg-[#d1e7e7] flex items-center justify-center flex-shrink-0">
+            <div key={title} className="bg-white border border-border rounded-2xl p-5 flex gap-4 items-start shadow-sm">
+              <div className="w-10 h-10 rounded-full bg-teal-surface flex items-center justify-center flex-shrink-0">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">{title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-foreground mb-1">{title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Apply Now form */}
-        <div className="mx-4 mb-8 bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-          <h2 className="text-2xl font-bold text-gray-900 mb-1">Apply Now</h2>
-          <p className="text-sm text-gray-500 mb-6">Complete the form below to start your journey with Labtraca.</p>
+        <div className="mx-4 mb-8 bg-white rounded-2xl border border-border p-6 shadow-sm">
+          <h2 className="text-2xl font-bold text-foreground mb-1">Apply Now</h2>
+          <p className="text-sm text-muted-foreground mb-6">Complete the form below to start your journey with Labtraca.</p>
           <form onSubmit={handleMobileSubmit} className="space-y-4">
             <div>
               <label className="text-xs font-semibold text-gray-600 block mb-1.5">Full Name</label>
@@ -98,7 +98,7 @@ const Phlebotomist = () => {
                 placeholder="Jane Doe"
                 value={mobileForm.fullName}
                 onChange={(e) => setMobileForm({ ...mobileForm, fullName: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                className="w-full px-4 py-3 rounded-xl border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <div>
@@ -108,7 +108,7 @@ const Phlebotomist = () => {
                 placeholder="jane.doe@example.com"
                 value={mobileForm.email}
                 onChange={(e) => setMobileForm({ ...mobileForm, email: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                className="w-full px-4 py-3 rounded-xl border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <div>
@@ -118,7 +118,7 @@ const Phlebotomist = () => {
                 placeholder="CPT-123456"
                 value={mobileForm.certNumber}
                 onChange={(e) => setMobileForm({ ...mobileForm, certNumber: e.target.value })}
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                className="w-full px-4 py-3 rounded-xl border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <div>
@@ -132,7 +132,7 @@ const Phlebotomist = () => {
                 ].map((opt) => (
                   <label
                     key={opt.key}
-                    className="flex items-center gap-2.5 border border-gray-200 rounded-xl px-4 py-3 cursor-pointer bg-[#F9F9FF]"
+                    className="flex items-center gap-2.5 border border-border rounded-xl px-4 py-3 cursor-pointer bg-canvas"
                   >
                     <input
                       type="checkbox"
@@ -162,7 +162,7 @@ const Phlebotomist = () => {
 
         {/* Why Work With Us */}
         <div className="px-4 pb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5">Why Work With Us?</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-5">Why Work With Us?</h2>
           <div className="space-y-3">
             {[
               {
@@ -179,10 +179,10 @@ const Phlebotomist = () => {
                 Icon: GraduationCap,
                 title: "CME Support",
                 desc: "Stipends for continuing medical education and license renewals.",
-                bg: "bg-[#d1e7e7]",
+                bg: "bg-teal-surface",
                 iconBg: "bg-primary/10",
                 iconColor: "text-primary",
-                titleColor: "text-gray-900",
+                titleColor: "text-foreground",
                 descColor: "text-gray-600",
               },
               {
@@ -190,13 +190,13 @@ const Phlebotomist = () => {
                 title: "Modern Equipment",
                 desc: "Access to the latest precision collection tools and logistics software.",
                 bg: "bg-white",
-                iconBg: "bg-[#d1e7e7]",
+                iconBg: "bg-teal-surface",
                 iconColor: "text-primary",
-                titleColor: "text-gray-900",
-                descColor: "text-gray-500",
+                titleColor: "text-foreground",
+                descColor: "text-muted-foreground",
               },
             ].map(({ Icon, title, desc, bg, iconBg, iconColor, titleColor, descColor }) => (
-              <div key={title} className={`${bg} border border-gray-200 rounded-2xl p-5 flex gap-4 items-start`}>
+              <div key={title} className={`${bg} border border-border rounded-2xl p-5 flex gap-4 items-start`}>
                 <div className={`w-10 h-10 rounded-full ${iconBg} flex items-center justify-center flex-shrink-0`}>
                   <Icon className={`w-5 h-5 ${iconColor}`} />
                 </div>
@@ -220,13 +220,13 @@ const Phlebotomist = () => {
                 <span className="text-xs font-bold text-primary uppercase tracking-widest">
                   Careers in Labtraca
                 </span>
-                <h1 className="text-5xl font-black text-gray-900 leading-tight">
+                <h1 className="text-5xl font-black text-foreground leading-tight">
                   Join our Team of{" "}
                   <span className="text-primary">
                     Certified <br />Phlebotomists
                   </span>
                 </h1>
-                <p className="text-gray-500 text-lg leading-relaxed max-w-md">
+                <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
                   Advance your career with a leader in medical logistics. We offer professional growth, clinical excellence, and the flexibility you need to balance life and work.
                 </p>
                 <div className="flex gap-3 pt-1">
@@ -252,12 +252,12 @@ const Phlebotomist = () => {
                   />
                 </div>
                 <div className="absolute bottom-4 left-4 right-16 bg-white/95 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3 shadow-lg border border-gray-100">
-                  <div className="w-10 h-10 rounded-full bg-[#d1e7e7] flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-teal-surface flex items-center justify-center flex-shrink-0">
                     <ShieldCheck className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-sm">Clinical Precision</p>
-                    <p className="text-xs text-gray-500">Accredited Laboratory standards</p>
+                    <p className="font-bold text-foreground text-sm">Clinical Precision</p>
+                    <p className="text-xs text-muted-foreground">Accredited Laboratory standards</p>
                   </div>
                 </div>
               </div>
@@ -266,28 +266,28 @@ const Phlebotomist = () => {
         </section>
 
         {/* Why Labtraca — bento grid */}
-        <section id="benefits" className="py-20 px-4 md:px-8 bg-[#F9F9FF]">
+        <section id="benefits" className="py-20 px-4 md:px-8 bg-canvas">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-14">
-              <h2 className="text-4xl font-black text-gray-900 mb-3">Why Labtraca?</h2>
-              <p className="text-gray-500 max-w-lg mx-auto leading-relaxed">
+              <h2 className="text-4xl font-black text-foreground mb-3">Why Labtraca?</h2>
+              <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 We provide the environment and resources you need to deliver high-quality patient care while maintaining professional autonomy.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               {/* Clinical Excellence */}
-              <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-[#d1e7e7] flex items-center justify-center mb-4">
+              <div className="bg-white border border-border rounded-2xl p-7 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-teal-surface flex items-center justify-center mb-4">
                   <ShieldCheck className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Clinical Excellence</h3>
-                <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                <h3 className="text-xl font-bold text-foreground mb-2">Clinical Excellence</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                   Work with state-of-the-art diagnostic equipment and standardized protocols that ensure patient safety and specimen integrity at every step.
                 </p>
                 <div className="space-y-2">
                   {["ISO Certified Lab", "Strict 6A Protocols", "Digital Tracking"].map((item) => (
-                    <div key={item} className="flex items-center gap-2 border border-gray-200 rounded-lg px-4 py-2.5 bg-[#F9F9FF]">
+                    <div key={item} className="flex items-center gap-2 border border-border rounded-lg px-4 py-2.5 bg-canvas">
                       <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
                       <span className="text-sm text-gray-700">{item}</span>
                     </div>
@@ -296,23 +296,23 @@ const Phlebotomist = () => {
               </div>
 
               {/* Flexible Scheduling */}
-              <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-[#d1e7e7] flex items-center justify-center mb-4">
+              <div className="bg-white border border-border rounded-2xl p-7 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-teal-surface flex items-center justify-center mb-4">
                   <Calendar className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Flexible Scheduling</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <h3 className="text-xl font-bold text-foreground mb-2">Flexible Scheduling</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Pick shifts that fit your life. Our smart scheduling app allows you to manage your availability in real-time.
                 </p>
               </div>
 
               {/* Professional Growth */}
-              <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-[#d1e7e7] flex items-center justify-center mb-4">
+              <div className="bg-white border border-border rounded-2xl p-7 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-teal-surface flex items-center justify-center mb-4">
                   <TrendingUp className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Professional Growth</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <h3 className="text-xl font-bold text-foreground mb-2">Professional Growth</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Access continuing education credits and clear pathways to lead phlebotomist and supervisory roles.
                 </p>
               </div>
@@ -339,13 +339,13 @@ const Phlebotomist = () => {
         <section id="apply" className="py-20 px-4 md:px-8 bg-white">
           <div className="container mx-auto max-w-2xl">
             {desktopStep === 1 ? (
-              <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                <div className="h-1.5 bg-gray-100">
+              <div className="bg-white border border-border rounded-2xl overflow-hidden shadow-sm">
+                <div className="h-1.5 bg-muted">
                   <div className="h-full bg-primary w-1/3 rounded-r-full" />
                 </div>
                 <div className="p-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-1">Personal Information</h2>
-                  <p className="text-sm text-gray-500 mb-7">Tell us about yourself so we can get in touch.</p>
+                  <h2 className="text-2xl font-bold text-foreground mb-1">Personal Information</h2>
+                  <p className="text-sm text-muted-foreground mb-7">Tell us about yourself so we can get in touch.</p>
                   <form
                     className="space-y-4"
                     onSubmit={(e) => {
@@ -356,20 +356,20 @@ const Phlebotomist = () => {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="text-xs font-semibold text-gray-600 block mb-1.5">First Name</label>
-                        <input type="text" placeholder="Jane" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                        <input type="text" placeholder="Jane" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-gray-600 block mb-1.5">Last Name</label>
-                        <input type="text" placeholder="Doe" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                        <input type="text" placeholder="Doe" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                       </div>
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-gray-600 block mb-1.5">Email Address</label>
-                      <input type="email" placeholder="jane.doe@example.com" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                      <input type="email" placeholder="jane.doe@example.com" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-gray-600 block mb-1.5">Phone Number</label>
-                      <input type="tel" placeholder="(555) 000-0000" required className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-[#F9F9FF] text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                      <input type="tel" placeholder="(555) 000-0000" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
                     </div>
                     <div className="flex justify-end pt-2">
                       <button type="submit" className="bg-primary text-white px-6 py-3 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-md">

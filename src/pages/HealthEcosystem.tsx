@@ -76,7 +76,7 @@ const mobileSteps = [
 
 const HealthEcosystem = () => {
   return (
-    <div className="min-h-screen bg-[#F9F9FF]">
+    <div className="min-h-screen bg-canvas">
       <Navigation />
 
       {/* ══════════════════════════════════════════
@@ -84,33 +84,33 @@ const HealthEcosystem = () => {
       ══════════════════════════════════════════ */}
 
       {/* Mobile — Hero */}
-      <section className="lg:hidden pt-[72px] pb-4 px-4 bg-[#F9F9FF]">
+      <section className="lg:hidden pt-[72px] pb-4 px-4 bg-canvas">
         <div className="py-5 space-y-1.5">
-          <h1 className="text-2xl font-black text-gray-900 leading-tight">
+          <h1 className="text-2xl font-black text-foreground leading-tight">
             Our Specialized Services
           </h1>
-          <p className="text-sm text-gray-500 leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Comprehensive Diagnostics &amp; Logistics for Modern Healthcare.
           </p>
         </div>
       </section>
 
       {/* Mobile — Service Cards */}
-      <section className="lg:hidden px-4 pb-6 bg-[#F9F9FF] space-y-4">
+      <section className="lg:hidden px-4 pb-6 bg-canvas space-y-4">
         {/* Lab Test Collection */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5">
+        <div className="bg-white border border-border rounded-2xl p-5">
           <div className="flex items-start justify-between mb-3">
-            <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
-              <FlaskConical className="w-5 h-5 text-gray-500" />
+            <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+              <FlaskConical className="w-5 h-5 text-muted-foreground" />
             </div>
             <span className="text-xs font-semibold text-white bg-primary px-3 py-1 rounded-full">
               High Demand
             </span>
           </div>
-          <h3 className="font-black text-gray-900 text-xl mb-2">
+          <h3 className="font-black text-foreground text-xl mb-2">
             Lab Test Collection
           </h3>
-          <p className="text-sm text-gray-500 leading-relaxed mb-4">
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
             Secure diagnostics transport of biological samples from patient to
             laboratory with real-time temperature tracking.
           </p>
@@ -127,17 +127,17 @@ const HealthEcosystem = () => {
         </div>
 
         {/* Dispatch Riders */}
-        <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+        <div className="bg-white border border-border rounded-2xl overflow-hidden">
           <img
             src={DispatchRider}
             alt="Dispatch rider"
             className="w-full h-44 object-cover"
           />
           <div className="p-5">
-            <h3 className="font-black text-gray-900 text-xl mb-2">
+            <h3 className="font-black text-foreground text-xl mb-2">
               Dispatch Riders
             </h3>
-            <p className="text-sm text-gray-500 leading-relaxed mb-4">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               Rapid response diagnostics logistics team equipped for
               time-critical medical deliveries and urban navigation.
             </p>
@@ -151,14 +151,14 @@ const HealthEcosystem = () => {
         </div>
 
         {/* Pharmacy Collaboration */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5">
-          <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-3">
-            <Network className="w-5 h-5 text-gray-500" />
+        <div className="bg-white border border-border rounded-2xl p-5">
+          <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center mb-3">
+            <Network className="w-5 h-5 text-muted-foreground" />
           </div>
-          <h3 className="font-black text-gray-900 text-xl mb-2">
+          <h3 className="font-black text-foreground text-xl mb-2">
             Pharmacy Collaboration
           </h3>
-          <p className="text-sm text-gray-500 leading-relaxed mb-4">
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
             A collaborative diagnostics ecosystem enhancing health service
             delivery through integrated pharmacy network solutions.
           </p>
@@ -171,14 +171,14 @@ const HealthEcosystem = () => {
         </div>
 
         {/* Mobile Phlebotomy */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5">
-          <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center mb-3">
-            <Pipette className="w-5 h-5 text-gray-500" />
+        <div className="bg-white border border-border rounded-2xl p-5">
+          <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center mb-3">
+            <Pipette className="w-5 h-5 text-muted-foreground" />
           </div>
-          <h3 className="font-black text-gray-900 text-xl mb-2">
+          <h3 className="font-black text-foreground text-xl mb-2">
             Mobile Phlebotomy
           </h3>
-          <p className="text-sm text-gray-500 leading-relaxed mb-4">
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
             Certified professionals dispatched for professional blood draws and
             diagnostics sample preparation at your location.
           </p>
@@ -191,7 +191,7 @@ const HealthEcosystem = () => {
         </div>
 
         {/* Enterprise Solutions */}
-        <div className="bg-[#0F172A] rounded-2xl p-5">
+        <div className="bg-navy rounded-2xl p-5">
           <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-3">
             <LayoutGrid className="w-5 h-5 text-white" />
           </div>
@@ -210,7 +210,7 @@ const HealthEcosystem = () => {
 
       {/* Mobile — How it works */}
       <section className="lg:hidden px-4 py-8 bg-white">
-        <h2 className="text-xl font-black text-gray-900 mb-6">How it works</h2>
+        <h2 className="text-xl font-black text-foreground mb-6">How it works</h2>
         <div className="space-y-5">
           {mobileSteps.map((step) => (
             <div key={step.num} className="flex items-start gap-4">
@@ -218,10 +218,10 @@ const HealthEcosystem = () => {
                 <span className="text-white text-sm font-bold">{step.num}</span>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 text-sm leading-snug">
+                <h4 className="font-bold text-foreground text-sm leading-snug">
                   {step.title}
                 </h4>
-                <p className="text-sm text-gray-500 mt-0.5 leading-relaxed">
+                <p className="text-sm text-muted-foreground mt-0.5 leading-relaxed">
                   {step.desc}
                 </p>
               </div>
@@ -235,24 +235,24 @@ const HealthEcosystem = () => {
         <div className="flex flex-wrap gap-x-5 gap-y-2 justify-center mb-4">
           <Link
             to="/about"
-            className="text-sm text-gray-500 hover:text-gray-900"
+            className="text-sm text-muted-foreground hover:text-foreground"
           >
             About Us
           </Link>
-          <a href="#" className="text-sm text-gray-500 hover:text-gray-900">
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
             Support
           </a>
           <a
             href="https://sites.google.com/view/labtraca-user/home"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-500 hover:text-gray-900"
+            className="text-sm text-muted-foreground hover:text-foreground"
           >
             Privacy Policy
           </a>
           <Link
             to="/terms-conditions"
-            className="text-sm text-gray-500 hover:text-gray-900"
+            className="text-sm text-muted-foreground hover:text-foreground"
           >
             Terms of Service
           </Link>
@@ -274,10 +274,10 @@ const HealthEcosystem = () => {
               <span className="inline-block border border-primary text-primary text-[11px] font-semibold px-3 py-1 rounded-full tracking-widest uppercase">
                 Clinical Services
               </span>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground leading-tight">
                 Comprehensive Diagnostics &amp; Logistics for Modern Healthcare.
               </h1>
-              <p className="text-gray-500 text-base leading-relaxed max-w-md">
+              <p className="text-muted-foreground text-base leading-relaxed max-w-md">
                 Labtraca bridges the gap between clinical excellence and
                 logistical precision. We provide secure, rapid transport for
                 diagnostics and medical assets across the entire healthcare
@@ -312,10 +312,10 @@ const HealthEcosystem = () => {
                   <CheckCircle2 className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-900 leading-tight">
+                  <p className="text-xs font-bold text-foreground leading-tight">
                     ISO Certified
                   </p>
-                  <p className="text-[10px] text-gray-500 leading-tight">
+                  <p className="text-[10px] text-muted-foreground leading-tight">
                     Clinical-Grade Logistics
                   </p>
                 </div>
@@ -335,10 +335,10 @@ const HealthEcosystem = () => {
                 <FlaskConical className="w-5 h-5 text-primary" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-black text-gray-900 text-lg">
+                <h3 className="font-black text-foreground text-lg">
                   Lab Test Collection
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   On-demand diagnostics logistics for patients. We collect from
                   your doorstep and deliver to certified partner laboratories
                   within hours.
@@ -352,7 +352,7 @@ const HealthEcosystem = () => {
                 ].map((f) => (
                   <li
                     key={f}
-                    className="flex items-center gap-2 text-xs text-gray-500"
+                    className="flex items-center gap-2 text-xs text-muted-foreground"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                     {f}
@@ -406,7 +406,7 @@ const HealthEcosystem = () => {
                 <Pipette className="w-5 h-5 text-primary" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-black text-gray-900 text-lg">
+                <h3 className="font-black text-foreground text-lg">
                   Phlebotomy Care
                 </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
@@ -425,7 +425,7 @@ const HealthEcosystem = () => {
             </div>
 
             {/* Enterprise Diagnostics */}
-            <div className="col-span-3 bg-[#0F172A] rounded-2xl p-6 flex gap-6 text-white overflow-hidden">
+            <div className="col-span-3 bg-navy rounded-2xl p-6 flex gap-6 text-white overflow-hidden">
               <div className="flex-1 flex flex-col gap-4">
                 <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
                   <Network className="w-5 h-5 text-white" />
@@ -469,10 +469,10 @@ const HealthEcosystem = () => {
       <section className="hidden lg:block py-16 md:py-20 px-4 md:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14 space-y-3">
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-black text-foreground">
               Precision Diagnostics &amp; Logistics. Simplified.
             </h2>
-            <p className="text-gray-500 text-base max-w-xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground text-base max-w-xl mx-auto leading-relaxed">
               Our systematic approach ensures that every sample and clinical
               asset reaches its destination with medical-grade integrity.
             </p>
@@ -488,10 +488,10 @@ const HealthEcosystem = () => {
                   <div className="w-16 h-16 rounded-full border-2 border-primary/30 bg-white flex items-center justify-center relative z-10">
                     <step.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <p className="font-black text-sm text-gray-900">
+                  <p className="font-black text-sm text-foreground">
                     {step.number} {step.title}
                   </p>
-                  <p className="text-xs text-gray-500 leading-relaxed max-w-[160px]">
+                  <p className="text-xs text-muted-foreground leading-relaxed max-w-[160px]">
                     {step.description}
                   </p>
                 </div>
@@ -508,7 +508,7 @@ const HealthEcosystem = () => {
             className="rounded-2xl md:rounded-3xl py-16 px-8 md:px-16 text-center space-y-6"
             style={{ backgroundColor: "#E1E8FD" }}
           >
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 max-w-xl mx-auto leading-tight">
+            <h2 className="text-2xl md:text-3xl font-black text-foreground max-w-xl mx-auto leading-tight">
               Ready to optimize your diagnostics logistics?
             </h2>
             <p className="text-gray-600 text-base max-w-lg mx-auto leading-relaxed">

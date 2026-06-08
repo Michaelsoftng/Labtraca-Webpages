@@ -37,7 +37,7 @@ const CategoriesSection = () => {
   return (
     <section className="py-10 md:py-24 md:px-8 bg-white">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-xl md:text-3xl font-black text-gray-900 mb-6 md:mb-10">
+        <h2 className="text-xl md:text-3xl font-black text-foreground mb-6 md:mb-10">
           Our Service Networks
         </h2>
 
@@ -46,7 +46,7 @@ const CategoriesSection = () => {
             <div
               key={i}
               onClick={() => navigate(network.path)}
-              className="bg-[#E9EDFF] border border-gray-200 rounded-2xl p-5 md:p-7 flex flex-col gap-4 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="bg-card-surface border border-border rounded-2xl p-5 md:p-7 flex flex-col gap-4 cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               <div
                 className={`w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center`}
@@ -54,8 +54,8 @@ const CategoriesSection = () => {
                 <network.icon className={`w-5 h-5 text-primary`} />
               </div>
               <div className="space-y-1.5">
-                <h3 className="font-bold text-gray-900">{network.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <h3 className="font-bold text-foreground">{network.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {network.description}
                 </p>
               </div>

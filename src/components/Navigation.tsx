@@ -23,7 +23,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F9F9FF] border-b border-gray-200">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-canvas border-b border-border">
         {/* Mobile bar */}
         <div className="flex lg:hidden items-center justify-between px-4 h-16">
           <div className="flex items-center gap-3">
@@ -39,8 +39,8 @@ export const Navigation = () => {
             </Link>
           </div>
           <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
-            <div className="w-10 h-10 rounded-full bg-[#d1e7e7] border border-[#bcc9c8] flex items-center justify-center cursor-pointer">
-              <User className="w-5 h-5 text-[#4e6262]" />
+            <div className="w-10 h-10 rounded-full bg-teal-surface border border-teal-subtle flex items-center justify-center cursor-pointer">
+              <User className="w-5 h-5 text-teal-muted" />
             </div>
           </a>
         </div>
@@ -60,7 +60,7 @@ export const Navigation = () => {
                   className={`text-sm font-medium transition-colors relative pb-0.5 whitespace-nowrap ${
                     isActive(item.path)
                       ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full"
-                      : "text-gray-600 hover:text-gray-900"
+                      : "text-gray-600 hover:text-foreground"
                   }`}
                 >
                   {item.name}
@@ -72,7 +72,7 @@ export const Navigation = () => {
               <a href="https://app.labtraca.com/" target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="outline"
-                  className="rounded-full px-6 py-2 h-9 text-sm font-medium border-gray-300 text-gray-700 hover:border-gray-400 hover:text-gray-900"
+                  className="rounded-full px-6 py-2 h-9 text-sm font-medium border-gray-300 text-gray-700 hover:border-gray-400 hover:text-foreground"
                 >
                   Login
                 </Button>
@@ -89,7 +89,7 @@ export const Navigation = () => {
 
       {/* Mobile overlay menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-16 bg-[#F9F9FF] z-40 lg:hidden">
+        <div className="fixed inset-0 top-16 bg-canvas z-40 lg:hidden">
           <div className="flex flex-col items-center pt-10 px-6 gap-6">
             {navLinks.map((item) => (
               <Link

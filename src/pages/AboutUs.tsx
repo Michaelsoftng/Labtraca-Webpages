@@ -16,13 +16,13 @@ const HeroBadge = () => (
 
 const PhoneCard = () => (
   <div className="space-y-4">
-    <div className="relative overflow-hidden rounded-2xl bg-[#0F172A] min-h-[240px] flex items-center justify-center">
+    <div className="relative overflow-hidden rounded-2xl bg-navy min-h-[240px] flex items-center justify-center">
       <img
         src={PhoneMockup}
         alt="App mockup"
         className="w-full h-auto object-cover"
       />
-      <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/60 to-transparent">
+      <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-navy via-navy/60 to-transparent">
         <p className="text-primary text-xs font-semibold tracking-wide uppercase mb-1">
           Our Vision
         </p>
@@ -30,21 +30,21 @@ const PhoneCard = () => (
       </div>
     </div>
     <div className="grid grid-cols-2 gap-4">
-      <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 space-y-2">
+      <div className="bg-muted border border-gray-100 rounded-2xl p-5 space-y-2">
         <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
           <Crosshair className="w-4 h-4 text-primary" />
         </div>
-        <h4 className="font-bold text-gray-900 text-sm">Precision</h4>
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <h4 className="font-bold text-foreground text-sm">Precision</h4>
+        <p className="text-xs text-muted-foreground leading-relaxed">
           Surgical precision in temperature control.
         </p>
       </div>
-      <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 space-y-2">
+      <div className="bg-muted border border-gray-100 rounded-2xl p-5 space-y-2">
         <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
           <Zap className="w-4 h-4 text-primary" />
         </div>
-        <h4 className="font-bold text-gray-900 text-sm">Speed</h4>
-        <p className="text-xs text-gray-500 leading-relaxed">
+        <h4 className="font-bold text-foreground text-sm">Speed</h4>
+        <p className="text-xs text-muted-foreground leading-relaxed">
           Fastest possible laboratory turnover times.
         </p>
       </div>
@@ -63,11 +63,11 @@ const AboutUs = () => {
       <section className="pt-24 pb-0 lg:hidden">
         <div className="container mx-auto max-w-6xl py-10 space-y-5">
           <HeroBadge />
-          <h1 className="text-3xl font-black text-gray-900 leading-tight">
+          <h1 className="text-3xl font-black text-foreground leading-tight">
             Revolutionizing Medical Logistics through{" "}
             <span className="text-primary">Clinical Precision.</span>
           </h1>
-          <p className="text-gray-500 text-base leading-relaxed">
+          <p className="text-muted-foreground text-base leading-relaxed">
             At Labtraca, we don't just move samples; we move lives. Our mission
             is to bridge the gap between diagnostics and patient care with
             unmatched speed and absolute safety.
@@ -100,7 +100,7 @@ const AboutUs = () => {
               alt="Medical laboratory"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-[#0F172A]/75" />
+            <div className="absolute inset-0 bg-navy/75" />
             <div className="relative z-10 p-10 md:p-14 flex flex-col justify-end min-h-[420px]">
               <div className="max-w-2xl space-y-5">
                 <HeroBadge />
@@ -139,12 +139,12 @@ const AboutUs = () => {
               <span className="inline-block border border-primary text-primary text-xs font-semibold px-3 py-1 rounded-full tracking-wide">
                 Our Origin Story
               </span>
-              <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-black text-foreground leading-tight">
                 Born from a need for{" "}
                 <span className="text-primary">Reliability.</span>
               </h2>
               <div className="w-8 h-1 bg-primary rounded-full" />
-              <div className="space-y-4 text-gray-500 text-base leading-relaxed">
+              <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
                 <p>
                   Labtraca was founded by a team of clinical pathologists and
                   logistics experts who realized that the weakest link in modern
@@ -165,10 +165,10 @@ const AboutUs = () => {
                   { value: "15min", label: "Avg Pickup" },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <p className="text-2xl font-black text-gray-900">
+                    <p className="text-2xl font-black text-foreground">
                       {stat.value}
                     </p>
-                    <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -183,12 +183,12 @@ const AboutUs = () => {
       </section>
 
       {/* ── Values ── */}
-      <section className="py-16 md:py-20 md:px-8 lg:bg-white bg-[#F1F3FF]">
+      <section className="py-16 md:py-20 md:px-8 lg:bg-white bg-card-surface">
         <div className="container mx-auto max-w-6xl text-center">
-          <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
+          <h2 className="text-2xl md:text-3xl font-black text-foreground mb-3">
             Values that Drive us Every Day
           </h2>
-          <p className="text-gray-500 text-base max-w-lg mx-auto mb-5">
+          <p className="text-muted-foreground text-base max-w-lg mx-auto mb-5">
             Our culture is built on the foundation of clinical ethics and
             high-performance logistics engineering.
           </p>
@@ -216,8 +216,8 @@ const AboutUs = () => {
                   <val.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div className="space-y-1.5">
-                  <h3 className="font-bold text-gray-900">{val.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">
+                  <h3 className="font-bold text-foreground">{val.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {val.description}
                   </p>
                 </div>
@@ -232,10 +232,10 @@ const AboutUs = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-black text-gray-900">
+              <h2 className="text-2xl md:text-3xl font-black text-foreground">
                 Why We Do This
               </h2>
-              <p className="text-gray-500 text-base leading-relaxed">
+              <p className="text-muted-foreground text-base leading-relaxed">
                 Behind every test tube is a person waiting for answers. We do
                 this because we believe logistics should never be the reason a
                 patient waits for a diagnosis or misses a treatment window.
@@ -260,10 +260,10 @@ const AboutUs = () => {
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900 text-sm">
+                      <h4 className="font-bold text-foreground text-sm">
                         {item.title}
                       </h4>
-                      <p className="text-sm text-gray-500 mt-0.5">
+                      <p className="text-sm text-muted-foreground mt-0.5">
                         {item.description}
                       </p>
                     </div>
@@ -285,7 +285,7 @@ const AboutUs = () => {
       {/* ── CTA — desktop only ── */}
       <section className="hidden md:block py-16 md:py-20 md:px-8 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <div className="bg-[#0F172A] rounded-2xl md:rounded-3xl py-16 md:py-20 px-8 md:px-14 text-center space-y-6">
+          <div className="bg-navy rounded-2xl md:rounded-3xl py-16 md:py-20 px-8 md:px-14 text-center space-y-6">
             <h2 className="text-2xl md:text-4xl font-black text-white leading-tight max-w-2xl mx-auto">
               Ready to Experience True Clinical Logistics?
             </h2>

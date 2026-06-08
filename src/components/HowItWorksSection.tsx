@@ -35,7 +35,7 @@ export const HowItWorksSection = () => {
           </span>
         </div>
 
-        <h2 className="text-2xl md:text-4xl font-black text-center text-gray-900 mb-8 md:mb-14 leading-tight">
+        <h2 className="text-2xl md:text-4xl font-black text-center text-foreground mb-8 md:mb-14 leading-tight">
           Clinical care in 3 steps
         </h2>
 
@@ -43,7 +43,7 @@ export const HowItWorksSection = () => {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="bg-[#F1F3FF] rounded-2xl p-5 md:p-8 flex flex-col gap-4 md:gap-5 border border-gray-200 hover:shadow-md transition-shadow"
+              className="bg-card-surface rounded-2xl p-5 md:p-8 flex flex-col gap-4 md:gap-5 border border-border hover:shadow-md transition-shadow"
             >
               {/* Step number circle */}
               <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
@@ -53,10 +53,10 @@ export const HowItWorksSection = () => {
               </div>
 
               <div className="space-y-2">
-                <h3 className="text-lg font-black text-gray-900">
+                <h3 className="text-lg font-black text-foreground">
                   {step.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
               </div>

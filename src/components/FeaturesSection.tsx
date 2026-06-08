@@ -17,7 +17,7 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section className="py-10 md:py-24 md:px-8 bg-[#0F172A]">
+    <section className="py-10 md:py-24 md:px-8 bg-navy">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Left — text + features */}

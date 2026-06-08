@@ -23,11 +23,11 @@ const legal = [
 
 const NavLink = ({ to, label, external }: { to: string; label: string; external?: boolean }) =>
   external ? (
-    <a href={to} target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+    <a href={to} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
       {label}
     </a>
   ) : (
-    <Link to={to} className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+    <Link to={to} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
       {label}
     </Link>
   );
@@ -41,20 +41,20 @@ export const Footer = () => {
         <div className="sm:hidden space-y-8 mb-8">
           <div className="space-y-3">
             <img src={logo} alt="Labtraca" className="h-7 w-auto" />
-            <p className="text-gray-500 text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed">
               Redefining medical logistics with precision, speed, and clinical integrity.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h4 className="text-sm font-bold text-gray-900 mb-4">Services</h4>
+              <h4 className="text-sm font-bold text-foreground mb-4">Services</h4>
               <ul className="space-y-3">
                 {services.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-bold text-gray-900 mb-4">Company</h4>
+              <h4 className="text-sm font-bold text-foreground mb-4">Company</h4>
               <ul className="space-y-3">
                 {company.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
               </ul>
@@ -75,27 +75,27 @@ export const Footer = () => {
         <div className="hidden sm:grid grid-cols-4 gap-10 mb-10">
           <div className="space-y-4">
             <img src={logo} alt="Labtraca" className="h-8 w-auto" />
-            <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-[200px]">
               Redefining medical logistics with precision, speed, and clinical integrity.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Services</h4>
+            <h4 className="text-sm font-bold text-foreground mb-4 uppercase tracking-wide">Services</h4>
             <ul className="space-y-3">
               {services.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Company</h4>
+            <h4 className="text-sm font-bold text-foreground mb-4 uppercase tracking-wide">Company</h4>
             <ul className="space-y-3">
               {company.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} /></li>)}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">Legal</h4>
+            <h4 className="text-sm font-bold text-foreground mb-4 uppercase tracking-wide">Legal</h4>
             <ul className="space-y-3">
               {legal.map((l) => <li key={l.label}><NavLink to={l.to} label={l.label} external={l.external} /></li>)}
             </ul>

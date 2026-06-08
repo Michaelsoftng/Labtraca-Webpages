@@ -68,7 +68,7 @@ const LaboratoryDetails = () => {
         <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
           <h2 className="text-2xl font-bold">Laboratory Not Found</h2>
           <Button asChild>
-            <Link to="/app/laboratories">Go Back</Link>
+            <Link to="/partners">Go Back</Link>
           </Button>
         </div>
         <Footer />
@@ -84,7 +84,7 @@ const LaboratoryDetails = () => {
       <div className="bg-primary/5 pt-24 pb-12 px-4 md:pt-32 md:pb-16 border-b">
         <div className="container mx-auto max-w-7xl">
           <Link
-            to="/app/laboratories"
+            to="/partners"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

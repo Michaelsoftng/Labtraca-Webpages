@@ -2,10 +2,10 @@ export const DownloadAppSection = () => {
   return (
     <section id="download" className="py-10 md:py-24 px-4 md:px-8 bg-white">
       <div className="container mx-auto max-w-6xl text-center space-y-5 md:space-y-6">
-        <h2 className="text-2xl md:text-5xl font-black text-gray-900 leading-tight max-w-2xl mx-auto">
+        <h2 className="text-2xl md:text-5xl font-black text-foreground leading-tight max-w-2xl mx-auto">
           Ready to prioritize your health?
         </h2>
-        <p className="text-gray-500 text-base md:text-lg max-w-md mx-auto leading-relaxed">
+        <p className="text-muted-foreground text-base md:text-lg max-w-md mx-auto leading-relaxed">
           Download the Labtraca app and get started in seconds. Fast, reliable diagnostics at your fingertips.
         </p>
 

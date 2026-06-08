@@ -12,7 +12,7 @@ const partnerTypes = [
     lucide: TrendingUp,
     title: "Clinical Partnerships",
     desc: "Enhance your lab throughput with our centralized logistics. Connect with more patients through our growing network.",
-    color: "bg-[#d1e7e7]",
+    color: "bg-teal-surface",
     type: "laboratory" as const,
   },
   {
@@ -20,7 +20,7 @@ const partnerTypes = [
     lucide: Truck,
     title: "Business Logistics",
     desc: "Plug into our established diagnostic supply chain. Rapid, medical-grade transport for your facility.",
-    color: "bg-[#e9edff]",
+    color: "bg-card-surface",
     type: "hospital" as const,
   },
   {
@@ -28,7 +28,7 @@ const partnerTypes = [
     lucide: DollarSign,
     title: "Investment Opps",
     desc: "Support the expansion of the Labtraca network. Scale healthcare delivery with enterprise-grade solutions.",
-    color: "bg-[#f1f3ff]",
+    color: "bg-card-surface",
     type: "general" as const,
   },
 ];
@@ -37,7 +37,7 @@ const PartnerWithUs = () => {
   const [selectedType, setSelectedType] = useState<"laboratory" | "hospital" | "general" | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#F9F9FF]">
+    <div className="min-h-screen bg-canvas">
       <Navigation />
 
       {/* ─── MOBILE ─── */}
@@ -46,10 +46,10 @@ const PartnerWithUs = () => {
           <span className="text-xs font-black uppercase tracking-wide text-primary">
             Partner Network
           </span>
-          <h1 className="text-3xl font-black text-gray-900 leading-tight mt-2 mb-3">
+          <h1 className="text-3xl font-black text-foreground leading-tight mt-2 mb-3">
             Partner with Labtraca
           </h1>
-          <p className="text-sm text-gray-500 leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Scale your health facility or logistics business with our diagnostic network.
           </p>
         </section>
@@ -62,7 +62,7 @@ const PartnerWithUs = () => {
               className={`w-full text-left bg-white border rounded-2xl p-4 shadow-sm transition-all ${
                 selectedType === pt.type
                   ? "border-primary ring-2 ring-primary/10"
-                  : "border-gray-200"
+                  : "border-border"
               }`}
             >
               <div className="flex gap-4">
@@ -71,12 +71,12 @@ const PartnerWithUs = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-3 mb-1">
-                    <h3 className="font-bold text-gray-900 leading-tight">
+                    <h3 className="font-bold text-foreground leading-tight">
                       {pt.title}
                     </h3>
                     <ArrowRight className="w-4 h-4 text-primary shrink-0" />
                   </div>
-                  <p className="text-xs text-gray-500 leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
                     {pt.desc}
                   </p>
                 </div>
@@ -92,9 +92,9 @@ const PartnerWithUs = () => {
             { value: "95%", label: "Satisfaction" },
             { value: "30+", label: "Cities Covered" },
           ].map((s) => (
-            <div key={s.label} className="bg-white border border-gray-200 rounded-2xl p-4">
+            <div key={s.label} className="bg-white border border-border rounded-2xl p-4">
               <p className="text-2xl font-black text-primary">{s.value}</p>
-              <p className="text-[11px] text-gray-500 uppercase font-bold tracking-wide">
+              <p className="text-[11px] text-muted-foreground uppercase font-bold tracking-wide">
                 {s.label}
               </p>
             </div>
@@ -111,7 +111,7 @@ const PartnerWithUs = () => {
                   className={`px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap transition-colors ${
                     selectedType === pt.type
                       ? "bg-primary text-white"
-                      : "bg-white border border-gray-200 text-gray-600"
+                      : "bg-white border border-border text-gray-600"
                   }`}
                 >
                   {pt.title}
@@ -131,8 +131,8 @@ const PartnerWithUs = () => {
 
           {/* Hero */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-black text-gray-900 mb-4">Partner with Labtraca</h1>
-            <p className="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+            <h1 className="text-5xl font-black text-foreground mb-4">Partner with Labtraca</h1>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
               Scale your health facility or logistics business with our enterprise-grade orchestration engine.
             </p>
           </div>
@@ -142,13 +142,13 @@ const PartnerWithUs = () => {
             {partnerTypes.map((pt) => (
               <div
                 key={pt.type}
-                className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-primary transition-all shadow-sm hover:shadow-md"
+                className="bg-white p-8 rounded-2xl border border-border hover:border-primary transition-all shadow-sm hover:shadow-md"
               >
                 <div className={`w-14 h-14 ${pt.color} rounded-2xl flex items-center justify-center mb-6`}>
                   <pt.lucide className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{pt.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6">{pt.desc}</p>
+                <h3 className="text-xl font-bold text-foreground mb-3">{pt.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">{pt.desc}</p>
                 <button
                   onClick={() => setSelectedType(pt.type)}
                   className="text-primary font-bold flex items-center gap-1.5 text-sm hover:gap-2.5 transition-all"
@@ -184,7 +184,7 @@ const PartnerWithUs = () => {
           )}
 
           {/* Stats row */}
-          <div className="bg-[#F9F9FF] rounded-2xl border border-gray-200 p-10 grid grid-cols-4 gap-8 text-center">
+          <div className="bg-canvas rounded-2xl border border-border p-10 grid grid-cols-4 gap-8 text-center">
             {[
               { value: "150+", label: "Partner Labs" },
               { value: "50K+", label: "Tests Completed" },
@@ -193,7 +193,7 @@ const PartnerWithUs = () => {
             ].map((s) => (
               <div key={s.label}>
                 <p className="text-3xl font-black text-primary mb-1">{s.value}</p>
-                <p className="text-xs text-gray-500 uppercase font-semibold tracking-wide">{s.label}</p>
+                <p className="text-xs text-muted-foreground uppercase font-semibold tracking-wide">{s.label}</p>
               </div>
             ))}
           </div>

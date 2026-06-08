@@ -54,6 +54,12 @@ export default {
           DEFAULT: "hsl(var(--hero-bg))",
           foreground: "hsl(var(--hero-bg-foreground))",
         },
+        canvas: "hsl(var(--canvas) / <alpha-value>)",
+        "card-surface": "hsl(var(--card-surface) / <alpha-value>)",
+        "teal-surface": "hsl(var(--teal-surface) / <alpha-value>)",
+        navy: "hsl(var(--navy) / <alpha-value>)",
+        "teal-subtle": "hsl(var(--teal-subtle) / <alpha-value>)",
+        "teal-muted": "hsl(var(--teal-muted) / <alpha-value>)",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

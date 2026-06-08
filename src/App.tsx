@@ -14,8 +14,6 @@ import TestCatalog from "./pages/TestCatalog";
 import FAQ from "./pages/FAQ";
 import OurApp from "./pages/OurApp";
 import Consultation from "./pages/Consultation";
-import Hospitals from "./pages/Hospitals";
-import Laboratories from "./pages/Laboratories";
 import Dispatcher from "./pages/Dispatcher";
 import Phlebotomist from "./pages/Phlebotomist";
 import HospitalDetails from "./pages/HospitalDetails";
@@ -51,9 +49,7 @@ const App = () => (
           <Route path="/app/tests" element={<TestCatalog />} />
           <Route path="/app/consultation" element={<Consultation />} />
           <Route path="/app/consultation/:id" element={<DoctorDetails />} />
-          <Route path="/app/hospitals" element={<Hospitals />} />
           <Route path="/app/hospitals/:id" element={<HospitalDetails />} />
-          <Route path="/app/laboratories" element={<Laboratories />} />
           <Route path="/app/laboratories/:id" element={<LaboratoryDetails />} />
           <Route path="/dispatcher" element={<Dispatcher />} />
           <Route path="/phlebotomist" element={<Phlebotomist />} />
