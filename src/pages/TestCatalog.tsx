@@ -49,9 +49,9 @@ const TestCatalog = () => {
   const totalCount = data?.getPublicAllTest?.testCount ?? 0;
   const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
 
-  const tests = apiTests
-    .filter((t) => t.price !== null && t.price !== undefined && t.price !== "")
-    .filter((t) => t.name.toLowerCase().includes(search.toLowerCase()));
+  const tests = apiTests.filter((t) =>
+    t.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   const getPageNumbers = () => {
     const pages: (number | "ellipsis")[] = [];
