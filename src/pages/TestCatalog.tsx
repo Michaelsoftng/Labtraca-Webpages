@@ -42,16 +42,17 @@ const TestCatalog = () => {
   const { data, loading } = useQuery<{
     getPublicAllTest?: { testCount: number; tests: Test[] };
   }>(GetTests, {
-    variables: { limit: PAGE_SIZE, offset: (page - 1) * PAGE_SIZE },
+    variables: { limit: 1000, offset: 0 },
   });
 
-  const apiTests = data?.getPublicAllTest?.tests || [];
-  const totalCount = data?.getPublicAllTest?.testCount ?? 0;
-  const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
+  const allTests = data?.getPublicAllTest?.tests || [];
 
-  const tests = apiTests.filter((t) =>
+  const filtered = allTests.filter((t) =>
     t.name.toLowerCase().includes(search.toLowerCase()),
   );
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const tests = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const getPageNumbers = () => {
     const pages: (number | "ellipsis")[] = [];
