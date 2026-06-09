@@ -34,7 +34,7 @@ const partnerTypes = [
 ];
 
 const PartnerWithUs = () => {
-  const [selectedType, setSelectedType] = useState<"laboratory" | "hospital" | "general" | null>(null);
+  const [selectedType, setSelectedType] = useState<"laboratory" | "hospital" | "general">("laboratory");
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -47,7 +47,7 @@ const PartnerWithUs = () => {
             Partner Network
           </span>
           <h1 className="text-3xl font-black text-foreground leading-tight mt-2 mb-3">
-            Partner with Labtraca
+            Become Our Partner
           </h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Scale your health facility or logistics business with our diagnostic network.
@@ -101,28 +101,26 @@ const PartnerWithUs = () => {
           ))}
         </section>
 
-        {selectedType && (
-          <section className="px-3 mb-8">
-            <div className="px-1 mb-4 flex gap-2 overflow-x-auto pb-1">
-              {partnerTypes.map((pt) => (
-                <button
-                  key={pt.type}
-                  onClick={() => setSelectedType(pt.type)}
-                  className={`px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap transition-colors ${
-                    selectedType === pt.type
-                      ? "bg-primary text-white"
-                      : "bg-white border border-border text-gray-600"
-                  }`}
-                >
-                  {pt.title}
-                </button>
-              ))}
-            </div>
-            {selectedType === "laboratory" && <LaboratoryForm />}
-            {selectedType === "hospital" && <HospitalForm />}
-            {selectedType === "general" && <GeneralPartnerForm />}
-          </section>
-        )}
+        <section className="px-3 mb-8">
+          <div className="px-1 mb-4 flex gap-2 overflow-x-auto pb-1">
+            {partnerTypes.map((pt) => (
+              <button
+                key={pt.type}
+                onClick={() => setSelectedType(pt.type)}
+                className={`px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap transition-colors ${
+                  selectedType === pt.type
+                    ? "bg-primary text-white"
+                    : "bg-white border border-border text-gray-600"
+                }`}
+              >
+                {pt.title}
+              </button>
+            ))}
+          </div>
+          {selectedType === "laboratory" && <LaboratoryForm />}
+          {selectedType === "hospital" && <HospitalForm />}
+          {selectedType === "general" && <GeneralPartnerForm />}
+        </section>
       </main>
 
       {/* ─── DESKTOP ─── */}
@@ -131,7 +129,7 @@ const PartnerWithUs = () => {
 
           {/* Hero */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-black text-foreground mb-4">Partner with Labtraca</h1>
+            <h1 className="text-5xl font-black text-foreground mb-4">Become Our Partner</h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
               Scale your health facility or logistics business with our enterprise-grade orchestration engine.
             </p>
@@ -159,29 +157,27 @@ const PartnerWithUs = () => {
             ))}
           </div>
 
-          {/* Form section — revealed on selection */}
-          {selectedType && (
-            <div id="partner-form" className="mb-20">
-              <div className="flex gap-3 mb-8 justify-center">
-                {partnerTypes.map((pt) => (
-                  <button
-                    key={pt.type}
-                    onClick={() => setSelectedType(pt.type)}
-                    className={`px-5 py-2 rounded-full font-bold text-sm transition-colors ${
-                      selectedType === pt.type
-                        ? "bg-primary text-white"
-                        : "border border-gray-300 text-gray-600 hover:border-primary hover:text-primary"
-                    }`}
-                  >
-                    {pt.title}
-                  </button>
-                ))}
-              </div>
-              {selectedType === "laboratory" && <LaboratoryForm />}
-              {selectedType === "hospital" && <HospitalForm />}
-              {selectedType === "general" && <GeneralPartnerForm />}
+          {/* Form section */}
+          <div id="partner-form" className="mb-20">
+            <div className="flex gap-3 mb-8 justify-center">
+              {partnerTypes.map((pt) => (
+                <button
+                  key={pt.type}
+                  onClick={() => setSelectedType(pt.type)}
+                  className={`px-5 py-2 rounded-full font-bold text-sm transition-colors ${
+                    selectedType === pt.type
+                      ? "bg-primary text-white"
+                      : "border border-gray-300 text-gray-600 hover:border-primary hover:text-primary"
+                  }`}
+                >
+                  {pt.title}
+                </button>
+              ))}
             </div>
-          )}
+            {selectedType === "laboratory" && <LaboratoryForm />}
+            {selectedType === "hospital" && <HospitalForm />}
+            {selectedType === "general" && <GeneralPartnerForm />}
+          </div>
 
           {/* Stats row */}
           <div className="bg-canvas rounded-2xl border border-border p-10 grid grid-cols-4 gap-8 text-center">

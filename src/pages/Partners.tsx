@@ -150,7 +150,7 @@ const Partners = () => {
             <span className="font-medium text-foreground">Partners</span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-black animate-fade-in">
-            Our Partner Network
+            Laboratory Partners
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground animate-fade-in [animation-delay:200ms]">
             Accredited laboratories and trusted hospitals across the network
