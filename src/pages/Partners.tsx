@@ -79,7 +79,8 @@ const Partners = () => {
         reviews: u.facilityAdmin?.ratingCount || 0,
         phoneNumber: u.phoneNumber,
         email: u.email,
-        address: `${u.streetAddress || ""} ${u.city || ""} ${u.state || ""}`.trim(),
+        address:
+          `${u.streetAddress || ""} ${u.city || ""} ${u.state || ""}`.trim(),
       })) || [];
 
   const totalCount = data?.getPublicUserByUserType?.usersCount ?? 0;
@@ -92,7 +93,12 @@ const Partners = () => {
     } else {
       pages.push(1);
       if (page > 3) pages.push("ellipsis");
-      for (let i = Math.max(2, page - 1); i <= Math.min(totalPages - 1, page + 1); i++) pages.push(i);
+      for (
+        let i = Math.max(2, page - 1);
+        i <= Math.min(totalPages - 1, page + 1);
+        i++
+      )
+        pages.push(i);
       if (page < totalPages - 2) pages.push("ellipsis");
       pages.push(totalPages);
     }
@@ -106,7 +112,9 @@ const Partners = () => {
           <PaginationPrevious
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             aria-disabled={page === 1}
-            className={page === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+            className={
+              page === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"
+            }
           />
         </PaginationItem>
         {getPageNumbers().map((p, i) =>
@@ -124,13 +132,17 @@ const Partners = () => {
                 {p}
               </PaginationLink>
             </PaginationItem>
-          )
+          ),
         )}
         <PaginationItem>
           <PaginationNext
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             aria-disabled={page === totalPages}
-            className={page === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+            className={
+              page === totalPages
+                ? "pointer-events-none opacity-50"
+                : "cursor-pointer"
+            }
           />
         </PaginationItem>
       </PaginationContent>
@@ -145,7 +157,9 @@ const Partners = () => {
       <section className="pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 bg-white">
         <div className="container mx-auto max-w-4xl text-center space-y-6">
           <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-4">
-            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link to="/" className="hover:text-primary transition-colors">
+              Home
+            </Link>
             <ChevronRight className="w-4 h-4" />
             <span className="font-medium text-foreground">Partners</span>
           </div>
@@ -193,7 +207,8 @@ const Partners = () => {
                 No Partners Registered Yet
               </h3>
               <p className="text-muted-foreground text-center">
-                We're working to bring healthcare facilities online. Please check back soon.
+                We're working to bring healthcare facilities online. Please
+                check back soon.
               </p>
             </div>
           ) : (
@@ -211,7 +226,10 @@ const Partners = () => {
                       key={facility.id}
                       className="bg-card border rounded-3xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
                     >
-                      <Link to={detailPath} className="flex-1 flex flex-col cursor-pointer">
+                      <Link
+                        to={detailPath}
+                        className="flex-1 flex flex-col cursor-pointer"
+                      >
                         <div className="flex items-start gap-4 mb-6">
                           <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
                             <Icon className="w-8 h-8 text-primary" />
@@ -241,7 +259,9 @@ const Partners = () => {
                           {facility.address && (
                             <div className="flex items-start gap-2 text-sm text-muted-foreground">
                               <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                              <span className="line-clamp-2">{facility.address}</span>
+                              <span className="line-clamp-2">
+                                {facility.address}
+                              </span>
                             </div>
                           )}
                           <div className="space-y-1">
@@ -254,7 +274,9 @@ const Partners = () => {
                             {facility.email && (
                               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <Mail className="w-4 h-4 text-primary" />
-                                <span className="truncate">{facility.email}</span>
+                                <span className="truncate">
+                                  {facility.email}
+                                </span>
                               </div>
                             )}
                           </div>
@@ -262,7 +284,10 @@ const Partners = () => {
                       </Link>
 
                       <div className="flex items-center gap-3 pt-4 border-t mt-auto">
-                        <Button variant="outline" className="flex-1 font-bold rounded-full">
+                        <Button
+                          variant="outline"
+                          className="flex-1 font-bold rounded-full"
+                        >
                           <Phone className="w-4 h-4 mr-2" />
                           Call
                         </Button>
@@ -275,7 +300,7 @@ const Partners = () => {
                   );
                 })}
               </div>
-              {totalPages > 1 && <PaginationBar />}
+              <PaginationBar />
             </>
           )}
         </div>
@@ -285,10 +310,12 @@ const Partners = () => {
       <section className="py-16 px-4 md:px-8">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-primary rounded-2xl p-12 text-center text-white">
-            <h2 className="text-3xl font-black mb-3">Ready to Join Our Network?</h2>
+            <h2 className="text-3xl font-black mb-3">
+              Ready to Join Our Network?
+            </h2>
             <p className="text-white/80 max-w-lg mx-auto mb-8 leading-relaxed">
-              Partner with Labtraca and expand your reach to thousands of customers seeking quality
-              lab testing services.
+              Partner with Labtraca and expand your reach to thousands of
+              customers seeking quality lab testing services.
             </p>
             <Link to="/partner-with-us">
               <button className="bg-white text-primary px-8 py-3.5 rounded-xl font-bold hover:bg-white/90 transition-colors">
