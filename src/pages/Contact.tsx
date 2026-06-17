@@ -140,12 +140,12 @@ const Contact = () => {
 
         {/* Quick actions */}
         <div className="grid grid-cols-2 gap-3 mb-6">
-          <button className="flex flex-col items-center gap-2 p-5 rounded-2xl bg-white border border-border shadow-sm">
+          <a href="tel:+2348133896015" className="flex flex-col items-center gap-2 p-5 rounded-2xl bg-white border border-border shadow-sm">
             <div className="w-12 h-12 rounded-full bg-teal-surface flex items-center justify-center">
               <Phone className="w-5 h-5 text-primary" />
             </div>
             <span className="text-sm font-semibold text-primary">Call Support</span>
-          </button>
+          </a>
           <button className="flex flex-col items-center gap-2 p-5 rounded-2xl bg-white border border-border shadow-sm">
             <div className="w-12 h-12 rounded-full bg-teal-surface flex items-center justify-center">
               <MessageSquare className="w-5 h-5 text-primary" />
@@ -253,7 +253,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground mb-0.5">24/7 Support Line</p>
-                      <p className="text-primary font-bold text-base">+1 (800) LAB-TRAC</p>
+                      <a href="tel:+2348133896015" className="text-primary font-bold text-base">+234 813 389 6015</a>
                       <p className="text-xs text-gray-400 mt-0.5">Priority for urgent sample status</p>
                     </div>
                   </div>
@@ -263,7 +263,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground mb-0.5">Email Support</p>
-                      <a href="mailto:care@labtraca.com" className="text-primary font-bold text-base">care@labtraca.com</a>
+                      <a href="mailto:info@labtraca.com" className="text-primary font-bold text-base">info@labtraca.com</a>
                       <p className="text-xs text-gray-400 mt-0.5">Typical response within 2 hours</p>
                     </div>
                   </div>
@@ -272,9 +272,9 @@ const Contact = () => {
                       <MapPin className="w-4 h-4 text-primary" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground mb-0.5">Global HQ</p>
-                      <p className="text-foreground font-semibold text-sm">1200 Bio-Innovation Way, Ste 400</p>
-                      <p className="text-xs text-gray-400 mt-0.5">Cambridge, MA 02139</p>
+                      <p className="text-xs text-muted-foreground mb-0.5">Head Office</p>
+                      <p className="text-foreground font-semibold text-sm">No. 27 Tai Solarin, off 5th Avenue</p>
+                      <p className="text-xs text-gray-400 mt-0.5">Gwarinpa, Abuja, Nigeria</p>
                     </div>
                   </div>
                 </div>

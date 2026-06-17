@@ -100,7 +100,7 @@ const FAQ = () => {
                 <ArrowRight className="ml-2" />
               </Button>
             </a>
-            <a href="tel:+2340813389601">
+            <a href="tel:+2348133896015">
               <Button size="lg" variant="secondary" className="text-lg px-8 py-6 h-auto rounded-full">
                 Call Us
                 <ArrowRight className="ml-2" />
