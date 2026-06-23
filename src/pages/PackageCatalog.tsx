@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Search, Scale } from "lucide-react";
+import { Search, Scale, Layers } from "lucide-react";
 import { useQuery } from "@apollo/client/react";
-import { GetTests } from "@/lib/graphql/queries";
+import { GetPackages } from "@/lib/graphql/queries";
 import {
   Pagination,
   PaginationContent,
@@ -15,45 +15,44 @@ import {
   PaginationEllipsis,
 } from "@/components/ui/pagination";
 
-type Test = {
+type Package = {
   id: string;
-  name: string;
-  code?: string | null;
+  packageName: string;
   description?: string | null;
-  specimen?: string | null;
-  group?: string | null;
   price?: number | string | null;
+  isPublicHealthPackage?: boolean | null;
+  test?: { id: string; name: string }[] | null;
 };
 
 const PAGE_SIZE = 12;
 
-const formatPrice = (price: Test["price"]) => {
+const formatPrice = (price: Package["price"]) => {
   if (price === null || price === undefined || price === "") return "—";
   const n = typeof price === "number" ? price : Number(price);
   if (Number.isFinite(n)) return `₦${n.toLocaleString()}`;
   return String(price);
 };
 
-const TestCatalog = () => {
+const PackageCatalog = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
   useEffect(() => { setPage(1); }, [search]);
 
   const { data, loading } = useQuery<{
-    getPublicAllTest?: { testCount: number; tests: Test[] };
-  }>(GetTests, {
+    getAllPackages?: { packagesCount: number; packages: Package[] };
+  }>(GetPackages, {
     variables: { limit: 1000, offset: 0 },
   });
 
-  const allTests = data?.getPublicAllTest?.tests || [];
+  const allPackages = data?.getAllPackages?.packages || [];
 
-  const filtered = allTests.filter((t) =>
-    t.name.toLowerCase().includes(search.toLowerCase()),
+  const filtered = allPackages.filter((p) =>
+    p.packageName.toLowerCase().includes(search.toLowerCase()),
   );
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const tests = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const packages = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const getPageNumbers = () => {
     const pages: (number | "ellipsis")[] = [];
@@ -114,11 +113,11 @@ const TestCatalog = () => {
       {/* ─── MOBILE ─── */}
       <main className="sm:hidden pt-16 px-4 pb-20">
         <section className="pt-8 pb-4">
-          <h1 className="text-2xl font-bold text-black mb-1">Diagnostic Tests</h1>
+          <h1 className="text-2xl font-bold text-black mb-1">Test Packages</h1>
           <p className="text-sm text-muted-foreground">
-            Browse individual tests or{" "}
-            <Link to="/app/packages" className="font-semibold text-primary underline">
-              curated packages
+            Bundled diagnostic packages or{" "}
+            <Link to="/app/tests" className="font-semibold text-primary underline">
+              individual tests
             </Link>
             .
           </p>
@@ -130,7 +129,7 @@ const TestCatalog = () => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search tests..."
+              placeholder="Search packages..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-10 pr-4 py-3 bg-white border border-border rounded-xl focus:border-primary outline-none text-sm"
@@ -157,45 +156,40 @@ const TestCatalog = () => {
         ) : (
           <>
             <div className="flex flex-col gap-5">
-              {tests.map((test) => (
+              {packages.map((pkg) => (
                 <article
-                  key={test.id}
+                  key={pkg.id}
                   className="bg-white rounded-xl border border-border overflow-hidden shadow-sm"
                 >
                   <div className="p-4 flex gap-4">
                     <div className="w-20 h-20 rounded-lg bg-teal-surface flex items-center justify-center flex-shrink-0">
-                      <Search className="w-8 h-8 text-primary" />
+                      <Layers className="w-8 h-8 text-primary" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between items-start mb-1 gap-2">
-                        <h3 className="font-bold text-base leading-tight text-black">{test.name}</h3>
+                        <h3 className="font-bold text-base leading-tight text-black">{pkg.packageName}</h3>
                       </div>
                       <p className="text-sm text-muted-foreground line-clamp-2 min-h-10">
-                        {test.description || "No description available."}
+                        {pkg.description || "No description available."}
                       </p>
                       <div className="flex flex-wrap gap-2 mt-3">
-                        {test.group && (
+                        {pkg.test && pkg.test.length > 0 && (
                           <span className="text-[11px] font-bold uppercase tracking-wide text-primary bg-primary/10 px-2 py-1 rounded-full">
-                            {test.group}
+                            {pkg.test.length} tests included
                           </span>
                         )}
-                        {test.specimen && (
+                        {pkg.isPublicHealthPackage && (
                           <span className="text-[11px] font-bold uppercase tracking-wide text-gray-600 bg-muted px-2 py-1 rounded-full">
-                            {test.specimen}
-                          </span>
-                        )}
-                        {test.code && (
-                          <span className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground bg-muted px-2 py-1 rounded-full">
-                            {test.code}
+                            Public Health
                           </span>
                         )}
                       </div>
                     </div>
                   </div>
                   <div className="bg-card-surface px-4 py-3 flex justify-between items-center">
-                    <span className="font-bold text-base text-primary">{formatPrice(test.price)}</span>
+                    <span className="font-bold text-base text-primary">{formatPrice(pkg.price)}</span>
                     <Link
-                      to={`/app/tests/compare/${test.id}`}
+                      to={`/app/packages/compare/${pkg.id}`}
                       className="flex items-center gap-1.5 text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full"
                     >
                       <Scale className="w-3.5 h-3.5" />
@@ -214,11 +208,11 @@ const TestCatalog = () => {
       <main className="hidden sm:block pt-32 pb-20 px-4 md:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-10">
-            <h1 className="text-4xl font-black text-foreground mb-2">Diagnostic Tests</h1>
+            <h1 className="text-4xl font-black text-foreground mb-2">Test Packages</h1>
             <p className="text-muted-foreground">
-              Browse individual tests or{" "}
-              <Link to="/app/packages" className="font-semibold text-primary underline">
-                curated packages
+              Bundled diagnostic packages or{" "}
+              <Link to="/app/tests" className="font-semibold text-primary underline">
+                individual tests
               </Link>
               .
             </p>
@@ -229,7 +223,7 @@ const TestCatalog = () => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search tests..."
+              placeholder="Search packages..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-10 pr-4 py-3 bg-white border border-border rounded-xl focus:border-primary outline-none text-sm"
@@ -254,29 +248,31 @@ const TestCatalog = () => {
           ) : (
             <>
               <div className="space-y-4">
-                {tests.map((test, i) => (
+                {packages.map((pkg, i) => (
                   <div
-                    key={test.id || i}
+                    key={pkg.id || i}
                     className="bg-white border border-border rounded-2xl p-6 flex justify-between items-center shadow-sm hover:shadow-md transition-shadow"
                   >
                     <div className="flex gap-4 items-center">
                       <div className="w-12 h-12 rounded-full bg-teal-surface flex items-center justify-center flex-shrink-0">
-                        <span className="text-primary font-bold text-lg">{test.name.charAt(0)}</span>
+                        <Layers className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg text-foreground">{test.name}</h4>
+                        <h4 className="font-bold text-lg text-foreground">{pkg.packageName}</h4>
                         <p className="text-sm text-muted-foreground">
-                          {test.group || test.code || "Labtraca Network"}
+                          {pkg.test && pkg.test.length > 0
+                            ? `${pkg.test.length} tests included`
+                            : "Labtraca Network"}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-6">
                       <div className="text-right">
-                        <p className="text-2xl font-bold text-primary">{formatPrice(test.price)}</p>
+                        <p className="text-2xl font-bold text-primary">{formatPrice(pkg.price)}</p>
                         <p className="text-[10px] uppercase font-bold text-gray-400">Total Cost</p>
                       </div>
                       <Link
-                        to={`/app/tests/compare/${test.id}`}
+                        to={`/app/packages/compare/${pkg.id}`}
                         className="flex items-center gap-2 text-sm font-bold text-primary border border-primary/20 bg-primary/5 px-4 py-2.5 rounded-xl hover:bg-primary/10 transition-colors"
                       >
                         <Scale className="w-4 h-4" />
@@ -297,4 +293,4 @@ const TestCatalog = () => {
   );
 };
 
-export default TestCatalog;
+export default PackageCatalog;

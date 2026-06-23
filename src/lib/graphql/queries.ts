@@ -30,6 +30,27 @@ export const GetTests = gql`
   }
 `;
 
+export const GetPackages = gql`
+  query getAllPackages($limit: Int, $offset: Int) {
+    getAllPackages(limit: $limit, offset: $offset) {
+      packagesCount
+      packages {
+        id
+        packageName
+        description
+        percentageIncrease
+        minimumIncrease
+        isPublicHealthPackage
+        price
+        test {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
+
 export const GET_PUBLIC_USERS_BY_TYPE = gql`
   query GetPublicUserByUserType(
     $userType: String!
@@ -80,6 +101,34 @@ export const GET_PUBLIC_USERS_BY_TYPE = gql`
           yearsOfExperience
           specialization
           online
+        }
+      }
+    }
+  }
+`;
+
+export const GET_PACKAGES_BY_FACILITY = gql`
+  query getAllPackagesByFacility($facilityId: ID!, $limit: Int, $offset: Int) {
+    getAllPackagesByFacility(
+      facilityId: $facilityId
+      limit: $limit
+      offset: $offset
+    ) {
+      packagesCount
+      packages {
+        id
+        price
+        facilityPrice
+        package {
+          id
+          packageName
+          description
+          price
+          isPublicHealthPackage
+          test {
+            id
+            name
+          }
         }
       }
     }
@@ -259,6 +308,55 @@ export const getUserByIdPublic = gql`
         modulepermissions {
           id
           module
+        }
+      }
+    }
+  }
+`;
+
+export const comparePrices = gql`
+  query comparePrices(
+    $itemId: ID!
+    $itemType: PriceComparisonItemTypeEnum!
+    $limit: Int
+    $offset: Int
+  ) {
+    comparePrices(
+      itemId: $itemId
+      itemType: $itemType
+      limit: $limit
+      offset: $offset
+    ) {
+      itemId
+      itemName
+      itemType
+      resultsCount
+      results {
+        price
+        facilityPrice
+        facility {
+          id
+          facilityName
+          facilityType
+          facilityImage
+          rating
+          ratingCount
+          openingHours
+          streetAddress
+          streetAddress2
+          city
+          state
+          country
+          postal
+          latitude
+          longitude
+          user {
+            id
+            firstName
+            lastName
+            email
+            phoneNumber
+          }
         }
       }
     }

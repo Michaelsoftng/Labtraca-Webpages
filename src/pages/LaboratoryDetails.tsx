@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import {
   getUserByIdPublic,
   GET_TESTS_BY_FACILITY,
+  GET_PACKAGES_BY_FACILITY,
 } from "@/lib/graphql/queries";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -45,12 +46,23 @@ const LaboratoryDetails = () => {
     },
   );
 
+  const { data: packageData, loading: packageLoading } = useQuery(
+    GET_PACKAGES_BY_FACILITY,
+    {
+      variables: { facilityId: id || "", limit: 50, offset: 0 },
+      skip: !id,
+    },
+  );
+
   const lab = (userData as any)?.getUserByIdPublic;
 
   const tests =
     (testData as any)?.getAllTestsByFacilityPublic?.facilityTests || [];
 
-  if (userLoading || testLoading) {
+  const packages =
+    (packageData as any)?.getAllPackagesByFacility?.packages || [];
+
+  if (userLoading || testLoading || packageLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="animate-pulse flex flex-col items-center gap-4">
@@ -206,6 +218,59 @@ const LaboratoryDetails = () => {
                           {typeof facilityTest.facilityPrice === "number"
                             ? `₦${facilityTest.facilityPrice.toLocaleString()}`
                             : facilityTest.facilityPrice}
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+
+            <div className="flex items-center justify-between pt-4">
+              <h2 className="text-2xl font-bold">Available Packages</h2>
+              <span className="text-muted-foreground text-sm">
+                {packages.length} packages listed
+              </span>
+            </div>
+
+            <div className="bg-card border rounded-2xl overflow-hidden shadow-sm">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-muted/50">
+                    <TableHead>Package Name</TableHead>
+                    <TableHead>Tests Included</TableHead>
+                    <TableHead className="text-right">Price</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {packages.length === 0 ? (
+                    <TableRow>
+                      <TableCell
+                        colSpan={3}
+                        className="text-center py-8 text-muted-foreground"
+                      >
+                        No packages available at the moment.
+                      </TableCell>
+                    </TableRow>
+                  ) : (
+                    packages.map((facilityPackage: any) => (
+                      <TableRow
+                        key={facilityPackage.id}
+                        className="hover:bg-muted/30"
+                      >
+                        <TableCell className="font-medium">
+                          {facilityPackage.package?.packageName}
+                          <div className="text-xs text-muted-foreground font-normal mt-0.5">
+                            {facilityPackage.package?.description}
+                          </div>
+                        </TableCell>
+                        <TableCell className="max-w-xs truncate text-muted-foreground">
+                          {facilityPackage.package?.test?.length || 0} tests
+                        </TableCell>
+                        <TableCell className="text-right font-bold text-primary">
+                          {typeof facilityPackage.facilityPrice === "number"
+                            ? `₦${facilityPackage.facilityPrice.toLocaleString()}`
+                            : facilityPackage.facilityPrice}
                         </TableCell>
                       </TableRow>
                     ))
