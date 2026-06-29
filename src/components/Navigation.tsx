@@ -58,15 +58,11 @@ export const Navigation = () => {
               />
             </Link>
           </div>
-          <a
-            href="https://app.labtraca.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link to="/app">
             <div className="w-10 h-10 rounded-full bg-teal-surface border border-teal-subtle flex items-center justify-center cursor-pointer">
               <User className="w-5 h-5 text-teal-muted" />
             </div>
-          </a>
+          </Link>
         </div>
 
         {/* Desktop bar */}
@@ -93,27 +89,19 @@ export const Navigation = () => {
             </div>
 
             <div className="flex items-center gap-3">
-              <a
-                href="https://app.labtraca.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link to="/app">
                 <Button
                   variant="outline"
                   className="rounded-full px-6 py-2 h-9 text-sm font-medium border-gray-300 text-gray-700 hover:border-gray-400 hover:text-foreground"
                 >
                   Login
                 </Button>
-              </a>
-              <a
-                href="https://app.labtraca.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              </Link>
+              <Link to="/app">
                 <Button className="rounded-full px-6 py-2 h-9 text-sm font-semibold bg-primary hover:bg-primary/90 text-white">
                   Get Started
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -179,34 +167,20 @@ export const Navigation = () => {
           </nav>
 
           <div className="px-5 py-5 border-t border-border space-y-3">
-            <a
-              href="https://app.labtraca.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
+            <Link to="/app" className="block" onClick={closeMenu}>
               <Button
                 variant="outline"
                 className="w-full rounded-full h-11 font-semibold border-primary text-primary hover:bg-primary/5"
-                onClick={closeMenu}
               >
                 <LogIn className="w-4 h-4 mr-2" />
                 Login
               </Button>
-            </a>
-            <a
-              href="https://app.labtraca.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <Button
-                className="w-full rounded-full h-11 font-semibold bg-primary hover:bg-primary/90 text-white"
-                onClick={closeMenu}
-              >
+            </Link>
+            <Link to="/app" className="block" onClick={closeMenu}>
+              <Button className="w-full rounded-full h-11 font-semibold bg-primary hover:bg-primary/90 text-white">
                 Get Started
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

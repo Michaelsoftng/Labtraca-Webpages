@@ -72,15 +72,11 @@ const AboutUs = () => {
             is to bridge the gap between diagnostics and patient care with
             unmatched speed and absolute safety.
           </p>
-          <a
-            href="https://app.labtraca.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link to="/app">
             <Button className="rounded-full px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white">
               Get Started
             </Button>
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -115,15 +111,11 @@ const AboutUs = () => {
                   mission is to bridge the gap between diagnostics and patient
                   care with unmatched speed and absolute safety.
                 </p>
-                <a
-                  href="https://app.labtraca.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link to="/app">
                   <Button className="rounded-full px-7 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white mt-1">
                     Get Started
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -295,15 +287,11 @@ const AboutUs = () => {
               pharmacy ecosystem enhancing health service delivery.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <a
-                href="https://app.labtraca.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link to="/app">
                 <Button className="rounded-full px-8 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white min-w-[180px]">
                   Get Started Today
                 </Button>
-              </a>
+              </Link>
               <Link to="/about">
                 <Button
                   variant="outline"

@@ -172,7 +172,9 @@ const Consultation = () => {
                         {doctor.facility?.ratingCount || 0} reviews
                       </p>
                     </div>
-                    <Button className="font-bold">Book Now</Button>
+                    <Link to="/app">
+                      <Button className="font-bold">Book Now</Button>
+                    </Link>
                   </div>
                 </div>
               ))}

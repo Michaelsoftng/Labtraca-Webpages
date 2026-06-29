@@ -114,16 +114,11 @@ const HealthEcosystem = () => {
             Secure diagnostics transport of biological samples from patient to
             laboratory with real-time temperature tracking.
           </p>
-          <a
-            href="https://app.labtraca.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
+          <Link to="/app" className="block">
             <Button className="w-full rounded-xl bg-primary hover:bg-primary/90 text-white font-semibold h-11">
               Learn More
             </Button>
-          </a>
+          </Link>
         </div>
 
         {/* Dispatch Riders */}
@@ -284,15 +279,11 @@ const HealthEcosystem = () => {
                 ecosystem.
               </p>
               <div className="flex flex-wrap gap-3 pt-1">
-                <a
-                  href="https://app.labtraca.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link to="/app">
                   <Button className="rounded-full px-6 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white">
                     Book Collection
                   </Button>
-                </a>
+                </Link>
                 <Button
                   variant="outline"
                   className="rounded-full px-6 py-3 h-auto text-sm font-semibold border-gray-300 text-gray-700 hover:border-gray-400"
@@ -359,12 +350,12 @@ const HealthEcosystem = () => {
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://app.labtraca.com/"
+              <Link
+                to="/app"
                 className="text-sm text-primary font-semibold hover:underline mt-auto flex items-center gap-1"
               >
                 Schedule a pick-up <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+              </Link>
             </div>
 
             {/* Centre doctor image */}
@@ -516,15 +507,11 @@ const HealthEcosystem = () => {
               secure healthcare and diagnostics delivery support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-              <a
-                href="https://app.labtraca.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link to="/app">
                 <Button className="rounded-full px-8 py-3 h-auto text-sm font-semibold bg-primary hover:bg-primary/90 text-white min-w-[180px]">
                   Register as Patient
                 </Button>
-              </a>
+              </Link>
               <Link to="/partner-with-us">
                 <Button
                   variant="outline"
