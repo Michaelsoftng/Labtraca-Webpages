@@ -1,73 +1,74 @@
-# Welcome to your Lovable project
+# Labtraca Webpages
 
-## Project info
+**Labtraca - Book Lab Tests at Home | Licensed Phlebotomists & Fast Results**
 
-**URL**: https://lovable.dev/projects/51cce11f-1472-4318-987b-9b8d6b228ad3
+Book licensed medical professionals for lab tests at home. Skip clinic lines, get tested in comfort with fast results and affordable prices.
 
-## How can I edit this code?
+## About the Project
 
-There are several ways of editing your application.
+This repository contains the frontend web pages for **Labtraca**. The application provides an intuitive web interface for users to book lab tests from the comfort of their homes, managed by licensed phlebotomists. 
 
-**Use Lovable**
+## Technology Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/51cce11f-1472-4318-987b-9b8d6b228ad3) and start prompting.
+This project is built with modern web technologies:
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Vite** - Next Generation Frontend Tooling
+- **React** - A JavaScript library for building user interfaces
+- **TypeScript** - Strongly typed programming language that builds on JavaScript
+- **Tailwind CSS** - A utility-first CSS framework for rapid UI development
+- **shadcn/ui** - Beautifully designed components that you can copy and paste into your apps
+- **GraphQL & Apollo Client** - For efficient data fetching and state management
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+To get a local copy up and running, follow these steps.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+You need to have Node.js and npm installed on your machine.
+- [Node.js](https://nodejs.org/) (Recommended version: LTS)
+- [npm](https://www.npmjs.com/) (Comes with Node.js)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:Michaelsoftng/Labtraca-Webpages.git
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. Navigate into the project directory:
+   ```bash
+   cd labtraca
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-**Edit a file directly in GitHub**
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The application will be available at `http://localhost:5173` by default.
 
-**Use GitHub Codespaces**
+## Available Scripts
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+In the project directory, you can run:
 
-## What technologies are used for this project?
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the app for production to the `dist` folder.
+- `npm run preview`: Locally preview the production build.
+- `npm run lint`: Runs ESLint to catch code issues.
 
-This project is built with:
+## Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `/src`: Contains the source code of the application (components, pages, utilities, etc.).
+- `/public`: Static assets like images and icons.
+- `index.html`: The entry point of the web application.
+- `vite.config.ts`: Configuration for Vite.
 
-## How can I deploy this project?
+## Website
 
-Simply open [Lovable](https://lovable.dev/projects/51cce11f-1472-4318-987b-9b8d6b228ad3) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Visit our official website: [https://labtraca.com](https://labtraca.com)
