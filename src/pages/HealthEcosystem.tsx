@@ -205,7 +205,9 @@ const HealthEcosystem = () => {
 
       {/* Mobile — How it works */}
       <section className="lg:hidden px-4 py-8 bg-white">
-        <h2 className="text-xl font-black text-foreground mb-6">How it works</h2>
+        <h2 className="text-xl font-black text-foreground mb-6">
+          How it works
+        </h2>
         <div className="space-y-5">
           {mobileSteps.map((step) => (
             <div key={step.num} className="flex items-start gap-4">
@@ -234,11 +236,14 @@ const HealthEcosystem = () => {
           >
             About Us
           </Link>
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+          <a
+            href="#"
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
             Support
           </a>
           <a
-            href="https://sites.google.com/view/labtraca-user/home"
+            href="https://sites.google.com/view/testraca-user/home"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-foreground"
@@ -253,7 +258,7 @@ const HealthEcosystem = () => {
           </Link>
         </div>
         <p className="text-xs text-gray-400 text-center">
-          © 2024 Labtraca Medical Logistics
+          © 2024 Testraca Medical Logistics
         </p>
       </footer>
 
@@ -273,7 +278,7 @@ const HealthEcosystem = () => {
                 Comprehensive Diagnostics &amp; Logistics for Modern Healthcare.
               </h1>
               <p className="text-muted-foreground text-base leading-relaxed max-w-md">
-                Labtraca bridges the gap between clinical excellence and
+                Testraca bridges the gap between clinical excellence and
                 logistical precision. We provide secure, rapid transport for
                 diagnostics and medical assets across the entire healthcare
                 ecosystem.
@@ -503,7 +508,7 @@ const HealthEcosystem = () => {
               Ready to optimize your diagnostics logistics?
             </h2>
             <p className="text-gray-600 text-base max-w-lg mx-auto leading-relaxed">
-              Join 500+ clinics and health providers trusting Labtraca for
+              Join 500+ clinics and health providers trusting Testraca for
               secure healthcare and diagnostics delivery support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">

@@ -1,12 +1,12 @@
-# Labtraca Webpages
+# Testraca Webpages
 
-**Labtraca - Book Lab Tests at Home | Licensed Phlebotomists & Fast Results**
+**Testraca - Book Lab Tests at Home | Licensed Phlebotomists & Fast Results**
 
 Book licensed medical professionals for lab tests at home. Skip clinic lines, get tested in comfort with fast results and affordable prices.
 
 ## About the Project
 
-This repository contains the frontend web pages for **Labtraca**. The application provides an intuitive web interface for users to book lab tests from the comfort of their homes, managed by licensed phlebotomists. 
+This repository contains the frontend web pages for **Testraca**. The application provides an intuitive web interface for users to book lab tests from the comfort of their homes, managed by licensed phlebotomists.
 
 ## Technology Stack
 
@@ -26,22 +26,26 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 
 You need to have Node.js and npm installed on your machine.
+
 - [Node.js](https://nodejs.org/) (Recommended version: LTS)
 - [npm](https://www.npmjs.com/) (Comes with Node.js)
 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
-   git clone git@github.com:Michaelsoftng/Labtraca-Webpages.git
+   git clone git@github.com:Michaelsoftng/Testraca-Webpages.git
    ```
 
 2. Navigate into the project directory:
+
    ```bash
-   cd labtraca
+   cd testraca
    ```
 
 3. Install the dependencies:
+
    ```bash
    npm install
    ```
@@ -71,4 +75,4 @@ In the project directory, you can run:
 
 ## Website
 
-Visit our official website: [https://labtraca.com](https://labtraca.com)
+Visit our official website: [https://testraca.com](https://testraca.com)

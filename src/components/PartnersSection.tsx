@@ -1,9 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import {
-  Hospital,
-  Microscope,
-} from "lucide-react";
+import { Hospital, Microscope } from "lucide-react";
 import { useQuery } from "@apollo/client/react";
 import { GET_PUBLIC_USERS_BY_TYPE } from "@/lib/graphql/queries";
 
@@ -42,13 +39,10 @@ export const PartnersSection = () => {
         user.facilityAdmin?.facilityType === "HOSPITAL" ? Hospital : Microscope,
     })) || [];
   return (
-    <section
-      id="partners"
-      className="py-10 px-4 md:py-20 md:px-6 bg-white"
-    >
+    <section id="partners" className="py-10 px-4 md:py-20 md:px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <h2 className="text-3xl md:text-4xl font-black text-center mb-12 text-foreground">
-          Top labs and more in Labtraca
+          Top labs and more in Testraca
         </h2>
 
         {loading ? (
@@ -87,7 +81,11 @@ export const PartnersSection = () => {
           </div>
         )}
         <div className="flex justify-center mt-12">
-          <Button asChild size="lg" className="rounded-full px-8 text-white font-bold">
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full px-8 text-white font-bold"
+          >
             <Link to="/app/laboratories">View More</Link>
           </Button>
         </div>

@@ -5,7 +5,7 @@ export const CTASection = () => {
     <section className="py-10 md:py-24 md:px-8 lg:bg-card-surface">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-xl md:text-3xl font-black text-foreground mb-6 md:mb-10">
-          Why Labtraca?
+          Why Testraca?
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-5">

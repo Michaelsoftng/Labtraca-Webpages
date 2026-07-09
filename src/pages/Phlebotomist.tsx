@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { ShieldCheck, Calendar, TrendingUp, GraduationCap, Wrench, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  ShieldCheck,
+  Calendar,
+  TrendingUp,
+  GraduationCap,
+  Wrench,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
 import { PhlebotomistForm } from "@/components/forms/PhlebotomistForm";
 import { submitToGoogleSheet } from "@/lib/googleSheets";
 import { toast } from "sonner";
@@ -26,13 +34,24 @@ const Phlebotomist = () => {
         fullName: mobileForm.fullName,
         email: mobileForm.email,
         licenseNumber: mobileForm.certNumber,
-        availability: Object.entries(mobileForm.availability)
-          .filter(([, v]) => v)
-          .map(([k]) => k)
-          .join(", ") || "None selected",
+        availability:
+          Object.entries(mobileForm.availability)
+            .filter(([, v]) => v)
+            .map(([k]) => k)
+            .join(", ") || "None selected",
       });
       toast.success("Application submitted successfully!");
-      setMobileForm({ fullName: "", email: "", certNumber: "", availability: { day: false, night: false, weekend: false, onCall: false } });
+      setMobileForm({
+        fullName: "",
+        email: "",
+        certNumber: "",
+        availability: {
+          day: false,
+          night: false,
+          weekend: false,
+          onCall: false,
+        },
+      });
     } catch {
       toast.error("Failed to submit. Please try again.");
     } finally {
@@ -48,7 +67,11 @@ const Phlebotomist = () => {
       <div className="sm:hidden pt-16">
         {/* Hero image */}
         <div className="relative w-full h-64 overflow-hidden">
-          <img src={phlebotomistImg} alt="Phlebotomist" className="w-full h-full object-cover" />
+          <img
+            src={phlebotomistImg}
+            alt="Phlebotomist"
+            className="w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
           <div className="absolute bottom-0 left-0 p-5">
             <span className="inline-block bg-primary text-white text-xs font-bold px-3 py-1 rounded-full mb-2">
@@ -74,13 +97,18 @@ const Phlebotomist = () => {
               desc: "Choose shifts that fit your lifestyle. We offer part-time, full-time, and per-diem opportunities.",
             },
           ].map(({ Icon, title, desc }) => (
-            <div key={title} className="bg-white border border-border rounded-2xl p-5 flex gap-4 items-start shadow-sm">
+            <div
+              key={title}
+              className="bg-white border border-border rounded-2xl p-5 flex gap-4 items-start shadow-sm"
+            >
               <div className="w-10 h-10 rounded-full bg-teal-surface flex items-center justify-center flex-shrink-0">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
               <div>
                 <h3 className="font-bold text-foreground mb-1">{title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {desc}
+                </p>
               </div>
             </div>
           ))}
@@ -89,40 +117,56 @@ const Phlebotomist = () => {
         {/* Apply Now form */}
         <div className="mx-4 mb-8 bg-white rounded-2xl border border-border p-6 shadow-sm">
           <h2 className="text-2xl font-bold text-foreground mb-1">Apply Now</h2>
-          <p className="text-sm text-muted-foreground mb-6">Complete the form below to start your journey with Labtraca.</p>
+          <p className="text-sm text-muted-foreground mb-6">
+            Complete the form below to start your journey with Testraca.
+          </p>
           <form onSubmit={handleMobileSubmit} className="space-y-4">
             <div>
-              <label className="text-xs font-semibold text-gray-600 block mb-1.5">Full Name</label>
+              <label className="text-xs font-semibold text-gray-600 block mb-1.5">
+                Full Name
+              </label>
               <input
                 type="text"
                 placeholder="Jane Doe"
                 value={mobileForm.fullName}
-                onChange={(e) => setMobileForm({ ...mobileForm, fullName: e.target.value })}
+                onChange={(e) =>
+                  setMobileForm({ ...mobileForm, fullName: e.target.value })
+                }
                 className="w-full px-4 py-3 rounded-xl border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-gray-600 block mb-1.5">Email Address</label>
+              <label className="text-xs font-semibold text-gray-600 block mb-1.5">
+                Email Address
+              </label>
               <input
                 type="email"
                 placeholder="jane.doe@example.com"
                 value={mobileForm.email}
-                onChange={(e) => setMobileForm({ ...mobileForm, email: e.target.value })}
+                onChange={(e) =>
+                  setMobileForm({ ...mobileForm, email: e.target.value })
+                }
                 className="w-full px-4 py-3 rounded-xl border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-gray-600 block mb-1.5">Certification Number</label>
+              <label className="text-xs font-semibold text-gray-600 block mb-1.5">
+                Certification Number
+              </label>
               <input
                 type="text"
                 placeholder="CPT-123456"
                 value={mobileForm.certNumber}
-                onChange={(e) => setMobileForm({ ...mobileForm, certNumber: e.target.value })}
+                onChange={(e) =>
+                  setMobileForm({ ...mobileForm, certNumber: e.target.value })
+                }
                 className="w-full px-4 py-3 rounded-xl border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-gray-600 block mb-2">Availability</label>
+              <label className="text-xs font-semibold text-gray-600 block mb-2">
+                Availability
+              </label>
               <div className="grid grid-cols-2 gap-2">
                 {[
                   { key: "day", label: "Day" },
@@ -137,11 +181,18 @@ const Phlebotomist = () => {
                     <input
                       type="checkbox"
                       className="accent-primary w-4 h-4 rounded"
-                      checked={mobileForm.availability[opt.key as keyof typeof mobileForm.availability]}
+                      checked={
+                        mobileForm.availability[
+                          opt.key as keyof typeof mobileForm.availability
+                        ]
+                      }
                       onChange={(e) =>
                         setMobileForm({
                           ...mobileForm,
-                          availability: { ...mobileForm.availability, [opt.key]: e.target.checked },
+                          availability: {
+                            ...mobileForm.availability,
+                            [opt.key]: e.target.checked,
+                          },
                         })
                       }
                     />
@@ -162,7 +213,9 @@ const Phlebotomist = () => {
 
         {/* Why Work With Us */}
         <div className="px-4 pb-10">
-          <h2 className="text-2xl font-bold text-foreground mb-5">Why Work With Us?</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-5">
+            Why Work With Us?
+          </h2>
           <div className="space-y-3">
             {[
               {
@@ -195,17 +248,35 @@ const Phlebotomist = () => {
                 titleColor: "text-foreground",
                 descColor: "text-muted-foreground",
               },
-            ].map(({ Icon, title, desc, bg, iconBg, iconColor, titleColor, descColor }) => (
-              <div key={title} className={`${bg} border border-border rounded-2xl p-5 flex gap-4 items-start`}>
-                <div className={`w-10 h-10 rounded-full ${iconBg} flex items-center justify-center flex-shrink-0`}>
-                  <Icon className={`w-5 h-5 ${iconColor}`} />
+            ].map(
+              ({
+                Icon,
+                title,
+                desc,
+                bg,
+                iconBg,
+                iconColor,
+                titleColor,
+                descColor,
+              }) => (
+                <div
+                  key={title}
+                  className={`${bg} border border-border rounded-2xl p-5 flex gap-4 items-start`}
+                >
+                  <div
+                    className={`w-10 h-10 rounded-full ${iconBg} flex items-center justify-center flex-shrink-0`}
+                  >
+                    <Icon className={`w-5 h-5 ${iconColor}`} />
+                  </div>
+                  <div>
+                    <h3 className={`font-bold mb-1 ${titleColor}`}>{title}</h3>
+                    <p className={`text-sm leading-relaxed ${descColor}`}>
+                      {desc}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className={`font-bold mb-1 ${titleColor}`}>{title}</h3>
-                  <p className={`text-sm leading-relaxed ${descColor}`}>{desc}</p>
-                </div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -218,16 +289,19 @@ const Phlebotomist = () => {
             <div className="grid grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
                 <span className="text-xs font-bold text-primary uppercase tracking-widest">
-                  Careers in Labtraca
+                  Careers in Testraca
                 </span>
                 <h1 className="text-5xl font-black text-foreground leading-tight">
                   Join our Team of{" "}
                   <span className="text-primary">
-                    Certified <br />Phlebotomists
+                    Certified <br />
+                    Phlebotomists
                   </span>
                 </h1>
                 <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
-                  Advance your career with a leader in medical logistics. We offer professional growth, clinical excellence, and the flexibility you need to balance life and work.
+                  Advance your career with a leader in medical logistics. We
+                  offer professional growth, clinical excellence, and the
+                  flexibility you need to balance life and work.
                 </p>
                 <div className="flex gap-3 pt-1">
                   <a href="#apply">
@@ -256,8 +330,12 @@ const Phlebotomist = () => {
                     <ShieldCheck className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground text-sm">Clinical Precision</p>
-                    <p className="text-xs text-muted-foreground">Accredited Laboratory standards</p>
+                    <p className="font-bold text-foreground text-sm">
+                      Clinical Precision
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Accredited Laboratory standards
+                    </p>
                   </div>
                 </div>
               </div>
@@ -265,13 +343,17 @@ const Phlebotomist = () => {
           </div>
         </section>
 
-        {/* Why Labtraca — bento grid */}
+        {/* Why Testraca — bento grid */}
         <section id="benefits" className="py-20 px-4 md:px-8 bg-canvas">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-14">
-              <h2 className="text-4xl font-black text-foreground mb-3">Why Labtraca?</h2>
+              <h2 className="text-4xl font-black text-foreground mb-3">
+                Why Testraca?
+              </h2>
               <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
-                We provide the environment and resources you need to deliver high-quality patient care while maintaining professional autonomy.
+                We provide the environment and resources you need to deliver
+                high-quality patient care while maintaining professional
+                autonomy.
               </p>
             </div>
 
@@ -281,13 +363,24 @@ const Phlebotomist = () => {
                 <div className="w-10 h-10 rounded-xl bg-teal-surface flex items-center justify-center mb-4">
                   <ShieldCheck className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">Clinical Excellence</h3>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Clinical Excellence
+                </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                  Work with state-of-the-art diagnostic equipment and standardized protocols that ensure patient safety and specimen integrity at every step.
+                  Work with state-of-the-art diagnostic equipment and
+                  standardized protocols that ensure patient safety and specimen
+                  integrity at every step.
                 </p>
                 <div className="space-y-2">
-                  {["ISO Certified Lab", "Strict 6A Protocols", "Digital Tracking"].map((item) => (
-                    <div key={item} className="flex items-center gap-2 border border-border rounded-lg px-4 py-2.5 bg-canvas">
+                  {[
+                    "ISO Certified Lab",
+                    "Strict 6A Protocols",
+                    "Digital Tracking",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-2 border border-border rounded-lg px-4 py-2.5 bg-canvas"
+                    >
                       <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
                       <span className="text-sm text-gray-700">{item}</span>
                     </div>
@@ -300,9 +393,12 @@ const Phlebotomist = () => {
                 <div className="w-10 h-10 rounded-xl bg-teal-surface flex items-center justify-center mb-4">
                   <Calendar className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">Flexible Scheduling</h3>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Flexible Scheduling
+                </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Pick shifts that fit your life. Our smart scheduling app allows you to manage your availability in real-time.
+                  Pick shifts that fit your life. Our smart scheduling app
+                  allows you to manage your availability in real-time.
                 </p>
               </div>
 
@@ -311,18 +407,24 @@ const Phlebotomist = () => {
                 <div className="w-10 h-10 rounded-xl bg-teal-surface flex items-center justify-center mb-4">
                   <TrendingUp className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">Professional Growth</h3>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Professional Growth
+                </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Access continuing education credits and clear pathways to lead phlebotomist and supervisory roles.
+                  Access continuing education credits and clear pathways to lead
+                  phlebotomist and supervisory roles.
                 </p>
               </div>
 
               {/* CTA card */}
               <div className="bg-primary rounded-2xl p-7 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">Ready to make an impact?</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Ready to make an impact?
+                  </h3>
                   <p className="text-white/80 text-sm leading-relaxed">
-                    Our recruitment process is streamlined for clinical professionals.
+                    Our recruitment process is streamlined for clinical
+                    professionals.
                   </p>
                 </div>
                 <a href="#apply">
@@ -344,8 +446,12 @@ const Phlebotomist = () => {
                   <div className="h-full bg-primary w-1/3 rounded-r-full" />
                 </div>
                 <div className="p-8">
-                  <h2 className="text-2xl font-bold text-foreground mb-1">Personal Information</h2>
-                  <p className="text-sm text-muted-foreground mb-7">Tell us about yourself so we can get in touch.</p>
+                  <h2 className="text-2xl font-bold text-foreground mb-1">
+                    Personal Information
+                  </h2>
+                  <p className="text-sm text-muted-foreground mb-7">
+                    Tell us about yourself so we can get in touch.
+                  </p>
                   <form
                     className="space-y-4"
                     onSubmit={(e) => {
@@ -355,24 +461,55 @@ const Phlebotomist = () => {
                   >
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="text-xs font-semibold text-gray-600 block mb-1.5">First Name</label>
-                        <input type="text" placeholder="Jane" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                        <label className="text-xs font-semibold text-gray-600 block mb-1.5">
+                          First Name
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Jane"
+                          required
+                          className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        />
                       </div>
                       <div>
-                        <label className="text-xs font-semibold text-gray-600 block mb-1.5">Last Name</label>
-                        <input type="text" placeholder="Doe" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                        <label className="text-xs font-semibold text-gray-600 block mb-1.5">
+                          Last Name
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Doe"
+                          required
+                          className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        />
                       </div>
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-600 block mb-1.5">Email Address</label>
-                      <input type="email" placeholder="jane.doe@example.com" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                      <label className="text-xs font-semibold text-gray-600 block mb-1.5">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        placeholder="jane.doe@example.com"
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                      />
                     </div>
                     <div>
-                      <label className="text-xs font-semibold text-gray-600 block mb-1.5">Phone Number</label>
-                      <input type="tel" placeholder="(555) 000-0000" required className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" />
+                      <label className="text-xs font-semibold text-gray-600 block mb-1.5">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        placeholder="(555) 000-0000"
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                      />
                     </div>
                     <div className="flex justify-end pt-2">
-                      <button type="submit" className="bg-primary text-white px-6 py-3 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-md">
+                      <button
+                        type="submit"
+                        className="bg-primary text-white px-6 py-3 rounded-lg font-bold text-sm flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-md"
+                      >
                         Next Step <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>

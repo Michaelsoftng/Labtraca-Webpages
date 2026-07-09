@@ -53,7 +53,7 @@ const TermsConditions = () => {
               <p className="text-blue-800 text-sm leading-relaxed">
                 Please read these Terms and Conditions carefully before using
                 the website, mobile application, or services provided by
-                Labtraca. These Terms contain important information regarding
+                Testraca. These Terms contain important information regarding
                 your legal rights, obligations, and limitations when using our
                 platform.
               </p>
@@ -62,12 +62,12 @@ const TermsConditions = () => {
             <section>
               <h2 className="text-2xl font-bold mb-4">INTRODUCTION</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Labtraca is a health-tech service that enables users to request
+                Testraca is a health-tech service that enables users to request
                 laboratory tests and doctor consultations from the comfort of
                 their homes. We operate a digital platform accessible via web
                 and mobile applications, which connects users with certified
                 phlebotomists, laboratory scientists, and licensed medical
-                professionals. Labtraca is operated by Labtraca Diagnostics
+                professionals. Testraca is operated by Testraca Diagnostics
                 Limited, a duly registered entity under the applicable laws of
                 the Federal Republic of Nigeria.
               </p>
@@ -78,7 +78,7 @@ const TermsConditions = () => {
                 MODIFICATIONS TO AGREEMENT
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Labtraca reserves the right to modify or amend these Terms and
+                Testraca reserves the right to modify or amend these Terms and
                 Conditions at any time. Any such changes will be effective
                 immediately upon posting on our platform. Users are encouraged
                 to review the terms regularly.
@@ -88,7 +88,7 @@ const TermsConditions = () => {
             <section>
               <h2 className="text-2xl font-bold mb-4">SCOPE OF SERVICE</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Labtraca offers the following services:
+                Testraca offers the following services:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                 <li>Home-based sample collection for laboratory tests.</li>
@@ -112,13 +112,13 @@ const TermsConditions = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Registered users may request laboratory tests on behalf of third
                 parties (e.g., family members, friends, co-workers, or
-                employees). However, Labtraca requires that you obtain proper
+                employees). However, Testraca requires that you obtain proper
                 and informed consent from these individuals before initiating
                 any test request on their behalf. Test results will be delivered
                 via the email address associated with the account used to make
                 the request. By submitting a test request for another
                 individual, you confirm that you have obtained their consent for
-                both the test and the result-sharing mechanism. Labtraca will
+                both the test and the result-sharing mechanism. Testraca will
                 not be held liable for any breach of privacy, unauthorized
                 disclosure, or legal action arising from your failure to obtain
                 the required consent.
@@ -130,10 +130,10 @@ const TermsConditions = () => {
                 USE OF PLATFORM - DISCLAIMER
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Labtraca is not a substitute for emergency medical attention.
+                Testraca is not a substitute for emergency medical attention.
                 Our services are complementary and designed to aid preventive
                 and routine care. For urgent medical conditions, please contact
-                emergency services. Labtraca does not guarantee specific health
+                emergency services. Testraca does not guarantee specific health
                 outcomes based on any analysis, and the use of our services is
                 at your sole risk.
               </p>
@@ -151,12 +151,12 @@ const TermsConditions = () => {
                 <li>Provide accurate and complete information.</li>
                 <li>Maintain the confidentiality of your login credentials.</li>
                 <li>
-                  Notify Labtraca immediately of any unauthorized use of your
+                  Notify Testraca immediately of any unauthorized use of your
                   account.
                 </li>
               </ul>
               <p className="text-muted-foreground leading-relaxed mt-4">
-                Labtraca reserves the right to suspend or terminate accounts
+                Testraca reserves the right to suspend or terminate accounts
                 that violate these terms.
               </p>
             </section>
@@ -165,7 +165,7 @@ const TermsConditions = () => {
               <h2 className="text-2xl font-bold mb-4">ACCESS TO PLATFORM</h2>
               <p className="text-muted-foreground leading-relaxed">
                 While we aim to maintain uninterrupted access to our platform,
-                Labtraca does not guarantee continuous availability due to
+                Testraca does not guarantee continuous availability due to
                 system maintenance, updates, or unforeseen technical issues.
                 Users must not attempt to hack, modify, or interfere with the
                 functionality or security of our systems.
@@ -183,7 +183,7 @@ const TermsConditions = () => {
                     email address.
                   </li>
                   <li>
-                    Labtraca does not interpret test results beyond what is
+                    Testraca does not interpret test results beyond what is
                     provided by the laboratories.
                   </li>
                   <li>
@@ -200,7 +200,7 @@ const TermsConditions = () => {
                 DATA PROTECTION & PRIVACY
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Labtraca adheres to best practices in handling personal health
+                Testraca adheres to best practices in handling personal health
                 data in compliance with Nigeria Data Protection Act (NDPA). Your
                 data is protected using secure technologies and is only shared
                 with authorized medical and lab professionals involved in
@@ -215,9 +215,9 @@ const TermsConditions = () => {
                 INTELLECTUAL PROPERTY RIGHTS
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                All content on the Labtraca platform, including but not limited
+                All content on the Testraca platform, including but not limited
                 to logos, service marks, videos, graphics, and software, is the
-                intellectual property of Labtraca and protected by applicable
+                intellectual property of Testraca and protected by applicable
                 copyright and trademark laws. Unauthorized use or reproduction
                 is strictly prohibited.
               </p>
@@ -228,7 +228,7 @@ const TermsConditions = () => {
                 LIMITATION OF LIABILITY
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                To the fullest extent permitted by law, Labtraca and its
+                To the fullest extent permitted by law, Testraca and its
                 affiliates will not be liable for:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
@@ -246,7 +246,7 @@ const TermsConditions = () => {
                 WARRANTIES AND DISCLAIMERS
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Labtraca does not warrant that:
+                Testraca does not warrant that:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                 <li>The platform will be error-free or uninterrupted.</li>
@@ -264,7 +264,7 @@ const TermsConditions = () => {
             <section>
               <h2 className="text-2xl font-bold mb-4">TERMINATION OF USE</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Labtraca reserves the right to suspend or terminate your account
+                Testraca reserves the right to suspend or terminate your account
                 without notice if we believe that you have violated any
                 provision of these Terms or acted in a way that could harm other
                 users or our reputation.
@@ -276,7 +276,7 @@ const TermsConditions = () => {
                 USER REPRESENTATIONS AND WARRANTIES
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                By using Labtraca, you represent and warrant that:
+                By using Testraca, you represent and warrant that:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-2">
                 <li>
@@ -293,7 +293,7 @@ const TermsConditions = () => {
             <section>
               <h2 className="text-2xl font-bold mb-4">INDEMNIFICATION</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                You agree to indemnify and hold harmless Labtraca, its
+                You agree to indemnify and hold harmless Testraca, its
                 directors, employees, partners, and affiliates from any claims,
                 liabilities, damages, or expenses arising out of:
               </p>
@@ -314,7 +314,7 @@ const TermsConditions = () => {
               <p className="text-muted-foreground leading-relaxed">
                 These Terms shall be governed by the laws of the Federal
                 Republic of Nigeria. All disputes arising in connection with the
-                use of Labtraca's services shall be resolved through mediation,
+                use of Testraca's services shall be resolved through mediation,
                 conducted in English, before any legal action is initiated.
               </p>
             </section>
@@ -322,7 +322,7 @@ const TermsConditions = () => {
             <section>
               <h2 className="text-2xl font-bold mb-4">USE OF CUSTOMER DATA</h2>
               <p className="text-muted-foreground leading-relaxed">
-                By using Labtraca, you grant us permission to use
+                By using Testraca, you grant us permission to use
                 non-identifiable customer data for service improvement,
                 analytics, marketing, and reporting. Identifiable data will only
                 be used for service delivery and not shared with third parties
@@ -335,7 +335,7 @@ const TermsConditions = () => {
                 LINKS TO THIRD PARTIES
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Labtraca may provide links to third-party services or content.
+                Testraca may provide links to third-party services or content.
                 We are not responsible for the accuracy, legality, or safety of
                 any third-party services or websites.
               </p>
@@ -348,11 +348,11 @@ const TermsConditions = () => {
               </p>
               <div className="bg-muted/50 rounded-lg p-4">
                 <p className="text-sm">
-                  <strong>Email:</strong> info@labtraca.com
+                  <strong>Email:</strong> info@testraca.com
                   <br />
                   <strong>Phone:</strong> +234(0)8133896015
                   <br />
-                  <strong>Website:</strong> www.labtraca.com
+                  <strong>Website:</strong> www.testraca.com
                 </p>
               </div>
             </section>
@@ -361,7 +361,7 @@ const TermsConditions = () => {
               <h2 className="text-2xl font-bold mb-4">ACCEPTANCE OF TERMS</h2>
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
                 <p className="text-amber-800 leading-relaxed font-semibold">
-                  BY ACCESSING, SIGNING UP OR USING LABTRACA'S SERVICES, YOU
+                  BY ACCESSING, SIGNING UP OR USING TESTRACA'S SERVICES, YOU
                   AGREE TO BE BOUND BY THESE TERMS. IF YOU DO NOT AGREE, PLEASE
                   DO NOT USE OUR PLATFORM.
                 </p>

@@ -37,7 +37,9 @@ const PackageCatalog = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
-  useEffect(() => { setPage(1); }, [search]);
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   const { data, loading } = useQuery<{
     getAllPackages?: { packagesCount: number; packages: Package[] };
@@ -61,7 +63,12 @@ const PackageCatalog = () => {
     } else {
       pages.push(1);
       if (page > 3) pages.push("ellipsis");
-      for (let i = Math.max(2, page - 1); i <= Math.min(totalPages - 1, page + 1); i++) pages.push(i);
+      for (
+        let i = Math.max(2, page - 1);
+        i <= Math.min(totalPages - 1, page + 1);
+        i++
+      )
+        pages.push(i);
       if (page < totalPages - 2) pages.push("ellipsis");
       pages.push(totalPages);
     }
@@ -75,7 +82,9 @@ const PackageCatalog = () => {
           <PaginationPrevious
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             aria-disabled={page === 1}
-            className={page === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+            className={
+              page === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"
+            }
           />
         </PaginationItem>
         {getPageNumbers().map((p, i) =>
@@ -93,13 +102,17 @@ const PackageCatalog = () => {
                 {p}
               </PaginationLink>
             </PaginationItem>
-          )
+          ),
         )}
         <PaginationItem>
           <PaginationNext
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             aria-disabled={page === totalPages}
-            className={page === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+            className={
+              page === totalPages
+                ? "pointer-events-none opacity-50"
+                : "cursor-pointer"
+            }
           />
         </PaginationItem>
       </PaginationContent>
@@ -116,7 +129,10 @@ const PackageCatalog = () => {
           <h1 className="text-2xl font-bold text-black mb-1">Test Packages</h1>
           <p className="text-sm text-muted-foreground">
             Bundled diagnostic packages or{" "}
-            <Link to="/app/tests" className="font-semibold text-primary underline">
+            <Link
+              to="/app/tests"
+              className="font-semibold text-primary underline"
+            >
               individual tests
             </Link>
             .
@@ -140,7 +156,10 @@ const PackageCatalog = () => {
         {loading ? (
           <div className="flex flex-col gap-5">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="bg-white rounded-xl border border-border overflow-hidden animate-pulse">
+              <div
+                key={i}
+                className="bg-white rounded-xl border border-border overflow-hidden animate-pulse"
+              >
                 <div className="p-4 flex gap-4">
                   <div className="w-20 h-20 rounded-lg bg-muted flex-shrink-0" />
                   <div className="flex-1 space-y-2">
@@ -167,7 +186,9 @@ const PackageCatalog = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between items-start mb-1 gap-2">
-                        <h3 className="font-bold text-base leading-tight text-black">{pkg.packageName}</h3>
+                        <h3 className="font-bold text-base leading-tight text-black">
+                          {pkg.packageName}
+                        </h3>
                       </div>
                       <p className="text-sm text-muted-foreground line-clamp-2 min-h-10">
                         {pkg.description || "No description available."}
@@ -187,7 +208,9 @@ const PackageCatalog = () => {
                     </div>
                   </div>
                   <div className="bg-card-surface px-4 py-3 flex justify-between items-center">
-                    <span className="font-bold text-base text-primary">{formatPrice(pkg.price)}</span>
+                    <span className="font-bold text-base text-primary">
+                      {formatPrice(pkg.price)}
+                    </span>
                     <Link
                       to={`/app/packages/compare/${pkg.id}`}
                       className="flex items-center gap-1.5 text-xs font-bold text-primary bg-primary/10 px-3 py-1.5 rounded-full"
@@ -208,10 +231,15 @@ const PackageCatalog = () => {
       <main className="hidden sm:block pt-32 pb-20 px-4 md:px-8">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-10">
-            <h1 className="text-4xl font-black text-foreground mb-2">Test Packages</h1>
+            <h1 className="text-4xl font-black text-foreground mb-2">
+              Test Packages
+            </h1>
             <p className="text-muted-foreground">
               Bundled diagnostic packages or{" "}
-              <Link to="/app/tests" className="font-semibold text-primary underline">
+              <Link
+                to="/app/tests"
+                className="font-semibold text-primary underline"
+              >
                 individual tests
               </Link>
               .
@@ -233,7 +261,10 @@ const PackageCatalog = () => {
           {loading ? (
             <div className="space-y-4">
               {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="bg-white border border-border rounded-2xl p-6 flex justify-between items-center animate-pulse">
+                <div
+                  key={i}
+                  className="bg-white border border-border rounded-2xl p-6 flex justify-between items-center animate-pulse"
+                >
                   <div className="flex gap-4 items-center">
                     <div className="w-12 h-12 rounded-full bg-muted flex-shrink-0" />
                     <div className="space-y-2">
@@ -258,18 +289,24 @@ const PackageCatalog = () => {
                         <Layers className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg text-foreground">{pkg.packageName}</h4>
+                        <h4 className="font-bold text-lg text-foreground">
+                          {pkg.packageName}
+                        </h4>
                         <p className="text-sm text-muted-foreground">
                           {pkg.test && pkg.test.length > 0
                             ? `${pkg.test.length} tests included`
-                            : "Labtraca Network"}
+                            : "Testraca Network"}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-6">
                       <div className="text-right">
-                        <p className="text-2xl font-bold text-primary">{formatPrice(pkg.price)}</p>
-                        <p className="text-[10px] uppercase font-bold text-gray-400">Total Cost</p>
+                        <p className="text-2xl font-bold text-primary">
+                          {formatPrice(pkg.price)}
+                        </p>
+                        <p className="text-[10px] uppercase font-bold text-gray-400">
+                          Total Cost
+                        </p>
                       </div>
                       <Link
                         to={`/app/packages/compare/${pkg.id}`}

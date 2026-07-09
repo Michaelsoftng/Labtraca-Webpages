@@ -38,7 +38,7 @@ export const FeaturesSection = () => {
             <div className="flex justify-center lg:hidden">
               <img
                 src={AppMockup}
-                alt="Labtraca app mockup"
+                alt="Testraca app mockup"
                 className="w-[85vw] sm:w-full max-w-[380px] h-auto object-contain mx-auto"
               />
             </div>

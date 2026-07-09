@@ -45,8 +45,9 @@ export const PhlebotomistForm = () => {
 
     try {
       const existingData = await fetchFromGoogleSheet("Phlebotomist");
-      const isDuplicate = existingData.some((row: any) =>
-        row.email?.toString().toLowerCase() === formData.email.toLowerCase()
+      const isDuplicate = existingData.some(
+        (row: any) =>
+          row.email?.toString().toLowerCase() === formData.email.toLowerCase(),
       );
 
       if (isDuplicate) {
@@ -88,59 +89,84 @@ export const PhlebotomistForm = () => {
   return (
     <Card className="w-full max-w-4xl mx-auto border-2 border-border rounded-3xl overflow-hidden shadow-xl">
       <CardHeader className="bg-primary text-primary-foreground p-8">
-        <CardTitle className="text-3xl font-black">Phlebotomist Registration Form</CardTitle>
-        <p className="text-primary-foreground/80">Join our network of medical professionals</p>
+        <CardTitle className="text-3xl font-black">
+          Phlebotomist Registration Form
+        </CardTitle>
+        <p className="text-primary-foreground/80">
+          Join our network of medical professionals
+        </p>
       </CardHeader>
       <CardContent className="p-8">
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Personal Information */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold border-b-2 border-primary/20 pb-2 flex items-center gap-2">
-              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">1</span>
+              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">
+                1
+              </span>
               Personal Information
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="fullName" className="font-bold">Full Name *</Label>
+                <Label htmlFor="fullName" className="font-bold">
+                  Full Name *
+                </Label>
                 <Input
                   id="fullName"
                   placeholder="Enter your full name"
                   value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, fullName: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone" className="font-bold">Phone Number (WhatsApp enabled) *</Label>
+                <Label htmlFor="phone" className="font-bold">
+                  Phone Number (WhatsApp enabled) *
+                </Label>
                 <Input
                   id="phone"
                   type="tel"
                   placeholder="e.g., +234 800 000 0000"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email" className="font-bold">Email Address *</Label>
+                <Label htmlFor="email" className="font-bold">
+                  Email Address *
+                </Label>
                 <Input
                   id="email"
                   type="email"
                   placeholder="your@email.com"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="gender" className="font-bold">Gender *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, gender: value })} disabled={isSubmitting}>
+                <Label htmlFor="gender" className="font-bold">
+                  Gender *
+                </Label>
+                <Select
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, gender: value })
+                  }
+                  disabled={isSubmitting}
+                >
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Gender" />
                   </SelectTrigger>
@@ -152,12 +178,16 @@ export const PhlebotomistForm = () => {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="dob" className="font-bold">Date of Birth *</Label>
+                <Label htmlFor="dob" className="font-bold">
+                  Date of Birth *
+                </Label>
                 <Input
                   id="dob"
                   type="date"
                   value={formData.dob}
-                  onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, dob: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
@@ -169,26 +199,48 @@ export const PhlebotomistForm = () => {
           {/* Professional Information */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold border-b-2 border-primary/20 pb-2 flex items-center gap-2">
-              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">2</span>
+              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">
+                2
+              </span>
               Professional Information
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="professionalCategory" className="font-bold">Professional Category *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, professionalCategory: value })} disabled={isSubmitting}>
+                <Label htmlFor="professionalCategory" className="font-bold">
+                  Professional Category *
+                </Label>
+                <Select
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, professionalCategory: value })
+                  }
+                  disabled={isSubmitting}
+                >
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Category" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="mls">MLS (Medical Laboratory Scientist)</SelectItem>
-                    <SelectItem value="mlt">MLT (Medical Laboratory Technician)</SelectItem>
-                    <SelectItem value="phlebotomy_tech">Phlebotomy Technician</SelectItem>
+                    <SelectItem value="mls">
+                      MLS (Medical Laboratory Scientist)
+                    </SelectItem>
+                    <SelectItem value="mlt">
+                      MLT (Medical Laboratory Technician)
+                    </SelectItem>
+                    <SelectItem value="phlebotomy_tech">
+                      Phlebotomy Technician
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="ownLicense" className="font-bold">Do you Own a valid Licence/Permit? *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, ownLicense: value })} disabled={isSubmitting}>
+                <Label htmlFor="ownLicense" className="font-bold">
+                  Do you Own a valid Licence/Permit? *
+                </Label>
+                <Select
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, ownLicense: value })
+                  }
+                  disabled={isSubmitting}
+                >
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Yes/No" />
                   </SelectTrigger>
@@ -199,30 +251,45 @@ export const PhlebotomistForm = () => {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="licenseNumber" className="font-bold">License Number</Label>
+                <Label htmlFor="licenseNumber" className="font-bold">
+                  License Number
+                </Label>
                 <Input
                   id="licenseNumber"
                   placeholder="Enter your license number"
                   value={formData.licenseNumber}
-                  onChange={(e) => setFormData({ ...formData, licenseNumber: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, licenseNumber: e.target.value })
+                  }
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="issuingBody" className="font-bold">Issuing Body (MLSCN / Others)</Label>
+                <Label htmlFor="issuingBody" className="font-bold">
+                  Issuing Body (MLSCN / Others)
+                </Label>
                 <Input
                   id="issuingBody"
                   placeholder="e.g., MLSCN"
                   value={formData.issuingBody}
-                  onChange={(e) => setFormData({ ...formData, issuingBody: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, issuingBody: e.target.value })
+                  }
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="yearsOfExperience" className="font-bold">Years of Experience *</Label>
-                <Select onValueChange={(value) => setFormData({ ...formData, yearsOfExperience: value })} disabled={isSubmitting}>
+                <Label htmlFor="yearsOfExperience" className="font-bold">
+                  Years of Experience *
+                </Label>
+                <Select
+                  onValueChange={(value) =>
+                    setFormData({ ...formData, yearsOfExperience: value })
+                  }
+                  disabled={isSubmitting}
+                >
                   <SelectTrigger className="rounded-xl">
                     <SelectValue placeholder="Select Years" />
                   </SelectTrigger>
@@ -240,65 +307,87 @@ export const PhlebotomistForm = () => {
           {/* Location of Operation */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold border-b-2 border-primary/20 pb-2 flex items-center gap-2">
-              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">3</span>
+              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">
+                3
+              </span>
               Location of Operation
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="country" className="font-bold">Country *</Label>
+                <Label htmlFor="country" className="font-bold">
+                  Country *
+                </Label>
                 <Input
                   id="country"
                   placeholder="e.g., Nigeria"
                   value={formData.country}
-                  onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, country: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="state" className="font-bold">State *</Label>
+                <Label htmlFor="state" className="font-bold">
+                  State *
+                </Label>
                 <Input
                   id="state"
                   placeholder="e.g., Lagos"
                   value={formData.state}
-                  onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, state: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="lga" className="font-bold">LGA *</Label>
+                <Label htmlFor="lga" className="font-bold">
+                  LGA *
+                </Label>
                 <Input
                   id="lga"
                   placeholder="Enter LGA"
                   value={formData.lga}
-                  onChange={(e) => setFormData({ ...formData, lga: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, lga: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="cityArea" className="font-bold">City/Area *</Label>
+                <Label htmlFor="cityArea" className="font-bold">
+                  City/Area *
+                </Label>
                 <Input
                   id="cityArea"
                   placeholder="Enter City or Area"
                   value={formData.cityArea}
-                  onChange={(e) => setFormData({ ...formData, cityArea: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, cityArea: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
                 />
               </div>
               <div className="md:col-span-2 space-y-2">
-                <Label htmlFor="baseAddress" className="font-bold">Base Address *</Label>
+                <Label htmlFor="baseAddress" className="font-bold">
+                  Base Address *
+                </Label>
                 <Textarea
                   id="baseAddress"
                   placeholder="Enter your full residential or office address"
                   value={formData.baseAddress}
-                  onChange={(e) => setFormData({ ...formData, baseAddress: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, baseAddress: e.target.value })
+                  }
                   required
                   className="rounded-xl"
                   disabled={isSubmitting}
@@ -310,7 +399,9 @@ export const PhlebotomistForm = () => {
           {/* Uploads and Declaration */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold border-b-2 border-primary/20 pb-2 flex items-center gap-2">
-              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">4</span>
+              <span className="w-8 h-8 bg-primary/10 text-primary rounded-full flex items-center justify-center text-sm">
+                4
+              </span>
               Declaration
             </h3>
 
@@ -318,28 +409,43 @@ export const PhlebotomistForm = () => {
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="availability"
-                  onCheckedChange={(checked) => setFormData({ ...formData, availability: !!checked })}
+                  onCheckedChange={(checked) =>
+                    setFormData({ ...formData, availability: !!checked })
+                  }
                   disabled={isSubmitting}
                 />
-                <Label htmlFor="availability" className="text-sm font-medium leading-none cursor-pointer">
+                <Label
+                  htmlFor="availability"
+                  className="text-sm font-medium leading-none cursor-pointer"
+                >
                   Available for home sample collection
                 </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="followSOPs"
-                  onCheckedChange={(checked) => setFormData({ ...formData, followSOPs: !!checked })}
+                  onCheckedChange={(checked) =>
+                    setFormData({ ...formData, followSOPs: !!checked })
+                  }
                   required
                   disabled={isSubmitting}
                 />
-                <Label htmlFor="followSOPs" className="text-sm font-medium leading-none cursor-pointer">
-                  Willingness to follow Labtraca SOPs *
+                <Label
+                  htmlFor="followSOPs"
+                  className="text-sm font-medium leading-none cursor-pointer"
+                >
+                  Willingness to follow Testraca SOPs *
                 </Label>
               </div>
             </div>
           </div>
 
-          <Button type="submit" size="lg" className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-primary/20 transition-all" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full rounded-full font-bold h-12 text-lg shadow-lg hover:shadow-primary/20 transition-all"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? <Loader2 className="animate-spin mr-2" /> : null}
             {isSubmitting ? "Submitting..." : "Submit Registration"}
           </Button>

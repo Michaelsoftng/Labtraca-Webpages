@@ -75,7 +75,7 @@ export const HeroSection = () => {
             </div>
             <img
               src={HeroImage}
-              alt="Labtraca mobile app showing lab test tracking"
+              alt="Testraca mobile app showing lab test tracking"
               className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
             />
           </div>

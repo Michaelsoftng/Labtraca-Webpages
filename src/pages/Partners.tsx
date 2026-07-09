@@ -314,7 +314,7 @@ const Partners = () => {
               Ready to Join Our Network?
             </h2>
             <p className="text-white/80 max-w-lg mx-auto mb-8 leading-relaxed">
-              Partner with Labtraca and expand your reach to thousands of
+              Partner with Testraca and expand your reach to thousands of
               customers seeking quality lab testing services.
             </p>
             <Link to="/partner-with-us">

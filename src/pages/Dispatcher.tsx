@@ -23,7 +23,8 @@ const Dispatcher = () => {
               Deliver the Future of Healthcare.
             </h1>
             <p className="text-white/80 mb-8 text-sm leading-relaxed">
-              Become a Labtraca Logistics Officer. High-speed, medical-grade transport.
+              Become a Testraca Logistics Officer. High-speed, medical-grade
+              transport.
             </p>
             <a href="#apply-form">
               <button className="bg-primary w-full py-4 rounded-xl font-bold text-white text-base">
@@ -34,9 +35,11 @@ const Dispatcher = () => {
         </section>
 
         <div id="apply-form" className="px-4 py-10">
-          <h2 className="text-2xl font-bold text-foreground mb-1">Join the Fleet</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-1">
+            Join the Fleet
+          </h2>
           <p className="text-sm text-muted-foreground mb-8">
-            Complete your registration to start dispatching with Labtraca.
+            Complete your registration to start dispatching with Testraca.
           </p>
           <DispatcherForm />
         </div>
@@ -58,7 +61,8 @@ const Dispatcher = () => {
                 Deliver the Future.
               </h1>
               <p className="text-white/80 text-xl mb-10 leading-relaxed">
-                Join the elite fleet of Labtraca Logistics Officers. High-yield compensation and medical-grade training included.
+                Join the elite fleet of Testraca Logistics Officers. High-yield
+                compensation and medical-grade training included.
               </p>
               <a href="#apply-form">
                 <button className="bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg flex items-center gap-2 hover:bg-primary/90 transition-colors shadow-lg">
@@ -73,16 +77,32 @@ const Dispatcher = () => {
         <section className="bg-white py-14 px-8">
           <div className="container mx-auto max-w-6xl grid grid-cols-3 gap-8">
             {[
-              { title: "Competitive Pay", desc: "Industry-leading compensation with weekly payouts and performance bonuses." },
-              { title: "Medical-Grade Training", desc: "Full onboarding on cold-chain protocols and clinical transport standards." },
-              { title: "Flexible Hours", desc: "Work on your schedule. Accept requests when you want, where you want." },
+              {
+                title: "Competitive Pay",
+                desc: "Industry-leading compensation with weekly payouts and performance bonuses.",
+              },
+              {
+                title: "Medical-Grade Training",
+                desc: "Full onboarding on cold-chain protocols and clinical transport standards.",
+              },
+              {
+                title: "Flexible Hours",
+                desc: "Work on your schedule. Accept requests when you want, where you want.",
+              },
             ].map((p) => (
-              <div key={p.title} className="bg-canvas rounded-2xl border border-border p-7">
+              <div
+                key={p.title}
+                className="bg-canvas rounded-2xl border border-border p-7"
+              >
                 <div className="w-10 h-10 rounded-xl bg-teal-surface flex items-center justify-center mb-4">
                   <span className="w-4 h-4 rounded-full bg-primary" />
                 </div>
-                <h3 className="font-bold text-foreground text-lg mb-2">{p.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <h3 className="font-bold text-foreground text-lg mb-2">
+                  {p.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {p.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -96,7 +116,7 @@ const Dispatcher = () => {
                 Join the Fleet
               </h2>
               <p className="text-muted-foreground text-lg">
-                Complete your registration to start dispatching with Labtraca.
+                Complete your registration to start dispatching with Testraca.
               </p>
             </div>
             <DispatcherForm />

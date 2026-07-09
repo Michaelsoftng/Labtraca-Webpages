@@ -68,7 +68,7 @@ const AboutUs = () => {
             <span className="text-primary">Clinical Precision.</span>
           </h1>
           <p className="text-muted-foreground text-base leading-relaxed">
-            At Labtraca, we don't just move samples; we move lives. Our mission
+            At Testraca, we don't just move samples; we move lives. Our mission
             is to bridge the gap between diagnostics and patient care with
             unmatched speed and absolute safety.
           </p>
@@ -107,7 +107,7 @@ const AboutUs = () => {
                   <span className="text-primary">Clinical Precision.</span>
                 </h1>
                 <p className="text-gray-300 text-base leading-relaxed max-w-lg">
-                  At Labtraca, we don't just move samples; we move lives. Our
+                  At Testraca, we don't just move samples; we move lives. Our
                   mission is to bridge the gap between diagnostics and patient
                   care with unmatched speed and absolute safety.
                 </p>
@@ -138,7 +138,7 @@ const AboutUs = () => {
               <div className="w-8 h-1 bg-primary rounded-full" />
               <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
                 <p>
-                  Labtraca was founded by a team of clinical pathologists and
+                  Testraca was founded by a team of clinical pathologists and
                   logistics experts who realized that the weakest link in modern
                   healthcare wasn't the diagnostic technology itself, but the
                   journey of the sample from patient to lab.
@@ -160,7 +160,9 @@ const AboutUs = () => {
                     <p className="text-2xl font-black text-foreground">
                       {stat.value}
                     </p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{stat.label}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -282,7 +284,7 @@ const AboutUs = () => {
               Ready to Experience True Clinical Logistics?
             </h2>
             <p className="text-gray-400 text-base max-w-lg mx-auto leading-relaxed">
-              Join over 200 labs and thousands of patients who trust Labtraca
+              Join over 200 labs and thousands of patients who trust Testraca
               for their diagnostic transport needs within our collaborative
               pharmacy ecosystem enhancing health service delivery.
             </p>

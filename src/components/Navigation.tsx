@@ -14,7 +14,7 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-const logo = "/Labtraca%20Wordmark%20Logo%20PNG.png";
+const logo = "/Testraca%20Wordmark%20Logo%20PNG.png";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,7 +53,7 @@ export const Navigation = () => {
             <Link to="/" onClick={closeMenu}>
               <img
                 src={logo}
-                alt="Labtraca Logo"
+                alt="Testraca Logo"
                 className="h-14 w-auto object-contain"
               />
             </Link>
@@ -69,7 +69,7 @@ export const Navigation = () => {
         <div className="hidden lg:block container mx-auto px-4 py-3 md:px-8">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center flex-shrink-0">
-              <img src={logo} alt="Labtraca Logo" className="h-16 w-auto" />
+              <img src={logo} alt="Testraca Logo" className="h-16 w-auto" />
             </Link>
 
             <div className="flex items-center gap-6">
@@ -129,11 +129,11 @@ export const Navigation = () => {
             >
               <img
                 src={logo}
-                alt="Labtraca Logo"
+                alt="Testraca Logo"
                 className="h-12 w-12 object-contain"
               />
               <span className="text-lg font-bold text-foreground">
-                Labtraca
+                Testraca
               </span>
             </Link>
             <button
