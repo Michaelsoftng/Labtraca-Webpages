@@ -13,8 +13,7 @@ import {
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-
-const logo = "/Testraca%20Wordmark%20Logo%20PNG.png";
+import logo from "@/assets/logo-wordmark-transparent.png";
 
 export const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
