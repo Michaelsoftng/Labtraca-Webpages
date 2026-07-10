@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import {
   Menu,
   X,
-  User,
   Home,
   Microscope,
   ShieldCheck,
@@ -37,31 +36,24 @@ export const Navigation = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-canvas border-b border-border">
         {/* Mobile bar */}
         <div className="flex lg:hidden items-center justify-between px-4 h-16">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              className="p-1 text-primary"
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-            <Link to="/" onClick={closeMenu}>
-              <img
-                src={logo}
-                alt="Testraca Logo"
-                className="h-14 w-auto object-contain"
-              />
-            </Link>
-          </div>
-          <Link to="/app">
-            <div className="w-10 h-10 rounded-full bg-teal-surface border border-teal-subtle flex items-center justify-center cursor-pointer">
-              <User className="w-5 h-5 text-teal-muted" />
-            </div>
+          <Link to="/" onClick={closeMenu}>
+            <img
+              src={logo}
+              alt="Testraca Logo"
+              className="h-14 w-auto object-contain"
+            />
           </Link>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+            className="p-1 text-primary"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
         </div>
 
         {/* Desktop bar */}
