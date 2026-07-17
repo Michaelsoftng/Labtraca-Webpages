@@ -14,6 +14,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import HealthEcosystem from "./pages/HealthEcosystem";
 import TermsConditions from "./pages/TermsConditions";
+import Download from "./pages/Download";
 
 // App / catalog pages
 import OurApp from "./pages/OurApp";
@@ -59,6 +60,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/health-ecosystem" element={<HealthEcosystem />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/download" element={<Download />} />
 
           {/* App / catalog pages */}
           <Route path="/app" element={<OurApp />} />
